@@ -1,0 +1,14 @@
+<form action="/users/index/addprocess" method="post">
+	<dl>
+		<dt><label for="">Login</label></dt>
+		<dd><?php echo $this->formText('login'); ?></dd>
+		<dt><label for="">Password</label></dt>
+		<dd><?php echo $this->formPassword('password'); ?></dd>
+		<dt><label for="">Role</label></dt>
+		<dd><?php echo $this->formSelect('role', null, null, array('disabled'=>'disabled', 'bidder'=>'bidder', 'rotarian'=>'rotarian', 'approver'=>'approver', 'admin'=>'admin', 'super'=>'super'));?></dd>
+		<dt><label for="">Rotarian</label></dt>
+		<dd><?php echo $this->formSelect('personId', null, null, $this->rotarians);?></dd>
+	</dl>
+	<?php echo $this->formSubmit('', 'Add User'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/users/index/list"')); ?>
+</form>

@@ -1,0 +1,148 @@
+<?php
+$canDeliver = true;
+$bellRinger = false;
+
+if (is_array($this->itemsWon)) {
+    foreach($this->itemsWon as $itemWon) {
+        if ($itemWon->deliver == 'n') {
+        	$canDeliver = false;
+        }
+        
+        if ($itemWon->bid >= $itemWon->itemValue) {
+        	$bellRinger = true;
+        }
+        
+        reset($this->itemsWon);
+    }
+}
+    
+?>
+
+<?php if ($this->validPhone) { ?>
+<dl>
+	<dt>Item #:</dt>
+	<dd><?php echo $this->item->itemNumber; ?></dd>
+	<dt>Item Name:</dt>
+	<dd><?php echo $this->item->name; ?></dd>
+	<dt>BID:</dt>
+	<dd>$<?php echo $this->bid->bid; ?></dd>
+</dl>
+
+<div id="confirm_winner">
+
+<p>Please enter or confirm the winner's contact information:</p>
+
+<form action="/callbacks/index/confirmwinnerprocess" method="post">
+	<?php echo $this->formHidden('phone', $this->phone); ?>
+	<?php echo $this->formHidden('bidId', $this->bid->bidId); ?>
+	<?php echo $this->formHidden('blockId', $this->block->blockId); ?>
+	<?php echo $this->formHidden('itemId', $this->item->itemId); ?>
+	
+	<div id="winner_info">
+		<dl>
+			<dt><label for="">First Name</label></dt>
+			<dd><?php echo $this->formText('firstName', ($this->person?$this->person->firstName:''), array('size' => 50)); ?></dd>
+			<dt><label for="">Last Name</label></dt>
+			<dd><?php echo $this->formText('lastName', ($this->person?$this->person->lastName:''), array('size' => 50)); ?></dd>
+			<dt><label for="">Address 1</label></dt>
+			<dd><?php echo $this->formText('address1', ($this->person?$this->person->address1:''), array('size' => 50)); ?></dd>
+			<dt><label for="">Address 2</label></dt>
+			<dd><?php echo $this->formText('address2', ($this->person?$this->person->address2:''), array('size' => 50)); ?></dd>
+			<dt><label for="">City</label></dt>
+			<dd><?php echo $this->formText('city', ($this->person?$this->person->city:''), array('size' => 50)); ?></dd>
+			<dt><label for="">Province</label></dt>
+			<dd><?php echo $this->formSelect('province', 'ON', ($this->person?$this->person->province:''), $this->getProvinceArray()); ?></dd>
+			<dt><label for="">Postal Code</label></dt>
+			<dd><?php echo $this->formText('postalCode', ($this->person?$this->person->postalCode:''), array('size' => 50, 'maxlength' => 6)); ?></dd>
+			<dt><label for="">Phone</label></dt>
+			<dd><?php echo $this->phone; ?></dd>
+			<dt><label for="">E-mail Address</label></dt>
+			<dd><?php echo $this->formText('emailAddress', ($this->person?$this->person->email:''), array('size' => 50)); ?></dd>
+			<dt><label for="">Email with directions?</label></dt>
+			<dd><?php echo $this->formCheckbox('sendEmail', 'yes'); ?></dd>
+<?php if ($this->item->binNumber == '500' && $canDeliver) { ?>
+            <dt><label for="form_delivery">Deliver item?</label></dt>
+            <dd><input id="form_delivery" type="checkbox" name="delivery" value="y"<?php echo ($this->item->deliver=='y'?' checked="checked"':''); ?> /> ($15 delivery fee)</dd>
+<?php } ?>
+		</dl>
+	</div>
+
+	<div id="card_info">
+		<h3>Credit Card Info:</h3>
+	
+<?php 	if ($this->creditcard) { ?>
+		<p>Card Number: <?php echo $this->creditcard; ?> (<a href="#" id="change_card">change</a>)</p>
+		<script type="text/javascript">
+		jQuery('#card_deets').hide();
+		jQuery('#change_card').click(function() {
+			jQuery('#card_deets').show('slow', function() {
+		    	return false;
+		  	});
+		});
+		</script>
+<?php 	} ?>
+		<div id="card_deets">
+			<dl>
+				<dt>Card Type:</dt>
+				<dd><?php echo $this->formSelect('cardType', '', '', array('0' => 'Select card...', '1'=>'MasterCard', '2'=>'Visa'))?></dd>
+				<dt>Name on Card:</dt>
+				<dd><?php echo $this->formText('nameOnCard', '', array('size' => 60, 'maxlength' => 60)); ?></dd>
+				<dt>Card Number:</dt>
+				<dd><?php echo $this->formText('cardNumber', '', array('size' => 60, 'maxlength' => 60)); ?></dd>
+				<dt>Expiry Date:</dt>
+				<dd><?php echo $this->formSelect('cardExpiryMonth', '', '', array('1'=>'1-Jan', '2'=>'2-Feb', '3'=>'3-Mar', '4'=>'4-Apr', '5'=>'5-May', '6'=>'6-Jun', '7'=>'7-Jul', '8'=>'8-Aug', '9'=>'9-Sep', '10'=>'10-Oct', '11'=>'11-Nov', '12'=>'12-Dec'))?>
+				<?php echo $this->formSelect('cardExpiryYear', '', '', array('2014'=>'2014', '2015'=>'2015', '2016'=>'2016', '2017'=>'2017', '2018'=>'2018', '2019'=>'2019', '2020'=>'2020', '2021'=>'2021'))?></dd>
+				<dt>CVV Code:</dt>
+				<dd><?php echo $this->formText('cardCvv', '', array('size' => 3, 'maxlength' => 3)); ?></dd>
+			</dl>
+		</div>
+	</div>
+
+	<input type="submit" value="Save" />
+	<input type="button" value="Back" onclick="location='/callbacks/index/viewblock/id/<?php echo $this->block->blockId; ?>'" />
+</form>
+</div>
+
+<div id="confirm_items">
+    <table>
+        <thead>
+            <tr>
+                <td colspan="4">Items Won - <?php echo count($this->itemsWon); ?></td>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td>Item Name</td>
+                <td>Bid</td>
+                <td>Dlvr</td>
+            </tr>
+        </thead>
+        <tbody>
+<?php if (count($this->itemsWon) > 0) {?>
+<?php foreach($this->itemsWon as $itemWon) { ?>
+            <tr>
+                <td class="center"><?php echo $itemWon->itemNumber; ?></td>
+                <td class="left"><?php echo $itemWon->itemName; ?></td>
+                <td class="right">$<?php echo $itemWon->bid; ?></td>
+                <td class="center"><?php echo $itemWon->deliver; ?></td>
+            </tr>
+<?php } ?>
+<?php } else { ?>
+            <tr>
+                <td colspan="3">This is their first item!</td>
+            </tr>
+<?php } ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4" class="<?php echo ($canDeliver?'green':'red'); ?>"><?php echo ($canDeliver?'This order can be delivered':'This order CANNOT be delivered'); ?></td>
+            </tr>
+            <tr>
+                <td colspan="4"><?php echo ($bellRinger?'This order receives a free Zeddy bear!':''); ?></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<?php } else { ?>
+	<p>The phone number you entered was invalid, please go back and try again.</p>
+<?php } ?>

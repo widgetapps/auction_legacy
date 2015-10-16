@@ -1,0 +1,64 @@
+<h1>Block List</h1>
+
+
+<table>
+	<thead>
+		<tr>
+			<td>Block Number</td>
+			<td>Block Date</td>
+			<td>Start Time</td>
+			<td>Action</td>
+		</tr>
+		<tr>
+			<td colspan="4"><a href="#<?php echo ($this->currentBlockId - 5); ?>">Jump to Current Block<a/></td>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+	$line = 0;
+	foreach ($this->blocks as $block){
+	    if ($block->number == '0') { continue;}
+	    
+	    $rowClass = 'line' . (($line % 2) + 1);
+	    if ($block->blockId == $this->currentBlockId){
+	    	$rowClass = 'currentBlock';
+	    } else if ($block->closed == 'y'){
+	    	$rowClass = 'closedBlock';
+	    }
+?>
+		<tr class="<?php echo $rowClass;?>">
+			<td><a name="<?php echo $block->blockId; ?>"><?php echo $block->number; ?></a></td>
+			<td><?php echo $block->blockDate; ?></td>
+			<td><?php echo $block->startTime; ?></td>
+			<td>
+			<?php if ($block->blockId == $this->currentBlockId){ ?>
+				[active]
+			<?php } else {
+			        if (in_array($this->role, array('admin', 'super'))) {?>
+				[<a href="/blocks/index/activate/id/<?php echo $block->blockId; ?>">activate</a>]
+			<?php } } ?>
+			<?php if ($block->closed == 'y'){
+			        if (in_array($this->role, array('admin', 'super'))) {?>
+				[<a href="/blocks/index/open/id/<?php echo $block->blockId; ?>">open</a>]
+			<?php } } else {
+			        if (in_array($this->role, array('admin', 'super'))) {?>
+				[<a href="/blocks/index/close/id/<?php echo $block->blockId; ?>">close</a>]
+			<?php } } ?>
+				[<a href="/blocks/index/assign/id/<?php echo $block->blockId; ?>">assign</a>]
+			    [<a href="/blocks/index/bids/id/<?php echo $block->blockId; ?>">bids</a>]
+			</td>
+		</tr>
+<?php
+	$line++;
+	} ?>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4">
+				[<a href="/blocks/index/activate/id/0">deactivate all</a>]
+				[<a href="/blocks/index/close/id/0">close all</a>]
+				[<a href="/blocks/index/open/id/0">open all</a>]
+			</td>
+		</tr>
+	<tfoot>
+</table>

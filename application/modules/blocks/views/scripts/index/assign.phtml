@@ -1,0 +1,7 @@
+<form action="/blocks/index/assignprocess" method="post">
+	<p>You are assigning items to block <?php echo $this->blockNumber; ?>. Enter the control numbers separated by spaces.</p>
+	<input type="hidden" name="blockId" value="<?php echo $this->blockId; ?>" />
+	<input type="text" name="itemlist" value="<?php echo $this->itemNumbers; ?>" size="40" />
+	
+	<input type="submit" value="Assign" />
+</form>

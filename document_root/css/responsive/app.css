@@ -1,0 +1,12 @@
+
+div.row0 {
+    background-color: #fff;
+}
+
+div.row1 {
+	background-color: rgb(249, 249, 249);
+}
+
+div.full-item-row:hover {
+ background-color: rgb(221, 221, 221);
+}

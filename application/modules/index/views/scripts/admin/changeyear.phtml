@@ -1,0 +1,6 @@
+<p>Please select the auction data set:</p>
+
+<form action="/index/admin/changeyearprocess" method="post">
+<?php echo $this->formSelect('auctionId', $this->currentAuctionId, '', $this->auctionRows); ?>
+<?php echo $this->formSubmit('submit', 'Change Data Set'); ?>
+</form>

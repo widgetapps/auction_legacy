@@ -1,0 +1,38 @@
+<table>
+	<thead>
+		<tr>
+			<th>Invoice Number</th>
+			<th>Invoice Date</th>
+			<th>Name</th>
+            <th>Phone</th>
+            <th>Payment Type</th>
+			<th># Items</th>
+			<th>Total</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php
+		foreach ($this->invoices as $invoice) {
+			require_once 'models/InvoiceItem.php';
+			$table = new models_InvoiceItem();
+			
+			$select = $table->select();
+			$select->from('InvoiceItem', array('numItems' => 'COUNT(*)', 'total' => 'SUM(winningBid)'))
+					->where('invoiceId = ?', $invoice->invoiceId);
+			$row = $table->fetchAll($select)->current();
+			
+			$number = $invoice->auctionId . '-' . $invoice->number;
+			
+	?>
+		<tr>
+			<td class="center"><a href="/pickups/index/viewinvoice/id/<?php echo $invoice->invoiceId; ?>"><?php echo $number; ?></a></td>
+			<td class="center"><?php echo date('F j, Y', strtotime($invoice->date)); ?></td>
+            <td class="center"><?php echo $invoice->firstName . ' ' . $invoice->lastName; ?></td>
+            <td class="center"><?php echo $this->formatPhoneNumber($invoice->phone); ?></td>
+			<td class="center"><?php echo $invoice->paymentType; ?></td>
+			<td class="center"><?php echo $row->numItems; ?></td>
+			<td class="center"><?php echo $row->total; ?></td>
+		</tr>
+	<?php } ?>
+	</tbody>
+</table>

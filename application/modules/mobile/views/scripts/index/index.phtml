@@ -1,0 +1,12 @@
+<div id="block_items"></div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	setInterval('getBlockItems()',5000);
+	getBlockItems();
+});
+
+function getBlockItems() {
+	$("#block_items").load('/mobile/index/activeblock');
+}
+</script>

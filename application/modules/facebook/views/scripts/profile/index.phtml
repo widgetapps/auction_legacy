@@ -1,0 +1,82 @@
+
+<div id="fbap_profile_header">
+	<div id="fbap_info">
+		<dl>
+			<dt>Fri, Nov. 23rd</dt><dd>7pm to Midnight</dd>
+			<dt>Sat, Nov. 24th</dt><dd>10am to Midnight</dd>
+		</dl>
+		<dl>
+			<dt>INFO LINE:</dt><dd>(416)&nbsp;508-8382</dd>
+			<dt>BID LINE:</dt><dd>(416)&nbsp;406-6187</dd>
+		</dl>
+		EMAIL: <a href="mailto:info@metrotorontorotaryauction.com.">info@metrotorontorotaryauction.com.</a>
+	</div>
+	<p>If you'd like to contact someone about this year's auction, <a href="mailto:info@metrotorontorotaryauction.com.">email us</a>
+	or give us a call on the INFO LINE.</p>
+	<p style="text-align:center; font-style: italic;">The bid line is reserved only for taking bids during auction weekend.</p>
+</div>
+<div id="fbap_profile_items">
+	<h3>Featured Items</h3>
+	<a href="http://apps.facebook.com/rotaryauction" target="_top">View All Items</a> |
+	<a href="https://system.metrotorontorotaryauction.com/pdf/publiclist_2012.pdf" target="_top">Printable Item List</a>
+	<table>
+		<thead>
+			<tr>
+				<td>Item Name</td>
+				<td>Value</td>
+				<td>Up For Bid</td>
+			</tr>
+		</thead>
+		<tbody>
+<?php foreach ($this->fitems as $item) {
+		$lineCount++;
+		$up4bid = date("D @ g:ia", strtotime($item->blockDate . ' ' . $item->blockTime));
+	?>
+			<tr class="line<?php echo (($lineCount % 2) + 1); ?>">
+				<td><a href="http://apps.facebook.com/rotaryauction/index/view/item/<?php echo $item->itemId; ?>" target="_top"><?php echo $item->name; ?></a></td>
+				<td>$<?php echo $item->fairRetailPrice; ?></td>
+				<td><?php echo ($item->blockTime==''?'NA':$up4bid); ?></td>
+			</tr>
+<?php } ?>
+		</tbody>
+	</table>
+	<a href="http://apps.facebook.com/rotaryauction" target="_top">View All Items</a>
+</div>
+<div id="fbap_profile_sponsors">
+	<h3>Auction Sponsors</h3>
+       <h2>Feature Sponsor</h2>
+       <table width="200" border="0" cellpadding="2">
+          <tr>
+            <td colspan="2" align="center">
+            <a href="http://www.rogerstv.com/page.aspx?lid=14&amp;rid=16"><img class="logo" src="/images/sponsors/rogerstv_en_hor_4c.jpg" alt="Rogers TV Logo" width="198" border="1" longdesc="Rogers TV Logo" /></a><br />
+            </td>
+          </tr>
+        </table>
+       <h2>2011 Partners</h2>
+        <table width="200" border="0" cellpadding="2">
+          <tr>
+            <td colspan="2" align="center"><a href="http://www.parkproperty.ca/"><img src="/images/sponsors/park_property_management.png" alt="Park Property Management Inc." width="198" class="logo" /></a><br /></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center" class="mousey"><a href="http://www.champeng.com/"><img src="/images/sponsors/champ_engineering_wide.png" alt="C.H.A.M.P. Engineering Ltd" width="198" class="logo" /></a></td>
+          </tr>
+        </table>
+        <h2>2011 Sponsors</h2>
+        <table width="200" border="0" cellpadding="2">
+          <tr>
+            <td colspan="2" align="center"><a href="http://www.donwayford.com/"><img src="/images/sponsors/Donway Logo.jpg" alt="Donway Ford" height="70" class="logo" /></a></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center"><p><a href="http://www.investorsgroup.com/"><img src="/images/sponsors/IG.jpg" alt="Investors Group" width="198" class="logo" /></a><br />
+            </p></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center" class="mousey"><p class="logo"><strong><a href="http://www.paragontravel.com">Paragon Travel</a></strong></p>
+              <p class="logo"><strong>James A. Boyko, CA</strong></p>
+            <p><strong><a href="http://www.mardigrasflorist.com/" class="logo">Mardi Gras Florist</a></strong></p></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center" class="mousey">Auction websites and Facebook work donated by <a href="http://26mondays.com">26Mondays</a></td>
+          </tr>
+        </table>
+</div>

@@ -1,0 +1,158 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 10pt;
+}
+
+a:link {
+	color: #057ba3;
+}
+
+a:visited {
+	color: #057ba3;
+}
+
+a:hover {
+	color: #ff0000;
+	text-decoration: underline;
+}
+
+#header {
+	float: left;
+	height: 115px;
+	width: 100%;
+	margin-bottom: 0px;
+}
+
+#header_right {
+	margin-left: 110px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 0;
+	background-color: #f5f3f1;
+}
+
+#header_top {
+	height: 65px;
+	color: #656463;
+	text-align: right;
+	padding: 5px 8px 0 8px;
+	font-size: 18pt;
+}
+
+#menu-container {
+	float: left;
+	width: 100%;
+	background-color: #f5f3f1;
+	height: 30px;
+}
+
+#logo {
+	background-image: url('/images/ri_emblem_c_100x100.png');
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin: 5px 5px 0 5px;
+	background-color: #f5f3f1;
+}
+
+#content-container {
+	width: 100%;
+	min-height: 450px;
+	margin: 0 0 0 0;
+	float: left;
+	text-align: left;
+}
+
+#content {
+	min-height: 450px;
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 5px;
+	background-color: #f5f3f1;
+}
+
+td a:link {
+	text-decoration: none;
+}
+
+td a:visited {
+	text-decoration: none;
+}
+
+#header_print {
+	display: none;
+}
+
+table {
+	margin: 10px 0 15px 0;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 10pt;
+}
+
+thead td {
+	padding: 4px;
+	text-align: center;
+	font-weight: bold;
+}
+
+tbody {
+	border-top: 2px solid #000000;
+	border-bottom: 2px solid #000000;
+}
+
+thead tr:first-child td {
+	text-align: left;
+	border: none;
+}
+
+tbody td {
+	padding: 4px;
+}
+
+tbody tr.line1 {
+	background-color: #DDDDDD;
+}
+
+tbody tr.line2 {
+
+}
+
+dl {
+	padding: 15px 0 15px 0;
+}
+
+dl dt {
+	float: left;
+	width: 120px;
+	padding: 2px 2px 2px 0;
+}
+
+dl dd {
+	padding: 2px 2px 2px 0;
+}
+
+#content p {
+	padding: 8px 0 8px 0;
+}
+
+#item_list_container {
+	float: left;
+	width: 750px;
+}
+
+#sponsors {
+	width: 210px;
+	min-height: 170px;
+	float: left;
+	margin-top: 15px;
+	margin-left: 15px;
+	font-size: 10pt;
+	background-color: #ECEFF5;
+	padding: 1px 10px 10px 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+

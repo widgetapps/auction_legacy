@@ -1,0 +1,41 @@
+<p>Block List</p>
+<table>
+	<thead>
+		<tr>
+			<td>Block Number</td>
+			<td>Called</td>
+			<td>Action</td>
+		</tr>
+	</thead>
+	<tbody>
+<?php foreach ($this->blocks as $block){
+        require_once('models/Item.php');
+        $table_item = new models_Item();
+        $select = $table_item->select()->where('blockId = ?', $block->blockId);
+        $items = $table_item->fetchAll($select);
+        
+        require_once('models/vItemWinner.php');
+        $table_winner = new models_vItemWinner();
+        $select = $table_winner->select()->where('blockId = ?', $block->blockId);
+        $winners = $table_winner->fetchAll($select);
+
+	?>
+		<tr>
+			<td><?php echo $block->number; ?></td>
+			<td><?php echo (count($winners)>=count($items)?'COMPLETE':count($winners) . ' of ' . count($items)); ?></td>
+			<td>
+				<?php if(count($winners) >= count($items)) {?>
+				[<a href="/callbacks/index/summary/block/<?php echo $block->blockId; ?>">summary</a>]
+					<?php if (in_array($this->role, array('admin', 'super'))) { ?>
+				[<a href="/callbacks/index/viewblock/id/<?php echo $block->blockId; ?>">edit block</a>]
+					<?php } else { ?>
+				COMPLETED
+					<?php } ?>
+				<?php } else { ?>
+			    [<a href="/callbacks/index/viewblock/id/<?php echo $block->blockId; ?>">work on block</a>]
+			    <?php } ?>
+			</td>
+		</tr>
+<?php } ?>
+	</tbody>
+</table>

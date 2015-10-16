@@ -1,0 +1,27 @@
+<table>
+	<thead>
+		<tr>
+			<td>Actions</td>
+			<td>Login</td>
+			<td>Role</td>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+$line = 0;
+foreach ($this->users as $user) { ?>
+		<tr class="line<?php echo (($line % 2) + 1); ?>">
+			<td>
+				[<a href="/users/index/edit/id/<?php echo $user->userId; ?>">e</a>]
+				[<a href="/users/index/delete/id/<?php echo $user->userId; ?>">d</a>]
+				[<a href="/users/index/welcome/id/<?php echo $user->userId; ?>">w</a>]
+			</td>
+			<td><?php echo $user->username; ?></td>
+			<td><?php echo $user->role; ?></td>
+		</tr>
+<?php
+    $line++;
+}?>
+	</tbody>
+</table>
+		

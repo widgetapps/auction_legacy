@@ -1,0 +1,18 @@
+<h1>New Item - Select Donor</h1>
+
+<p>First, select the donor of the item. This is a free-form search so just enter in one or two keywords
+for the donor you are looking for. You can search by first name, last name and/or company name.
+You must use a complete name, not a portion of it. ex: "william" instead of "will"</p>
+
+<div id="itemInfo">
+	<form action="/items/index/newitemstep1select" method="post">
+		<dl>
+			<dt><label for="donorName">Donor Keywords</label></dt>
+			<dd>
+			<?php echo $this->formText('donorName', '', array('id' => 'donorName', 'size' => 40, 'title' => 'Enter a donor name here.')); ?>
+			</dd>
+		</dl>
+		<?php echo $this->formSubmit('', 'Next'); ?>
+		<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+	</form>
+</div>

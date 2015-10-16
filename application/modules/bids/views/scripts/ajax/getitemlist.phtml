@@ -1,0 +1,74 @@
+<div id="blockInfo">
+	<div>Block #<?php echo $this->blockNumber; ?></div>
+	<dl>
+		<dt>Current Time:</dt><dd><?php echo $this->currentTime; ?></dd>
+		<dt>Countdown:</dt><dd><?php echo $this->countdown; ?></dd>
+	</dl>
+</div>
+<table>
+	<thead>
+		<tr>
+			<th colspan="5">Items Up For Bid</th>
+		</tr>
+		<tr>
+			<th>Item #</th>
+			<th>Name</th>
+			<th>Min Bid</th>
+			<th>Bid</th>
+			<th >&nbsp;&nbsp;Value </th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($this->items as $item) { ?>
+			<?php
+			$bellRingerStyle = "";
+			if ($item->bid >= $item->fairRetailPrice) {
+				$bellRingerStyle = " style='background-color: #98FB98'";
+			}
+			
+			$minBid = round($item->fairRetailPrice * 0.25);
+			$minBid -= ($minBid %5);
+			
+			?>
+			<tr<?php echo $bellRingerStyle; ?>>
+				<td style="text-align: center"><?php echo $item->controlNumber; ?></td>
+				<td><?php echo $item->name; ?></td>
+				<td style="text-align: right"><?php echo money_format('%.0n', $minBid); ?></td>
+				<td style="text-align: right"><?php echo money_format('%.0n', $item->bid); ?></td>
+				<td style="text-align: right"><?php echo money_format('%.0n', $item->fairRetailPrice); ?></td>
+			</tr>
+		<?php } ?>
+	</tbody>
+</table>
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="5">Featured Items</th>
+		</tr>
+		<tr>
+			<th>Item #</th>
+			<th>Name</th>
+			<th>Min Bid</th>
+			<th>Bid</th>
+			<th>&nbsp;&nbsp;Value </th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($this->items_feature as $item) { ?>
+			<?php
+			$bellRingerStyle = "";
+			if ($item->bid >= $item->fairRetailPrice) {
+				$bellRingerStyle = " style='background-color: #98FB98'";
+			}
+			?>
+			<tr<?php echo $bellRingerStyle; ?>>
+				<td style="text-align: center"><?php echo $item->controlNumber; ?></td>
+				<td><?php echo $item->name; ?></td>
+				<td style="text-align: right"><?php echo money_format('%.0n', round($item->fairRetailPrice * 0.25)); ?></td>
+				<td style="text-align: right"><?php echo money_format('%.0n', $item->bid); ?></td>
+				<td style="text-align: right"><?php echo money_format('%.0n', $item->fairRetailPrice); ?></td>
+			</tr>
+		<?php } ?>
+	</tbody>
+</table>

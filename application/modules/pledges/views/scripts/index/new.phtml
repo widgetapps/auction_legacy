@@ -1,0 +1,16 @@
+<script type="text/javascript" src="/js/jump.js"></script>
+
+<p>New Pledge</p>
+
+<div id="itemInfo">
+	<form action="/pledges/index/newstep2" method="post">
+		<dl>
+			<dt>Enter the person's phone number:</dt>
+			<dd><input type="text" name="phone1" id="phone1" size="3" maxlength="3" onkeyup="jumpField(this, 3, 2)" />
+				<input type="text" name="phone2" id="phone2" size="3" maxlength="3" onkeyup="jumpField(this, 3, 3)" />
+				<input type="text" name="phone3" id="phone3" size="4" maxlength="4" /></dd>
+		</dl>
+		<?php echo $this->formSubmit('', 'Next'); ?>
+		<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/pledges"')); ?>
+	</form>
+</div>

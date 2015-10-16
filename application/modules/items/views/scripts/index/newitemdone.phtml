@@ -1,0 +1,85 @@
+<div id="addedItemScreen">
+	<p>The new item has been added.</p>
+	<p><a href="/items/index/copy/id/<?php echo $this->item->itemId; ?>">Add another IDENTICAL item</a> named "<?php echo $this->item->itemName; ?>"</p>
+<?php if (!in_array($this->role, array('admin', 'super'))){ ?>
+	<p>An email has been sent to the auction admins..</p>
+	<p>If you didn't print this item sheet, please <a href="#" onclick="javascript: window.print(); return false;">print now</a>.
+	The printed sheet must be attached to the item before it can be delivered to the warehouse.</p>
+<?php } ?>
+	<p><a href="/items/index/newitemstep1">Add New Item</a></p>
+</div>
+<div id="addItemDeets">
+	<table id="itemPrintHeader">
+		<tr>
+			<td width="100"><img src="/images/ri_emblem_c_100x100.png" width="100" height="100" /></td>
+			<td align="center" style="font-size: 18pt; font-weight: bold">
+				Metro Toronto Rotary Auction
+			</td>
+			<td width="130" align="center">
+				CONTROL NUMBER
+				<div id="controlNumber" style="font-size:20pt;font-weight:bold;padding:25px 0 0 0;">
+					<?php echo $this->item->controlSource . $this->item->controlNumber; ?>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<hr />
+	<table>
+		<tbody>
+			<tr>
+				<td valign="top" width="150">Company Name:</td>
+				<td valign="top"><?php echo $this->item->donor_companyName; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">Contact:</td>
+				<td valign="top"><?php echo $this->item->donor_firstName; ?> <?php echo $this->item->donor_lastName; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">Address 1:</td>
+				<td valign="top"><?php echo $this->item->donor_address1; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">Address 2:</td>
+				<td valign="top"><?php echo $this->item->donor_address2; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">City, Province:</td>
+				<td valign="top"><?php echo $this->item->donor_city; ?>, <?php echo $this->item->donor_province; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">Phone Number:</td>
+				<td valign="top"><?php echo $this->item->donor_phone; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">Email Address:</td>
+				<td valign="top"><?php echo $this->item->donor_email; ?></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr />
+	<table>
+		<tbody>
+			<tr>
+				<td width="150" valign="top">Item Name:</td>
+				<td valign="top"><?php echo $this->item->itemName; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">Fair Retail Value:</td>
+				<td valign="top">$&nbsp;<?php echo $this->item->fairRetailPrice; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">Item Description:</td>
+				<td valign="top"><?php echo $this->item->itemDescription; ?></td>
+			</tr>
+			<tr>
+				<td valign="top">Tax Receipt:</td>
+				<td valign="top"><?php echo $this->item->taxReceipt; ?></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<?php if (!in_array($this->role, array('admin', 'super'))){ ?>
+<script type="text/javascript">
+	window.print();
+</script>
+<?php } ?>

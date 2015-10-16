@@ -1,0 +1,66 @@
+@CHARSET "ISO-8859-1";
+
+@import url("/css/type.css");
+@import url("/css/grid.css");
+@import url("/css/widgets.css");
+
+#header {
+	display: none;
+}
+
+#addedItemScreen {
+	display: none;
+}
+
+.noprint {
+	display: none;
+}
+
+#controlNumber {
+	width: 100px;
+	height: 80px;
+	border: 2px solid #000000;
+}
+
+#addItemDeets table {
+	width: 95%;
+}
+
+#addItemDeets table td {
+	padding: 5px;
+}
+
+#invoice {
+	width: 700px;
+}
+
+#invoice_table {
+	margin-top: 20px;
+}
+
+#invoice table {
+	width: 675px;
+	margin-top: 20px;
+	border-width: 1px;
+	border-spacing: ;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+
+#invoice table td, #invoice table th {
+	border-width: 1px;
+	padding: 2px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+}
+
+#invoice_customer {
+	float: left;
+}
+
+#invoice_deets {
+	float: right;
+}

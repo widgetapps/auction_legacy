@@ -1,0 +1,46 @@
+<h1>New Pledge - Select Donor</h1>
+<p>Is the person in the list below?</p>
+
+<form action="/pledges/index/newstep2process" method="post">
+	<?php echo $this->formHidden('phone', $this->phone); ?>
+	<table>
+		<thead>
+			<tr>
+				<td>&nbsp;</td>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td>Phone Number</td>
+			</tr>
+		</thead>
+		<tbody>
+<?php
+$line = 0;
+foreach ($this->people as $person){ ?>
+			<tr class="line<?php echo (($line % 2) + 1); ?>">
+				<td><input type="radio" name="personId" value="<?php echo $person->personId; ?>" /></td>
+				<td><?php echo $person->firstName; ?></td>
+				<td><?php echo $person->lastName; ?></td>
+				<td><?php echo $person->phone; ?></td>
+			</tr>
+<?php
+    $line++;
+} ?>
+			<tr>
+				<td valign="top"><input type="radio" name="personId" value="new" /></td>
+				<td colspan="3">New person
+				<dl>
+					<dt>First Name:</dt>
+					<dd><?php echo $this->formText('firstName', '', array('id' => 'firstName', 'size' => 40)); ?></dd>
+					<dt>Last Name:</dt>
+					<dd><?php echo $this->formText('lastName', '', array('id' => 'lastName', 'size' => 40)); ?></dd>
+					<dt>Phone:</dt>
+					<dd><?php echo $this->phone; ?></dd>
+				</dl>
+			</tr>
+		</tbody>
+		</table>
+		Pledge Amount: $ <?php echo $this->formText('pledge', '', array('id' => 'pledge', 'size' => 8)); ?><br />
+		
+	<?php echo $this->formSubmit('', 'Save Pledge'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/pledges"')); ?>
+</form>

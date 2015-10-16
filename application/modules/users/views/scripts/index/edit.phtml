@@ -1,0 +1,15 @@
+<form action="/users/index/editprocess" method="post">
+    <?php echo $this->formHidden('userId', $this->user->userId); ?>
+	<dl>
+		<dt><label for="">Login</label></dt>
+		<dd><?php echo $this->formText('login', $this->user->username); ?></dd>
+		<dt><label for="">Password</label></dt>
+		<dd><?php echo $this->formPassword('password'); ?></dd>
+		<dt><label for="">Role</label></dt>
+		<dd><?php echo $this->formSelect('role', $this->user->role, null, array('disabled'=>'disabled', 'bidder'=>'bidder', 'rotarian'=>'rotarian', 'approver'=>'approver', 'admin'=>'admin', 'super'=>'super'));?></dd>
+		<dt><label for="">Rotarian</label></dt>
+		<dd><?php echo $this->formSelect('personId', $this->user->personId, null, $this->rotarians);?></dd>
+	</dl>
+	<?php echo $this->formSubmit('', 'Save Changes'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/users/index/list"')); ?>
+</form>

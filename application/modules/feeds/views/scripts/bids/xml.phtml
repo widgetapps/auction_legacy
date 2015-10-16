@@ -1,0 +1,17 @@
+<bids>
+	<block>
+		<number><?php echo $this->blockNumber; ?></number>
+		<time><?php echo $this->blockTime; ?></time>
+	</block>
+	<items>
+<?php foreach ($this->items as $item) { ?>
+		<item>
+			<number><?php echo htmlentities($item->itemNumber); ?></number>
+			<name><?php echo htmlentities($item->name); ?></name>
+			<value><?php echo htmlentities($item->fairRetailPrice); ?></value>
+			<bid><?php echo htmlentities((($item->bid > 0?$item->bid:'0'))); ?></bid>
+			<feature><?php echo htmlentities($item->featureItem); ?></feature>
+		</item>
+<?php } ?>
+	</items>
+</bids>

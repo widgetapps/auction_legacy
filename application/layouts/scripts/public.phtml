@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#">
+	<head>
+		<title><?php echo $this->title; ?></title>
+		<link rel="shortcut icon" href="https://www.eastyorkrotary.org/images/favicon.ico" />
+		<link rel="stylesheet" type="text/css" media="screen, projection, handheld" href="/css/public_base.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="/css/public_print.css" />
+		
+		<?php echo $this->ogtags; ?>
+		<style type="text/css" title="currentStyle"> 
+			@import "/datatables/css/demo_page.css";
+			@import "/datatables/css/demo_table.css";
+		</style> 
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+		<script type="text/javascript" src="/datatables/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-69022-6']);
+		  _gaq.push(['_setDomainName', 'none']);
+		  _gaq.push(['_setAllowLinker', true]);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		
+		</script>
+	</head>
+	<body>
+<div id="fb-root"></div>
+<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
+<script type="text/javascript">
+       FB.init({
+         appId  : '134466619926785',
+         status : true, // check login status
+         cookie : true, // enable cookies to allow the server to access the session
+         xfbml  : true  // parse XFBML
+       });
+</script>
+		<div id="header">
+			<div id="logo">
+			</div>
+			<div id="header_right">
+				<div id="header_top">
+					<b><?php echo $this->getActiveAuctionDate(1);?> Metro Toronto Rotary TV Auction</b><br />
+					November 26 &amp; 27 on <a href="http://www.rogerstv.com/page.aspx?lid=14&rid=16">Rogers TV</a> (channel 10, 63 in Scarborough)<br />
+					BID LINE: (416) 406-6187 | INFO LINE: (416) 508-8382
+				</div>
+				<div id="menu-container">
+					<div id="topmenu">
+					    
+					</div>
+				</div>
+			</div>
+		</div>
+			<div id="content-container">
+				<div id="content">
+	<?php echo $this->layout()->content; ?>
+				</div>
+			</div>
+	</body>
+</html>

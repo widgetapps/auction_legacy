@@ -1,0 +1,46 @@
+<h1>New Donor</h1>
+
+<?php if (!in_array($this->role, array('admin', 'super'))){ ?>
+<p>Please fill in everything you can about the donor. We can't send follow-up letters in the regular
+mail, we can't call them and we can't e-mail them about future auctions is you leave out information.</p>
+
+<p>If, after you've added the donor, you find there is an error or typo, don't fret! Just let someone
+in the auction committee know and they can fix the typo. By no means should you add the donor a second
+time! This makes the database unhappy, and we don't like unhappy databases!</p>
+<?php } ?>
+
+<form action="/items/index/newitemnewdonorprocess" method="post">
+	<dl>
+		<dt><label for="firstName">First Name</label></dt>
+		<dd><?php echo $this->formText('firstName', '', array('id' => 'firstName', 'size' => 40)); ?></dd>
+		<dt><label for="lastName">Last Name</label></dt>
+		<dd><?php echo $this->formText('lastName', '', array('id' => 'lastName', 'size' => 40)); ?></dd>
+		<dt><label for="companyName">Company Name</label></dt>
+		<dd><?php echo $this->formText('companyName', '', array('id' => 'companyName', 'size' => 40)); ?></dd>
+		<dt><label for="address1">Address 1</label></dt>
+		<dd><?php echo $this->formText('address1', '', array('id' => 'address1', 'size' => 40)); ?></dd>
+		<dt><label for="address2">Address 2</label></dt>
+		<dd><?php echo $this->formText('address2', '', array('id' => 'address2', 'size' => 40)); ?></dd>
+		<dt><label for="city">City</label></dt>
+		<dd><?php echo $this->formText('city', '', array('id' => 'city', 'size' => 40)); ?></dd>
+		<dt><label for="province">Province</label></dt>
+		<dd><?php echo $this->formSelect('province', 'ON', null, $this->getProvinceArray()); ?></dd>
+		<dt><label for="postalCode">Postal Code</label></dt>
+		<dd>
+		    <?php echo $this->formText('postalCode1', '', array('id' => 'postalCode1', 'size' => 3, 'maxlength' => 3)); ?>
+		    <?php echo $this->formText('postalCode2', '', array('id' => 'postalCode2', 'size' => 3, 'maxlength' => 3)); ?>
+		</dd>
+		<dt><label for="phone">Phone #</label></dt>
+		<dd>
+		    <?php echo $this->formText('phone1', '416', array('id' => 'phone1', 'size' => 3, 'maxlength' => 3)); ?>
+		    <?php echo $this->formText('phone2', '', array('id' => 'phone2', 'size' => 3, 'maxlength' => 3)); ?>
+		    <?php echo $this->formText('phone3', '', array('id' => 'phone3', 'size' => 4, 'maxlength' => 4)); ?>
+		</dd>
+		<dt><label for="email">Email Address</label></dt>
+		<dd><?php echo $this->formText('email', '', array('id' => 'email', 'size' => 40)); ?></dd>
+		<dt><label for="website">Website</label></dt>
+		<dd>http://<?php echo $this->formText('website', '', array('id' => 'website', 'size' => 60)); ?></dd>
+	</dl>
+	<?php echo $this->formSubmit('', 'Next'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+</form>

@@ -1,0 +1,209 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Actor, sans-serif;
+}
+
+#fb_profile_body {
+	
+}
+
+#fb_canvas_body {
+	background-image: url(/themes/blue/images/background.png);
+	background-repeat: repeat-x;
+	background-attachment:fixed;
+	background-color: #192862;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+	font-family: Amaranth, sans-serif;
+}
+
+h1 {
+	font-size: 18pt;
+	color: #192862;
+	width: 400px;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #192862;
+	margin-bottom: 15px;
+}
+
+h3 {
+	font-size: 12pt;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+a:link, a:visited {
+	color: #192862;
+}
+
+a:hover {
+	color: #DAA520;
+}
+
+table {
+	border: 3px solid #000;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+thead tr {
+	background-color: #708090;
+}
+
+thead td {
+	font-weight: bold;
+	text-align: center;
+}
+
+thead td[colspan] {
+	text-align: left;
+}
+
+tr.line1 {
+	background-color: #fff;
+}
+
+tr.line2 {
+	background-color: #DCDCDC;
+}
+
+td {
+	border: 2px solid #fff;
+	padding: 4px;
+}
+
+td.number {
+	text-align: center;
+}
+
+td.text {
+	text-align: left;
+}
+
+td.currency {
+	text-align: right;
+}
+
+td.date {
+    text-align: center;
+    width: 100px;
+}
+
+tfoot tr {
+	background-color: #708090;
+}
+
+#fbap_profile_header {
+	width: 480px;
+	background-color: #eee;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 10px;
+}
+
+#fbap_profile_header dl {
+	margin: 10px 0 10px 0;
+}
+
+#fbap_profile_header dt {
+	float: left;
+	width: 130px;
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 3px;
+}
+
+#fbap_profile_header dd {
+	font-weight: bold;
+	font-size: 12pt;
+	padding: 3px;
+}
+
+#fbap_profile_header p {
+	margin: 10px 0 10px 0;
+}
+
+#fbap_profile_items {
+	width: 480px;
+	background-color: #eee;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 10px;
+}
+
+#fbap_profile_items table {
+	margin-top: 20px;
+}
+
+#fbap_profile_sponsors {
+	width: 480px;
+	background-color: #eee;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 10px;
+}
+
+#fbap_canvas_header {
+	width: 730px;
+	background-color: #eee;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin: 5px;
+	padding: 10px;
+}
+
+#fbap_canvas_header dl {
+	margin: 15px 0 15px 20px;
+}
+
+#fbap_canvas_header dt {
+	float: left;
+	width: 100px;
+	font-weight: bold;
+	font-size: 14pt;
+	padding: 3px;
+}
+
+#fbap_canvas_header dd {
+	font-weight: bold;
+	font-size: 14pt;
+	padding: 3px;
+}
+
+#fbap_canvas_items {
+	width: 730px;
+	background-color: #eee;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin: 5px;
+	padding: 10px 10px 40px 10px;
+}
+
+#fbap_canvas_items h2 {
+	margin: 15px 0 10px 0;
+	font-size: 16pt;
+}
+
+#fbap_canvas_items p {
+	margin: 10px 0 10px 0;
+}
+
+#fbap_canvas_items table.item_info {
+	margin-top: 20px;
+}

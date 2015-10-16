@@ -1,0 +1,66 @@
+<article>
+	
+	<header>
+		<h1><?php echo $this->item->itemName; ?></h1>
+	</header>
+	
+	<section>
+		<h2>Item Info</h2>
+		<table>
+			<tr>
+				<td>Control Number</td>
+				<td><?php echo $this->item->controlSource . $this->item->controlNumber; ?></td>
+			</tr><tr>
+				<td>Block Number</td>
+				<td><?php echo $this->item->blockNumber; ?> (<?php echo $this->item->blockTime; ?>)</td>
+			</tr><tr>
+				<td>Bin Number</td>
+				<td><?php echo $this->item->binNumber; ?></td>
+			</tr><tr>
+				<td>Value</td>
+				<td>$<?php echo $this->item->fairRetailPrice?></td>
+			</tr>
+		</table>
+		<h2>Description</h2>
+		<p><?php echo $this->item->itemDescription; ?></p>
+	</section>
+	
+	<section>
+		<h2>Donor Info</h2>
+		<dl>
+			<dt>Name</dt>
+			<dd><?php echo $this->item->donor_firstName; ?> <?php echo $this->item->donor_lastName; ?></dd>
+			<dt>Company</dt>
+			<dd><?php echo $this->item->donor_companyName; ?></dd>
+			<dt>Address</dt>
+			<dd>
+				<?php echo $this->item->donor_address1; ?> <?php echo $this->item->donor_address2; ?><br />
+				<?php echo $this->item->donor_city;?>, <?php echo $this->item->donor_province; ?> <?php echo $this->item->donor_postalCode; ?>
+			</dd>
+			<dt>Phone Number</dt>
+			<dd><?php echo $this->item->donor_phone; ?></dd>
+			<dt>Email Address</dt>
+			<dd><?php echo $this->item->donor_email; ?></dd>
+		</dl>
+	</section>
+	
+	<section>
+		<h2>Rotarian Info</h2>
+		<dl>
+			<dt>Name</dt>
+			<dd><?php echo $this->item->rotarian_firstName; ?> <?php echo $this->item->rotarian_lastName; ?></dd>
+			<dt>Company</dt>
+			<dd><?php echo $this->item->rotarian_companyName; ?></dd>
+			<dt>Address</dt>
+			<dd>
+				<?php echo $this->item->rotarian_address1; ?> <?php echo $this->item->rotarian_address2; ?><br />
+				<?php echo $this->item->rotarian_city;?>, <?php echo $this->item->rotarian_province; ?> <?php echo $this->item->rotarian_postalCode; ?>
+			</dd>
+			<dt>Phone Number</dt>
+			<dd><?php echo $this->item->rotarian_phone; ?></dd>
+			<dt>Email Address</dt>
+			<dd><?php echo $this->item->rotarian_email; ?></dd>
+		</dl>
+	</section>
+
+</article>

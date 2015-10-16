@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+   "//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="//www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title><?php echo $this->getLanguageLabel('title'); ?></title>
+		
+		<link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Amaranth:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css' />
+		
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" media="screen, projection, handheld" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" media="screen, projection, handheld" href="<?php echo $this->getThemePath('css'); ?>base.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="/css/superfish.css" /> 
+		
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="/js/jquery.hoverIntent.js"></script> 
+		<script type="text/javascript" src="/js/jquery.superfish.js"></script> 
+		
+		<script type="text/javascript">
+			// initialise plugins
+			jQuery(function(){
+				jQuery('ul.sf-menu').superfish();
+			});
+		</script> 
+        
+	</head>
+	<body>
+	<div id="page-container">
+		<div id="header_print">
+		</div>
+		<div id="header-info" class="noprint">
+		<?php if ($this->hasIdentity === true){?>
+			You are logged in as <?php echo $this->getLoginName($this->userId, true); ?> (<?php echo $this->getLoginName($this->userId); ?>) |
+			<a href="/index/index/logout">Log Out</a>
+		<?php } ?>
+		</div>
+		<div id="header">
+			<div id="logo"><img src="<?php echo $this->getThemePath(); ?>logo.png" width="102" height="101" /></div>
+	        <div id="title">The Metro Toronto Rotary Auction - Live Auction System</div>
+	        <div id="tag">November <?php echo $this->getActiveAuctionDate(Auction_View_Helper_GetActiveAuctionDate::$DAY); ?> &amp; <?php echo ($this->getActiveAuctionDate(Auction_View_Helper_GetActiveAuctionDate::$DAY) + 1); ?>, <?php echo $this->getActiveAuctionDate(Auction_View_Helper_GetActiveAuctionDate::$YEAR); ?> on Rogers TV</div>
+		</div>
+		<div id="menu-container" class="noprint">
+			<?php if ($this->hasIdentity === true){
+				echo $this->getGlobalNav();
+			} ?>
+		</div>
+		<div id="content-container">
+			<div id="content">
+			    <?php echo $this->layout()->content; ?>
+			</div>
+		</div>
+		<div id="footer">
+		</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    ..var theTimer = setInterval('updateBoard()',5000);
+    
+    $("#board tbody td.fill").fill_with_text();
+});
+
+function updateBoard() {
+	$('#web_board').load('/feeds/bids/webboardajax');
+}
+</script>
+
+<div id="web_board">
+	<!-- <p>Our greatest apologies. The public bid board is slowing down the system. Please continue to watch and keep in
+	mind that the stream is several seconds behind. Use the time set on your computer to know when the block will close.<p>
+	<p>Thanks for your patience.</p>
+	 -->
+	<header>
+		<div id="logo">
+		</div>
+		<h1>Metro Toronto Rotary TV Auction</h1>
+		<h2>BLOCK <?php echo $this->blockNumber; ?> ~ <?php echo $this->startTime; ?> - <?php echo $this->endTime; ?></h2>
+	</header>
+	<div id="board">
+		<table>
+			<thead>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>Value</td>
+					<td>Bid</td>
+				</tr>
+			</thead>
+			<tbody>
+<?php foreach ($this->items as $item) {
+	$minBid = round($item->fairRetailPrice * $this->getMinBidPercent());
+	$minBid -= ($minBid %5);
+	$openingBid = $minBid - 5;
+	
+	$bidClass = '';
+	if ($item->bid >= $item->fairRetailPrice) {
+		$bidClass = 'bell-ringer';
+	}
+?>
+				<tr>
+					<td><?php echo htmlentities($item->controlNumber); ?></td>
+					<td class="fill"><?php echo htmlentities($item->name); ?></td>
+					<td><?php echo htmlentities(floor($item->fairRetailPrice)); ?></td>
+					<td class="<?php echo $bidClass; ?>"><?php echo ($item->bid > 0?floor($item->bid):$openingBid); ?></td>
+				</tr>
+<?php } ?>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+#fbap_header {
+	width: 720px;
+	height: 70px;
+	background: #ffffff url('/images/facebook/profile_header.png') no-repeat right top;
+}

@@ -1,0 +1,79 @@
+	<ul id="nav_main" class="sf-menu">
+		<li><a  href="/index/index">Home</a>
+<?php if (in_array($this->role, array('admin', 'super'))) { ?>
+			<ul>
+				<li><a href="/index/admin/changeyear">Change Year</a></li>
+			</ul>     
+<?php } ?>                  
+		</li>
+<?php if (in_array($this->role, array('rotarian', 'approver', 'admin', 'super'))) { ?>
+		<li><a href="/items">Items</a>       
+			<ul>
+				<li><a href="/items/index/itemlist">View Item List</a></li>
+				<li><a href="/items/index/newitem">Add New Item</a></li>
+				<li><a href="/mobile">Mobile Views</a></li>
+<?php     if (in_array($this->role, array('admin', 'super'))) { ?>
+				<li><a href="/items/exports">Item Exports</a></li>
+<?php     } ?>
+			</ul>        
+		</li>
+<?php }
+      if (in_array($this->role, array('admin', 'super', 'rotarian', 'approver'))) { ?>
+		<li><a href="/blocks">Blocks</a>     
+			<ul>
+				<li><a href="/blocks/index/blocklist">View Block list</a></li>
+			</ul>                                 
+		</li>
+<?php }
+      if (in_array($this->role, array('admin', 'super', 'rotarian', 'approver'))) { ?>
+		<li><a href="/pledges">Pledges</a>     
+			<ul>
+				<li><a href="/pledges/index/index">View Pledges</a></li>
+				<li><a href="/pledges/index/new">New Pledge</a></li>
+			</ul>                              
+		</li>
+<?php }
+      if (in_array($this->role, array('admin', 'super', 'rotarian', 'approver'))) { ?>
+		<li><a href="/callbacks">Call Backs</a></li>
+<?php }
+      if (in_array($this->role, array('admin', 'super', 'rotarian', 'approver'))) { ?>
+		<li><a href="/pickups">Pick-ups</a>      
+			<ul>
+				<li><a href="/pickups/index/index">Lookup Customer</a></li>
+				<li><a href="/pickups/index/customers">List Invoices</a></li>
+				<li><a href="/pickups/index/items">List Items</a></li>
+				<li><a href="/pickups/exports">Export Winners</a></li>
+			</ul>                                 
+		</li>
+<?php }
+      if (in_array($this->role, array('bidder', 'rotarian', 'approver', 'admin', 'super'))) { ?>
+		<li><a href="/bids">Bids</a></li>
+<?php }
+      if (in_array($this->role, array('admin', 'super'))) { ?>
+		<li><a href="/people/index/list">People</a>
+			<ul>
+				<li><a href="/people/index/list/type/rotarians">Rotarians</a>
+					<ul>
+						<li><a href="/people/index/list/type/rotarians">List Rotarians</a></li>
+						<li><a href="/people/index/add/type/rotarian">Add Rotarian</a></li>
+					</ul>
+				</li>
+				<li><a href="/people/index/list/type/donors">Donors</a>
+					<ul>
+						<li><a href="/people/index/list/type/donors">List Donors</a></li>
+						<li><a href="/people/index/add/type/donor">Add Donor</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+<?php }
+      if (in_array($this->role, array('super'))) { ?>
+		<li><a href="/users">System Users</a>                        
+			<ul>
+				<li><a href="/users/index/list">View User List</a></li>
+				<li><a href="/users/index/add">Add User</a></li>
+			</ul>                              
+		</li>
+<?php } ?>
+<!-- 	<li><a href="/index/index/publicbrowse">Public List</a></li>  -->
+	</ul>

@@ -1,0 +1,19 @@
+<?php if ($this->error) {
+?>
+	<p>There was a problem with your login, please <a href="mailto:admin@metrotorontorotaryauction.com">contact an admin</a> if you continue to have difficulties.</p>
+	<p>Click on the link in your login request email to try again, or you can <a href="/index">make another login request</a>.</p>
+<?php
+} else { ?>
+<form method="post" action="/index/index/loginprocess">
+	<?php echo $this->formHidden('token', $this->token, array('id' => 'form_token')); ?>
+	<dl>
+		<dt><label for="form_login">Username</label></dt>
+		<dd><?php echo $this->formText('login', '', array('id' => 'form_login')); ?></dd>
+		<dt><label for="form_password">Password</label></dt>
+		<dd><?php echo $this->formPassword('password', '', array('id' => 'form_password')); ?></dd>
+	</dl>
+	<?php echo $this->formSubmit('', 'Login'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/"')); ?>
+</form>
+<?php } ?>
+<p>Forgot your password? You can <a href="/index/index/resetpassword">reset your password</a>.</p>

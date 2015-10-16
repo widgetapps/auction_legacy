@@ -1,0 +1,10 @@
+<form method="post" action="/index/index/gettoken">
+	<p>To initaite the login, please enter your username below:</p>
+	<dl>
+		<dt><label for="form_login">Username</label></dt>
+		<dd><?php echo $this->formText('login', '', array('id' => 'form_login')); ?></dd>
+	</dl>
+	<?php echo $this->formSubmit('', 'Submit'); ?>
+</form>
+
+<p>Forgot your password? You can <a href="/index/index/resetpassword">reset your password</a>.</p>

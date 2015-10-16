@@ -1,0 +1,87 @@
+@CHARSET "ISO-8859-1";
+
+html, body {
+	height: 100%;
+}
+
+#header {
+	float: left;
+	height: 140px;
+	width: 100%;
+	margin-bottom: 0px;
+}
+
+#header_right {
+	height: 115px;
+	margin-left: 125px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 0;
+	background-color: #f5f3f1;
+}
+
+#header_top {
+	height: 64px;
+	color: #656463;
+	text-align: right;
+	padding: 5px 8px 0 8px;
+	font-size: 18pt;
+}
+
+#header-info {
+	float: right;
+	margin-right: 5px;
+	text-align: right;
+	margin-bottom: 5px;
+}
+
+#menu-container {
+	float: left;
+	width: 100%;
+	background-color: #f5f3f1;
+	height: 30px;
+	margin-left: 4px;
+}
+
+#topmenu {
+}
+
+#logo {
+	background-image: url('/images/ri_emblem_c_100x100.png');
+	background-repeat:no-repeat;
+	float: left;
+	width: 115px;
+	height: 115px;
+	margin: 5px 5px 0 5px;
+	background-color: #f5f3f1;
+}
+
+#content-container {
+	width: 100%;
+	min-height: 450px;
+	margin: 0 0 0 0;
+	float: left;
+	text-align: left;
+}
+
+#content {
+	min-height: 450px;
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 5px;
+	background-color: #f5f3f1;
+}
+
+#footer {
+	background-color: #f5f3f1;
+}
+
+#bidLeftCol {
+	float: left;
+}
+
+#bidRightCol {
+	float: right;
+}
+

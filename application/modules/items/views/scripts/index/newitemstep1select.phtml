@@ -1,0 +1,35 @@
+<h1>New Item - Select Donor</h1>
+<p>Please select the donor you are looking for. If the donor you are looking for isn't in the list,
+select 'New donor' and click next.</p>
+<form action="/items/index/newitemstep1process" method="post">
+	<table>
+		<thead>
+			<tr>
+				<td>&nbsp;</td>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td>Company Name</td>
+			</tr>
+		</thead>
+		<tbody>
+<?php
+$line = 0;
+foreach ($this->people as $person){ ?>
+			<tr class="line<?php echo (($line % 2) + 1); ?>">
+				<td><input type="radio" name="donorId" value="<?php echo $person->personId; ?>" /></td>
+				<td><?php echo $person->firstName; ?></td>
+				<td><?php echo $person->lastName; ?></td>
+				<td><?php echo $person->companyName; ?></td>
+			</tr>
+<?php
+    $line++;
+} ?>
+			<tr>
+				<td><input type="radio" name="donorId" value="new" /></td>
+				<td colspan="3">New donor</td>
+			</tr>
+		</tbody>
+	</table>
+	<?php echo $this->formSubmit('', 'Next'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+</form>

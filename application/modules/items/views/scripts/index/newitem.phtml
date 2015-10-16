@@ -1,0 +1,13 @@
+
+<h1>New Item Wizard</h1>
+
+<p>This is the step-by-step entry for a new item. It's important that you enter as much information as
+possible. Also, be sure that everything is accurate and proper. By proper, we mean using proper casing
+(lower/uppercase) and punctuation.</p>
+
+<?php if (!in_array($this->role, array('admin', 'super'))){ ?>
+<p>Items entered will be reviewed and could be edited before they are approved and published to the website.
+There is no guarantee as to when an item will appear during auction day. The last day for items is
+November 1st, 2011.</p>
+<?php } ?>
+<a href="/items/index/newitemstep1">Begin Item Entry</a>

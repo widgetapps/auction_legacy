@@ -1,0 +1,56 @@
+<div id="invoice">
+	<h2>Invoice, Metro Toronto Rotary TV Auction</h2>
+	
+	<div>
+		<div id="invoice_customer">
+			<?php echo $this->person->firstName; ?> <?php echo $this->person->lastName; ?><br />
+			<?php echo $this->person->address1; ?> <?php echo $this->person->address2; ?><br />
+			<?php echo $this->person->city; ?>, <?php echo $this->person->province; ?> <?php echo $this->person->postalCode; ?>
+		</div>
+		<div id="invoice_deets">
+			Invoice #: <?php echo $this->invoiceNumber; ?><br />
+			Invoice Date: <?php echo date("F jS, Y", strtotime($this->invoice->date))?><br />
+			<em>PAID by <?php echo $this->invoice->paymentType; ?></em>
+		</div>
+	</div>
+	
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>Item #</th>
+					<th>Item Name</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+				$total = 0;
+				foreach ($this->invoiceItems as $item) {
+					$total += $item->winningBid;
+			?>
+				<tr>
+					<td align="centre"><?php echo $item->itemNumber; ?></td>
+					<td><?php echo $item->itemName; ?></td>
+					<td align="right">$<?php echo $item->winningBid; ?></td>
+				</tr>
+			<?php } ?>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2" align="right">Total:</td>
+					<td align="right">$<?php echo number_format($total, 2); ?></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<p>Any questions about your items, please call the info line at (416) 406-4342 or e-mail us at info@MetroTorontoRotaryAuction.com.</p>
+	<p>For more information about this and next year's auction, visit MetroTorontoRotaryAuction.com.</p>
+	<p><b>Thank you for supporting Rotary!</b></p>
+
+	<form action="/pickups/index/invoicecancel" method="post" class="noprint">
+		<?php echo $this->formHidden('invoiceId', $this->invoice->invoiceId); ?>
+		<input type="button" value="Print Invoice" onclick="window.print(); return false;" />
+		<input type="button" value="DONE" onclick="location='/pickups'" />
+	</form>
+</div>

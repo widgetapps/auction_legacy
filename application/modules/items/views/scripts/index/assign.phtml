@@ -1,0 +1,17 @@
+<h1>Assign Block & Number to Item <em><?php echo $this->item->name;?></em></h1>
+
+<form action="/items/index/assignProcess" method="post">
+	<?php echo $this->formHidden('itemId', $this->item->itemId); ?>
+	<dl>
+		<dt>Block Number</dt>
+		<dd><?php echo $this->formSelect('blockId', $this->item->blockId, null, $this->blockArray);?></dd>
+	</dl>
+	<?php echo $this->formSubmit('', 'Save Changes'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+</form>
+
+<script>
+	$(document).ready(function() {
+		$("#blockId").focus();
+	});
+</script>

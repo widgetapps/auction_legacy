@@ -1,0 +1,31 @@
+<h1>List of <?php echo $this->listType; ?></h1>
+<table>
+	<thead>
+		<tr>
+			<td>Actions</td>
+			<td><a href="/people/index/list/type/<?php echo $this->listType; ?>/sort/firstName">First Name</a></td>
+			<td><a href="/people/index/list/type/<?php echo $this->listType; ?>/sort/lastName">Last Name</a></td>
+			<td>Email Address</td>
+			<td><a href="/people/index/list/type/<?php echo $this->listType; ?>/sort/companyName">Company Name</a></td>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+$line = 0;
+foreach ($this->people as $person){ ?>
+		<tr class="line<?php echo (($line % 2) + 1); ?>">
+			<td>
+				<a name="<?php echo $person->personId ?>"></a>
+				[<a href="/people/index/edit/id/<?php echo $person->personId; ?>/type/<?php echo $this->listType; ?>">e</a>]
+				[<a href="/people/index/delete/id/<?php echo $person->personId; ?>/type/<?php echo $this->listType; ?>">d</a>]
+			</td>
+			<td><?php echo $person->firstName; ?></td>
+			<td><?php echo $person->lastName; ?></td>
+			<td><a href="mailto:<?php echo $person->email; ?>"><?php echo $person->email; ?></a></td>
+			<td><?php echo $person->companyName; ?></td>
+		</tr>
+<?php
+$line++;
+} ?>
+	</tbody>
+</table>

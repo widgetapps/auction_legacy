@@ -1,0 +1,50 @@
+<h1>Pledge Listing</h1>
+
+<?php if (count($this->pledges) == 0){?>
+	<p>No pledges Found - <a href="/pledges/index/new">Add New Pledge</a></p>
+<?php } else { ?>
+<table id="pledgeList">
+	<thead>
+		<tr>
+			<td colspan="5"><a href="/pledges/index/new">Add New Pledge</a></td>
+		</tr>
+		<tr>
+			<td colspan="5" style="text-align: left">Pledge Count: <?php echo count($this->pledges); ?></td>
+		</tr>
+		<tr>
+			<td>Action</td>
+			<td>First Name</td>
+			<td>Last Name</td>
+			<td>Phone</td>
+			<td>Amount</td>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+$line = 0;
+foreach ($this->pledges as $pledge){
+?>
+		<tr class="line<?php echo (($line % 2) + 1); ?>">
+			<td nowrap="nowrap">
+<?php if (in_array($this->role, array('rotarian', 'approver', 'admin', 'super'))) { ?>
+				[<a href="/pledges/index/delete/id/<?php echo $pledge->pledgeId;?>" title="delete">d</a>]
+<?php } ?>
+			</td>
+			<td><?php echo $pledge->firstName; ?></td>
+			<td><?php echo $pledge->lastName; ?></td>
+			<td><?php echo $pledge->phone; ?></td>
+			<td>$<?php echo $pledge->amount; ?></td>
+		</tr>
+<?php
+    $line++;
+}
+?>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5">Pledge Count: <?php echo count($this->pledges); ?></td>
+		</tr>
+	</tfoot>
+</table>
+
+<?php } ?>

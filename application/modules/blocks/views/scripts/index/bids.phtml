@@ -1,0 +1,27 @@
+<?php if (count($this->items) > 0){
+foreach ($this->items as $item){ ?>
+<?php if (count($this->bids[$item->itemId]) > 0){ ?>
+<p>Item # <?php echo $item->controlNumber; ?> - <?php echo $item->name; ?></p>
+<table>
+	<?php foreach ($this->bids[$item->itemId] as $bid){ ?>
+		<tr>
+			<td style="padding: 4px"><?php echo $bid->bidderPhone; ?></td>
+			<td style="padding: 4px">$<?php echo $bid->bid; ?></td>
+			<td style="padding: 4px"><?php echo $bid->bidTime; ?></td>
+			<td style="padding: 4px">
+<?php if (in_array($this->role, array('admin', 'super'))) { ?>
+		<?php if ($bid->personId > 0) { ?>
+				[bid won]
+		<?php } else { ?>
+				[<a href="/blocks/index/deletebid/id/<?php echo $bid->bidId; ?>/blockId/<?php echo $this->blockId; ?>">delete</a>]
+		<?php } ?>
+<?php } ?>
+			</td>
+		</tr>
+	<?php } ?>
+</table>
+<?php }
+	}
+} else {?>
+<p>No bids have made made yet, CHILL!</p>
+<?php } ?>

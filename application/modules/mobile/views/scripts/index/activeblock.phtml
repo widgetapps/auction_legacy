@@ -1,0 +1,33 @@
+<?php if ($this->items == 0) { ?>
+There is no active block!
+<?php } else { ?>
+<div class="row">
+	<div class="medium-12 columns">
+		<h3 class="subheader">Block Number <?php echo $this->blockNumber; ?></h3>
+	</div>
+</div>
+<?php foreach ($this->items as $item) { ?>
+<div class="panel radius">
+	<div class="row">
+		<div class="medium-2 columns">
+			<h3 class="right">#<?php echo $item->controlNumber; ?></h3>
+		</div>
+		<div class="medium-10 columns">
+			<h2><?php echo $item->name; ?></h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="medium-2 columns">
+			<h3 class="right">$<?php echo $item->fairRetailPrice; ?></h3>
+		</div>
+		<div class="medium-10 columns">
+			<p style="font-size: 1.3em"><?php echo $item->description; ?></p>
+			<div style="font-size: 1.2em">
+				Donated by:
+				<?php echo ($item->anonymous == 'y'?'Anonymous Donor':($item->donorCompany==''?$item->donorFirstName. ' ' . $item->donorLastName:$item->donorCompany)); ?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php } ?>
+<?php } ?>

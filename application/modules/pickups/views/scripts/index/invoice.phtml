@@ -1,0 +1,75 @@
+<div id="invoice">
+	<h2>Invoice, Metro Toronto Rotary TV Auction</h2>
+	
+	<div>
+		<div id="invoice_customer">
+			<?php echo $this->person->firstName; ?> <?php echo $this->person->lastName; ?><br />
+			<?php echo $this->person->address1; ?> <?php echo $this->person->address2; ?><br />
+			<?php echo $this->person->city; ?>, <?php echo $this->person->province; ?> <?php echo $this->person->postalCode; ?>
+		</div>
+		<div id="invoice_deets">
+			<h2>Invoice #: <?php echo $this->invoiceNumber; ?></h2>
+			<b>Invoice Date: <?php echo date("F jS, Y", strtotime($this->invoice->date))?></b>
+		</div>
+	</div>
+	<br />
+	<div id="invoice_table">
+		<table>
+			<thead>
+				<tr>
+					<th>Item #</th>
+					<th>Item Name</th>
+					<th>Price</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+				$total = 0;
+				foreach ($this->invoiceItems as $item) {
+					$total += $item->winningBid;
+			?>
+				<tr>
+					<td align="centre"><?php echo $item->itemNumber; ?></td>
+					<td><?php echo $item->itemName; ?></td>
+					<td align="right">$<?php echo $item->winningBid; ?></td>
+				</tr>
+			<?php } ?>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2" align="right">Total:</td>
+					<td align="right">$<?php echo number_format($total, 2); ?></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+	<?php if (is_array($this->cardinfo)) { ?>
+	<div>
+		<h3>Card Info</h3>
+		<dl>
+			<dt>Card Type:</dt>
+			<dd><?php echo $this->cardinfo['type'];?></dd>
+			<dt>Name on Card:</dt>
+			<dd><?php echo $this->cardinfo['name']; ?></dd>
+			<dt>Card Number:</dt>
+			<dd><?php echo $this->cardinfo['number']; ?></dd>
+			<dt>Expiry Date:</dt>
+			<dd><?php echo $this->cardinfo['expiry']; ?></dd>
+			<dt>CVV:</dt>
+			<dd><?php echo $this->cardinfo['cvv']; ?></dd>
+		</dl>
+	</div>
+	<?php } ?>
+	
+	<form action="/pickups/index/invoicepaid" method="post" class="noprint">
+		<?php echo $this->formHidden('invoiceId', $this->invoice->invoiceId); ?>
+		<?php echo $this->formSelect('paymentType', '', '', array('cash' => 'Cash', 'credit' => 'Credit', 'debit' => 'Debit')); ?>
+		<?php echo $this->formSubmit('', 'PAID'); ?>
+	</form>
+	<br />
+	<form action="/pickups/index/invoicecancel" method="post" class="noprint">
+		<?php echo $this->formHidden('invoiceId', $this->invoice->invoiceId); ?>
+		<?php echo $this->formSubmit('', 'DECLINED'); ?>
+	</form>
+</div>

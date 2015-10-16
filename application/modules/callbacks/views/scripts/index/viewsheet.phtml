@@ -1,0 +1,51 @@
+<p style="font-size: 16pt">Block #<?php echo $this->blockNumber; ?> | 
+Item #<?php echo $this->item->itemNumber; ?> - <?php echo $this->item->name; ?> | 
+Control #<?php echo $this->item->controlNumber; ?> | 
+Value: $<?php echo $this->item->fairRetailPrice; ?></p>
+<form action="/callbacks/index/confirmwinner" method="post">
+<input type="hidden" name="itemId" value="<?php echo $this->item->itemId; ?>" />
+<input type="hidden" name="blockId" value="<?php echo $this->blockId; ?>" />
+<table cellpadding="3">
+	<thead>
+		<tr>
+			<td colspan="4">Top 5 Bids</td>
+		</tr>
+		<tr>
+			<td>Phone Number</td>
+			<td>Bid Time</td>
+			<td>Bid</td>
+			<td>Winning Bid</td>
+		</tr>
+	</thead>
+	<tbody>
+<?php foreach ($this->bids as $bid){ ?>
+		<tr>
+			<td><?php echo $bid->bidderPhone; ?></td>
+			<td><?php echo $bid->bidTime; ?></td>
+			<td align="right">$<?php echo $bid->bid; ?></td>
+			<td align="centre"><input type="radio" name="winningBid" value="<?php echo $bid->bidId; ?>" /></td>
+		</tr>
+<?php } ?>
+		<tr>
+			<td colspan="3" align="right">NO WINNER</td>
+			<td><input type="radio" name="winningBid" value="NA" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<div>
+<label for="">Confirm the winner's phone number:</label>
+<?php echo $this->formText('winnerPhone', ($this->person?$this->person->phone:''), array('id' => 'winnerPhone', 'size' => 10)); ?>
+</div>
+
+<input type="submit" value="Next" />
+<input type="button" value="Back" onclick="location='/callbacks/index/viewblock/id/<?php echo $this->blockId; ?>'" />
+</form>
+
+<script language="JavaScript">
+for (var i in document.forms[0].winningBid) {
+	if (document.forms[0].winningBid[i].value == <?php echo $this->winningBidId;?>) {
+		document.forms[0].winningBid[i].checked = true;
+	}
+}
+</script>

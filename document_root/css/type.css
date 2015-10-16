@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+
+h1 {
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 12pt;
+	font-weight: bold;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+em {
+	font-style: italic;
+}

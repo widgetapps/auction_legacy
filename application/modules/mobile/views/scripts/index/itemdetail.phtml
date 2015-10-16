@@ -1,0 +1,49 @@
+<?php if ($this->auth === false) { ?>
+	<div data-alert class="alert-box warning radius">
+		You are not allowed to see the item details.
+	</div>
+<?php } else { ?>
+
+<div class="row">
+	<div class="medium-3 columns">
+		<div class="row">
+			<div class="medium-12 columns">
+				<div class="panel radius">
+					<h4>Item <?php echo $this->item->controlSource . $this->item->controlNumber; ?></h4>
+					<h4>Block <?php echo $this->item->blockNumber; ?></h4>
+					<h4>BIN #<?php echo $this->item->binNumber; ?></h4>
+				</div>
+				<div class="panel callout radius">
+					<h3>Value $<?php echo $this->item->fairRetailPrice; ?></h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="medium-9 columns">
+		<div class="row">
+			<div class="medium-12 columns panel radius">
+				<h3><?php echo $this->item->itemName; ?></h3>
+			</div>
+			<div class="medium-12 columns">
+				<p><?php echo $this->item->itemDescription; ?></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-6 columns">
+    			<h5>Donor</h5>
+    			<?php echo $this->item->donor_companyName==''?'':$this->item->donor_companyName . '<br />'; ?>
+    			<?php echo $this->item->donor_lastName==''?'':$this->item->donor_firstName . ' ' . $this->item->donor_lastName . '<br />'; ?>
+    			<?php echo $this->item->donor_address1==''?'':$this->item->donor_address1 . '<br />'; ?>
+    			<?php echo $this->item->donor_city==''?'':$this->item->donor_city . ($this->item->donor_province==''?'':', ' . $this->item->donor_province) . '<br />'; ?>
+    			<?php echo $this->item->donor_phone==''?'':'Phone: ' . $this->formatPhoneNumber($this->item->donor_phone); ?>
+			</div>
+			<div class="medium-6 columns">
+    			<h5>Canvasser</h5>
+    			<?php echo $this->item->rotarian_firstName . ' ' . $this->item->rotarian_lastName; ?><br />
+    			Phone: <?php echo $this->formatPhoneNumber($this->item->rotarian_phone); ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php } ?>

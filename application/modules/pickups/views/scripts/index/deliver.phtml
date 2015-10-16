@@ -1,0 +1,28 @@
+<h3>Delivery Work Orders</h3>
+
+<table>
+    <thead>
+        <tr>
+            <td>&nbsp;</td>
+            <td>Phone Number</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+        </tr>
+    </thead>
+    <tbody>
+<?php if (count($this->orders) > 0) { ?>
+<?php foreach ($this->orders as $order) { ?>
+        <tr>
+            <td class="center"><a href="/pickups/index/lookup/phone/<?php echo $order->phone; ?>/deliver/y">Process</a></td>
+            <td class="center"><?php echo $this->formatPhoneNumber($order->phone); ?></td>
+            <td class="center"><?php echo $order->firstName; ?></td>
+            <td class="center"><?php echo $order->lastName; ?></td>
+        </tr>
+<?php } ?>
+<?php } else { ?>
+	   <tr>
+            <td colspan="4">No deliveries found!</td>
+       </tr>
+<?php } ?>
+    </tbody>
+</table>

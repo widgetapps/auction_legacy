@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+
+#web_board {
+    width: 650px;
+    height: 450px;
+    background-color: #a7aca2;
+}
+
+header {
+    width: 650px;
+    height: 90px;
+    background-color: #e7e7e8;
+}
+
+header h1 {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    color: #00246c;
+    font-size: 16pt;
+    padding-top: 20px;
+}
+
+header h2 {
+    font-family: 'Open Sans', sans-serif;
+    color: #687d90;
+    font-size: 20pt;
+    padding-top: 10px;
+}
+
+#logo {
+    float: left;
+    width: 186px;
+    height: 70px;
+    margin: 10px;
+    background-image: url('/images/logo_webboard.png');
+}
+
+#board table {
+    border: #58585a 3px solid;
+    width: 90%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#board table thead td {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #919295;
+    color: #fff;
+}
+
+#board table tbody {
+    font-family: Georgia, serif;
+}
+
+#board table tr:nth-child(odd) {
+    background-color:#e7e7e8;
+}
+
+#board table tr:nth-child(even) {
+    background-color:#fff;
+}
+
+#board table tbody td:nth-child(1) {
+    text-align: center;
+}
+
+#board table td:nth-child(3), #board table td:nth-child(4) {
+    text-align: right;
+}
+
+#board table td {
+    padding: 8px;
+    font-size: 14pt;
+}

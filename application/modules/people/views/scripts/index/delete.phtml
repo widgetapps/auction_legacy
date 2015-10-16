@@ -1,0 +1,34 @@
+<?php
+$typeString = '';
+
+switch ($this->listType){
+    case 'rotarians':
+        $typeString = 'Rotarian';
+        break;
+    case 'donors':
+    default:
+        $typeString = 'Donor';
+        break;
+}
+?>
+<h1>Delete <?php echo $typeString ?></h1>
+<p>Are you sure you want to delete <em><?php echo $this->person->firstName;?> <?php echo $this->person->lastName;?></em>?</p>
+<p>Deleting a person should be a very rare occasion. Keep in mind that this affects every bid and item
+donation ever made by this person. ONLY DO THIS IF YOU'RE 100% SURE!</p>
+
+<form action="/people/index/deleteProcess" method="post">
+	<?php echo $this->formHidden('personId', $this->person->personId); ?>
+	<?php echo $this->formHidden('type', $this->personType); ?>
+	<p>Select a new person to assign this person's items &amp; bids:</p>
+<?php
+if ($this->personType == 'rotarians'){
+    echo $this->formSelect('xferId', null, null, $this->getRotarianArray());
+} else {
+    echo $this->formSelect('xferId', null, null, $this->getDonorArray());
+}
+?>
+	<p>
+		<?php echo $this->formSubmit('', 'Yes'); ?>
+		<?php echo $this->formButton('', 'No', array('onclick' => 'window.location="/people/index/list/type/' . $this->personType . '"')); ?>
+	</p>
+</form>

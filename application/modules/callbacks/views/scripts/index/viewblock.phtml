@@ -1,0 +1,26 @@
+<p>Viewing Block #<?php echo $this->blockNumber; ?></p>
+<table>
+<?php foreach ($this->items as $item){
+        
+        require_once('models/vItemWinner.php');
+        $table_winner = new models_vItemWinner();
+        $select = $table_winner->select()->where('itemId = ?', $item->itemId);
+        $winners = $table_winner->fetchAll($select);
+	?>
+	<tr>
+		<td>Item # <?php echo $item->itemNumber; ?> - <?php echo $item->name; ?></td>
+		<td>
+		<?php  if (count($winners) > 0) { ?>
+			<?php if (in_array($this->role, array('admin', 'super'))) { ?>
+			[<a href="/callbacks/index/viewsheet/id/<?php echo $item->itemId; ?>/blockId/<?php echo $this->blockId; ?>">edit sheet</a>]
+			<?php } else { ?>
+			[<a href="/callbacks/index/viewwinner/id/<?php echo $item->itemId; ?>/blockId/<?php echo $this->blockId; ?>">view winner</a>]
+			<?php } ?>
+		<?php } else { ?>
+			[<a href="/callbacks/index/viewsheet/id/<?php echo $item->itemId; ?>/blockId/<?php echo $this->blockId; ?>">do callback</a>]
+		<?php } ?>
+		</td>
+	</tr>
+<?php 
+	}?>
+</table>

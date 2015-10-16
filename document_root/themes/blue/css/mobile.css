@@ -1,0 +1,152 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Actor, sans-serif;
+	font-size: 24pt;
+	background-image: url(/themes/blue/images/background.png);
+	background-repeat: repeat-x;
+	background-attachment:fixed;
+	background-color: #192862;
+}
+
+#page-container {
+	width: 96%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+article {
+    margin: 25px;
+}
+
+header, section {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+	font-family: Amaranth, sans-serif;
+}
+
+h1 {
+	font-size: 40pt;
+	color: #192862;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #192862;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	text-decoration: none;
+}
+
+dl dt {
+    font-weight: bold;
+}
+
+a:link, a:visited {
+	color: #192862;
+}
+
+a:hover {
+	color: #DAA520;
+}
+
+#header {
+	width: 100%;
+	height: 210px;
+	float: left;
+	margin-bottom: 5px;
+}
+
+#logo {
+	float: left;
+	height: 200px;
+	width: 200px;
+}
+
+#title {
+	font-size: 36px;
+	color: #FFF;
+	font-family: 'Hammersmith One', sans-serif;
+	margin-top: 10px;
+	padding-bottom: 5px;
+	padding-top: 10px;
+	margin-bottom: 5px;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #DAA520;
+	float: none;
+	margin-left: 205px;
+}
+
+img.logo {
+	margin-top:2px;
+	margin-bottom: 2px;
+}
+
+#header-info a:link, #header-info a:visited {
+	color: #fff;
+}
+
+#header-info a:hover {
+	color: #DAA520;
+}
+
+#content-container {
+	float: left;
+	width: 100%;
+	min-height: 200px;
+	background-color: #eee;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#footer {
+	float: left;
+	height: 30px;
+	background-color: #fff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+table {
+	border: 3px solid #000;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+thead tr {
+	background-color: #708090;
+}
+
+thead td {
+	font-weight: bold;
+	text-align: center;
+}
+
+thead td[colspan] {
+	text-align: left;
+}
+
+tr.line1 {
+	background-color: #fff;
+}
+
+tr.line2 {
+	background-color: #DCDCDC;
+}
+
+td {
+	border: 2px solid #fff;
+	padding: 6px;
+	font-size: 32pt;
+}
+
+tfoot tr {
+	background-color: #708090;
+}

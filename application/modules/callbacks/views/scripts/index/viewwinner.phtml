@@ -1,0 +1,53 @@
+
+<p style="font-size: 16pt">Block #<?php echo $this->blockNumber; ?><br />
+Item #<?php echo $this->item->itemNumber; ?> - <?php echo $this->item->name; ?><br />
+Value: $<?php echo $this->item->fairRetailPrice; ?></p>
+<table cellpadding="3">
+	<thead>
+		<tr>
+			<td colspan="3">Top 5 Bids</td>
+		</tr>
+		<tr>
+			<td>Phone Number</td>
+			<td>Bid Time</td>
+			<td>Bid</td>
+			<td>Winning Bid</td>
+		</tr>
+	</thead>
+	<tbody>
+<?php foreach ($this->bids as $bid){ ?>
+		<tr>
+			<td><?php echo $bid->bidderPhone; ?></td>
+			<td><?php echo $bid->bidTime; ?></td>
+			<td align="right">$<?php echo $bid->bid; ?></td>
+			<td align="centre"><?php echo ($bid->bidId == $this->winningBidId?'WINNER':''); ?></td>
+		</tr>
+<?php } ?>
+	</tbody>
+</table>
+<?php if ($this->winningBidId > 0){ ?>
+<br />
+<h2>Winner's Info</h2>
+<dl>
+	<dt><label for="">First Name</label></dt>
+	<dd><?php echo $this->person->firstName; ?>&nbsp;</dd>
+	<dt><label for="">Last Name</label></dt>
+	<dd><?php echo $this->person->lastName; ?>&nbsp;</dd>
+	<dt><label for="">Address 1</label></dt>
+	<dd><?php echo $this->person->address1; ?>&nbsp;</dd>
+	<dt><label for="">Address 2</label></dt>
+	<dd><?php echo $this->person->address2; ?>&nbsp;</dd>
+	<dt><label for="">City</label></dt>
+	<dd><?php echo $this->person->city; ?>&nbsp;</dd>
+	<dt><label for="">Province</label></dt>
+	<dd><?php echo $this->person->province; ?>&nbsp;</dd>
+	<dt><label for="">Postal Code</label></dt>
+	<dd><?php echo $this->person->postalCode; ?>&nbsp;</dd>
+	<dt><label for="">Phone</label></dt>
+	<dd><?php echo $this->person->phone; ?></dd>
+	<dt><label for="">E-mail Address</label></dt>
+	<dd><?php echo $this->person->email; ?></dd>
+</dl>
+<?php } else { ?>
+	<h2>No Winner Yet!</h2>
+<?php } ?>

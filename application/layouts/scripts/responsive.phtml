@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+
+<head>
+  <meta charset="utf-8">
+  <!-- If you delete this meta tag World War Z will become a reality -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metro Toronto Rotary Auction</title>
+
+  <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+  <link rel="stylesheet" href="/css/responsive/normalize.css">
+  <link rel="stylesheet" href="/css/responsive/foundation.css">
+
+  <!-- If you are using the gem version, you need this only -->
+  <link rel="stylesheet" href="/css/responsive/app.css">
+
+  <script src="/js/vendor/jquery.js"></script>
+  <script src="/js/vendor/modernizr.js"></script>
+  
+  <script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-69022-6']);
+	  _gaq.push(['_setDomainName', 'none']);
+	  _gaq.push(['_setAllowLinker', true]);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	
+  </script>
+
+</head>
+<body>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
+
+      <section class="middle tab-bar-section">
+        <h1 class="title">Metro Toronto Rotary Auction</h1>
+      </section>
+
+      <section class="right-small">
+        <img src="/images/wheel.png" style="padding: 3px" />
+      </section>
+    </nav>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>2014 MTRA</label></li>
+        <li><a href="/mobile">Current Block</a></li>
+        <li><a href="/mobile/index/bible">Bible</a></li>
+        <li><a href="/mobile/scan">Scan Item</a></li>
+        <li><a href="/">System Home</a></li>
+      </ul>
+    </aside>
+    <section class="main-section">
+  <?php echo $this->layout()->content; ?>
+  </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
+
+  <script src="/js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

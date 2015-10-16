@@ -1,0 +1,103 @@
+<script type="text/javascript">
+$(document).ready(function() {
+	/* do this later
+	$("div.edit_block_number > a").click(function(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		var itemId = $(this).attr("href");
+		var blockNum = $(this).parent().children("span.block_number").text();
+		var content = $(this).parent().html();
+
+		console.log(itemId + ":" + blockNum + ":" + content);
+
+		// Put the select list of blocks in a var via PHP here
+		// Then display the select list, and select the current block ID in the list
+		// OnChange, save the new block number via AJAX call
+		// Display a spinner, when submit done, display the number & edit button
+		var formHtml = '<form><input type="text" id="blockField_' + itemId + '" /></form>';
+		$(this).parent().html(formHtml);
+	});
+	*/
+});
+</script>
+
+<h1>Item Listing</h1>
+
+<?php if (count($this->items) == 0){?>
+	<p>No Items Found - <a href="/items/index/newitemstep1">Add New Item</a></p>
+<?php } else { ?>
+<table id="itemList">
+	<thead>
+		<tr>
+			<td colspan="11"><a href="/items/index/newitemstep1">Add New Item</a></td>
+		</tr>
+		<tr>
+			<td colspan="11" style="text-align: left">Item Count: <?php echo count($this->items); ?></td>
+		</tr>
+		<tr>
+			<td>Action</td>
+			<td><a href="/items/index/itemlist/sort/controlNumber">Control Number</a></td>
+			<td><a href="/items/index/itemlist/sort/binNumber">Bin Number</a></td>
+			<td><a href="/items/index/itemlist/sort/blockNumber">Block Number</a></td>
+			<td>Item Name</td>
+			<td><a href="/items/index/itemlist/sort/value">Value</a></td>
+			<td>Cats</td>
+			<td><a href="/items/index/itemlist/sort/approved">Appr.</a></td>
+			<td><a href="/items/index/itemlist/sort/publish">Pub.</a></td>
+			<td><a href="/items/index/itemlist/sort/featureItem">Fea.</a></td>
+		</tr>
+	</thead>
+	<tbody>
+<?php
+$line = 0;
+$total = 0;
+foreach ($this->items as $item){
+	require_once 'models/Item_has_ItemCategory.php';
+	$table_cats = new models_Item_has_ItemCategory();
+	$where = $table_cats->getAdapter()->quoteInto('itemId = ?', $item->itemId);
+	$rows_cats = $table_cats->fetchAll($where);
+	
+	$total += $item->fairRetailPrice;
+?>
+		<tr class="line<?php echo (($line % 2) + 1); ?>">
+			<td nowrap="nowrap">
+<?php if (in_array($this->role, array('admin', 'super'))) { ?>
+				<a href="/items/index/delete/id/<?php echo $item->itemId;?>" title="Delete Item"><img src="/images/icons/action_delete.gif" width="14" height="14" border="0" /></a>
+<?php } ?>
+<?php if (in_array($this->role, array('approver', 'admin', 'super')) || $this->userId == $item->userId) { ?>
+				<a href="/items/index/edit/id/<?php echo $item->itemId;?>" title="Edit Item"><img src="/images/icons/action_edit.gif" width="14" height="14" border="0" /></a>
+				<a href="/items/index/categories/id/<?php echo $item->itemId;?>" title="Edit Categories"><img src="/images/icons/action_add.gif" width="14" height="14" border="0" /></a>
+<?php } ?>
+				<a href="/items/index/newitemdone/itemId/<?php echo $item->itemId;?>" title="Print Item Sheet"><img src="/images/icons/action_print.gif" width="14" height="14" border="0" /></a>
+			</td>
+			<td><?php echo $item->controlSource . $item->controlNumber; ?></td>
+			<td><?php echo ($item->binNumber==0?'NA':$item->binNumber); ?></td>
+			<td>
+				<div class="edit_block_number">
+					<span class="block_number"><?php echo $item->blockNumber; ?></span>
+<?php if (in_array($this->role, array('admin', 'super'))) { ?>
+					<a href="/items/index/assign/id/<?php echo $item->itemId;?>" title="Change Block Number"><img src="/images/icons/action_edit.gif" width="14" height="14" border="0" /></a>
+<?php } ?>
+				</div>
+			</td>
+			<td title="<?php echo $item->description; ?>"><a name="item_<?php echo $item->itemId;?>"><?php echo $item->name; ?></a></td>
+			<td>$<?php echo $item->fairRetailPrice; ?></td>
+			<td><?php echo count($rows_cats); ?></td>
+			<td><?php echo $item->approved; ?></td>
+			<td><?php echo $item->publish; ?></td>
+			<td><?php echo $item->featureItem; ?></td>
+		</tr>
+<?php
+    $line++;
+}
+?>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="7">Item Count: <?php echo count($this->items); ?></td>
+			<td colspan="4">Total Value: $<?php echo $total; ?></td>
+		</tr>
+	</tfoot>
+</table>
+<?php echo 'USERID: ' . $this->userId; ?>
+<?php } ?>

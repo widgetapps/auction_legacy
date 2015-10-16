@@ -1,0 +1,54 @@
+<script type="text/javascript" charset="utf-8"> 
+	$(document).ready(function() {
+		$('#itemlist').dataTable( {
+			"bScrollInfinite": true,
+			"bScrollCollapse": true,
+			"sScrollY": "450px",
+			"bStateSave": true,
+			"iDisplayLength": 20,
+			"aoColumnDefs": [ { "sType": "numeric", "aTargets": [ 0 ] }, { "sType": "date", "aTargets": [ 1 ] } ]
+			} );
+	} );
+</script> 
+
+<div id="fbap_canvas_items">
+	<form action="" method="post" />
+		<?php echo $this->formHidden('type', 'category'); ?>
+		Browse by category: <?php echo $this->formSelect('category', $this->selectedCategory, null, $this->availableCategories);?>
+		<?php echo $this->formSubmit('clickAction', 'Go'); ?>
+	</form>
+
+<?php if (count($this->items) == 0){ ?>
+	<p>No Items Found</p>
+<?php } else { ?>
+	<table id="itemlist" class="display">
+		<thead>
+			<tr>
+				<th>Number</th>
+				<th>Up for Bid</th>
+				<th>Item Name</th>
+				<th>Value</th>
+				<th>Donor</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($this->items as $item) {
+		?>
+			<tr>
+				<td class="number"><?php echo ($item->controlNumber==''?'NA':$item->controlNumber); ?></td>
+				<td class="date"><?php echo (($item->blockTime==''||$item->blockTime=='00:00:00')?'NA':date("Y-m-d g:i a", strtotime($item->blockDate . ' ' . $item->blockTime))); ?></td>
+				<td class="text"><a href="/facebook/index/view/item/<?php echo $item->itemId; ?>"><?php echo $item->name; ?></a></td>
+				<td class="currency"><?php echo $item->fairRetailPrice; ?></td>
+				<td class="text">
+					<?php if ($item->anonymous == 'n') { ?>
+					<?php if ($item->donorWebsite != '') { ?><a href="http://<?php echo $item->donorWebsite;?>" target="donorwindow"><img src="/images/icon_link.png" width="16" height="16" border="0" /></a> <?php } ?><?php echo ($item->donorCompany!=''?$item->donorCompany:$item->donorFirstName . ' ' . $item->donorLastName); ?>
+					<?php } else { ?>
+					Anonymous
+					<?php } ?>
+				</td>
+			</tr>
+		<?php } ?>
+		</tbody>
+	</table>
+<?php } ?>
+</div>

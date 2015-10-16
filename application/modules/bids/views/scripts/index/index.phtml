@@ -1,0 +1,38 @@
+<script type="text/javascript" src="/js/bids.js"></script>
+
+<div>
+	<h3>INFO LINE: 416 508-8382</h3>
+	<p>Please do not tell the bidders they won an item, they will be called back if they won.<br />
+	Please do not stay on the phone to take multiple bids for one item. Take one bid, say thanks, hang up.<br />
+	When the block closes, the bidder is out of luck. We cannot keep a block open after it's time has expired.</p>
+	<div id="bidLeftCol">
+		<h1>Enter Bid</h1>
+		<form method="post" action="/bids/ajax/submitBid" id="bidForm">
+			<table>
+				<tr>
+					<td>Item No. :</td>
+					<td><input type="text" name="itemNo" id="itemNo" /></td>
+				</tr><tr>
+					<td colspan="2" id="item_name">[item name]</td>
+				</tr><tr>
+				</tr><tr>
+					<td>Bid Amount: </td>
+					<td><input type="text" name="bidAmount" id="bidAmount" /></td>
+				</tr><tr>
+					<td>Phone:</dt>
+					<td>
+						<input type="text" name="phone1" id="phone1" size="3" maxlength="3" onkeyup="jumpField(this, 3, 2)" />
+						<input type="text" name="phone2" id="phone2" size="3" maxlength="3" onkeyup="jumpField(this, 3, 3)" />
+						<input type="text" name="phone3" id="phone3" size="4" maxlength="4" />
+					</td>
+				</tr>
+			</table><br />&nbsp;
+			<input type="button" value="Submit Bid" id="submitBid" />
+			<input type="reset" value="Clear" onclick="jQuery('#item_name').html('[item name]')" /><br />
+		</form>
+	</div>
+	<div id="bidRightCol">
+		<h1>Items up for Bid</h1>
+		<div id="itemList">Retrieving item list....</div>
+	</div>
+</div>

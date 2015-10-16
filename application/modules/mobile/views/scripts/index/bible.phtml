@@ -1,0 +1,66 @@
+<h1>Auction Item Bible</h1>
+
+<div class="row">
+  <form action="" method="post">
+    <div class="medium-2 columns">
+        <select name="type">
+          <option value="blockNumber"<?php echo $this->type=='blockNumber'?' selected="selected"':''?>>Block #</option>
+          <option value="controlNumber"<?php echo $this->type=='controlNumber'?' selected="selected"':''?>>Item #</option>
+          <option value="itemName"<?php echo $this->type=='itemName'?' selected="selected"':''?>>Item Name</option>
+        </select>
+    </div>
+    <div class="medium-8 columns">
+        <input name="s" type="text" placeholder="What are you looking for?"<?php echo $this->value==''?'':' value="' . $this->value . '"'?> />
+    </div>
+    <!-- 
+    <div class="medium-2 columns">
+        <select name="sort">
+          <option value="blockNumber"<?php echo $this->sort=='blockNumber'?' selected="selected"':''?>>Sort by Block</option>
+          <option value="controlNumber"<?php echo $this->sort=='controlNumber'?' selected="selected"':''?>>Sort by Item</option>
+        </select>
+    </div>
+     -->
+    <div class="medium-2 columns">
+    	<input type="submit" value="Find" class="button postfix" />
+    </div>
+  </form>
+</div>
+
+<?php if (count($this->items) > 0) { ?>
+
+<?php
+$panel = 0;
+foreach($this->items as $item) {
+$panel++;
+	?>
+    <div class="row full-item-row row<?php echo ($panel%2); ?>">
+    	<a href="#<?php echo $item->itemId ?>" data-reveal-id="item-details" class="item-row">
+    		<div class="medium-1 columns text-center"><h4><?php echo $item->controlSource . $item->controlNumber; ?></h4></div>
+    		<div class="medium-1 columns text-center"><h4><?php echo $item->blockNumber; ?></h4></div>
+    		<div class="medium-8 columns text-left"><h4><?php echo $item->itemName; ?></h4></div>
+    		<div class="medium-2 columns text-right"><h4>$<?php echo $item->fairRetailPrice; ?></h4></div>
+    	</a>
+    </div>
+<?php } ?>
+<div id="item-details" class="reveal-modal" data-reveal>
+	<div id="item-info"></div>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
+<script>
+	$('.item-row').click(function(event) {
+		var id = $(event.target).parents('a.item-row').attr('href').substring(1);
+		var url = '/mobile/index/itemdetail/id/' + id;
+		$('#item-info').load(url);
+	});
+</script>
+
+<?php } else { ?>
+<div class="row">
+	<div class="medium-8 medium-offset-2 columns">
+		<div data-alert class="alert-box warning radius">
+			<p>No items were found, please try different search criteria.</p>
+		</div>
+	</div>
+</div>
+<?php } ?>

@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+   "//www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="//www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+	<head>
+		<title><?php echo $this->getLanguageLabel('title'); ?></title>
+		
+		<link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Amaranth:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+		<link href='https://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css' />
+		
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="stylesheet" type="text/css" media="screen, projection, handheld" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" media="screen, projection, handheld" href="<?php echo $this->getThemePath('css'); ?>webboard.css" />
+		
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="/js/jquery.fillwithtext.js" type="text/javascript" charset="utf-8"></script>
+		
+        
+	</head>
+	<body>
+	<div id="container">
+		<?php echo $this->layout()->content; ?>
+	</div>
+	</body>
+</html>

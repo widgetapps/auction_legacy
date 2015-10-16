@@ -1,0 +1,16 @@
+<h1>Assigning Categories for Item <em><?php echo $this->item->name; ?></em></h1>
+
+<form action="/items/index/categoriesProcess" method="post">
+	<?php echo $this->formHidden('id', $this->item->itemId); ?>
+	<div>
+		<?php echo $this->formSelect('availableCategories', null, array('size' => '10'), $this->availableCategories);?>
+	</div>
+	<div>
+		<?php echo $this->formSubmit('clickAction', 'add'); ?>
+		<?php echo $this->formSubmit('clickAction', 'remove'); ?>
+		<?php echo $this->formButton('', 'done', array('onclick' => 'window.location="/items/index/itemlist#item_' . $this->item->itemId . '"')); ?>
+	</div>
+	<div>
+		<?php echo $this->formSelect('assignedCategories', null, array('size' => '10'), $this->assignedCategories);?>
+	</div>
+</form>

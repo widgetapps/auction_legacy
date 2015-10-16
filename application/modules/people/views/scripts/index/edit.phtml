@@ -1,0 +1,52 @@
+<?php
+$typeString = '';
+
+switch ($this->listType){
+    case 'rotarians':
+        $typeString = 'Rotarian';
+        break;
+    case 'donors':
+    default:
+        $typeString = 'Donor';
+        break;
+}
+?>
+<h1>Edit <?php echo $typeString; ?></h1>
+
+<form action="/people/index/editprocess" method="post">
+	<?php echo $this->formHidden('personId', $this->person->personId); ?>
+	<?php echo $this->formHidden('type', $this->personType); ?>
+	<dl>
+		<dt><label for="firstName">First Name</label></dt>
+		<dd><?php echo $this->formText('firstName', $this->person->firstName, array('id' => 'firstName', 'size' => 40)); ?></dd>
+		<dt><label for="lastName">Last Name</label></dt>
+		<dd><?php echo $this->formText('lastName', $this->person->lastName, array('id' => 'lastName', 'size' => 40)); ?></dd>
+		<dt><label for="companyName">Company Name</label></dt>
+		<dd><?php echo $this->formText('companyName', $this->person->companyName, array('id' => 'companyName', 'size' => 40)); ?></dd>
+		<dt><label for="address1">Address 1</label></dt>
+		<dd><?php echo $this->formText('address1', $this->person->address1, array('id' => 'address1', 'size' => 40)); ?></dd>
+		<dt><label for="address2">Address 2</label></dt>
+		<dd><?php echo $this->formText('address2', $this->person->address2, array('id' => 'address2', 'size' => 40)); ?></dd>
+		<dt><label for="city">City</label></dt>
+		<dd><?php echo $this->formText('city', $this->person->city, array('id' => 'city', 'size' => 40)); ?></dd>
+		<dt><label for="province">Province</label></dt>
+		<dd><?php echo $this->formSelect('province', $this->person->province, null, $this->getProvinceArray()); ?></dd>
+		<dt><label for="postalCode">Postal Code</label></dt>
+		<dd><?php echo $this->formText('postalCode', $this->person->postalCode, array('id' => 'postalCode', 'size' => 6, 'maxlength' => 6)); ?></dd>
+		<dt><label for="phone">Phone #</label></dt>
+		<dd><?php echo $this->formText('phone', $this->person->phone, array('id' => 'phone', 'size' => 10, 'maxlength' => 10)); ?></dd>
+		<dt><label for="fax">Email Address</label></dt>
+		<dd><?php echo $this->formText('email', $this->person->email, array('id' => 'email', 'size' => 40)); ?></dd>
+		<dt><label for="website">Website</label></dt>
+		<dd>http://<?php echo $this->formText('website', $this->person->website, array('id' => 'website', 'size' => 60)); ?></dd>
+		<dt><label for="email">Donor</label></dt>
+		<dd><?php echo $this->formRadio('donor', $this->person->donor, null, array('y' => 'yes', 'n' => 'no')); ?></dd>
+		<dt><label for="email">Rotarian</label></dt>
+		<dd><?php echo $this->formRadio('rotarian', $this->person->canvasser, null, array('y' => 'yes', 'n' => 'no')); ?></dd>
+		<dt><label for="organization">Organization</label></dt>
+		<dd><?php echo $this->formSelect('organization', $this->getOrganizationInfo($this->person->organizationId)->controlSource, null, $this->orgs); ?></dd>
+	</dl>
+	<?php echo $this->formSubmit('', 'Save Changes'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/people/index/list/type/' . $this->personType . '"')); ?>
+</form>
+

@@ -1,0 +1,47 @@
+
+<div id="itemList">
+	<h2>Item List</h2>
+	<table>
+		<thead>
+			<tr>
+				<td>Block Number</td>
+				<td><a href="/pickups/index/items/sort/controlNumber">Item Number</a></td>
+				<td>Item Name</td>
+				<td>Bidder Phone#</td>
+				<td><a href="/pickups/index/items/sort/winnerPhone">Winner Phone#</a></td>
+				<td>Winning Bid</td>
+				<td><a href="/pickups/index/items">Picked Up</a></td>
+				<td>Deliver</td>
+			</tr>
+		</thead>
+		<tbody>
+<?php foreach($this->items as $item){
+	require_once 'models/Person.php';
+	$table = new models_Person();
+	$person = $table->find($item->personId)->current();
+	
+    $totalBids += $item->winningBid;
+    $totalValue += $item->itemValue;
+?>
+			<tr>
+				<td><a name="<?php echo $item->itemId; ?>"><?php echo $item->blockNumber; ?></a></td>
+				<td><?php echo $item->controlSource; ?><?php echo $item->controlNumber; ?></td>
+				<td><?php echo $item->itemName; ?></td>
+				<td><?php echo $item->bidderPhone; ?></td>
+				<td><?php echo $item->winnerPhone; ?></td>
+				<td>$<?php echo $item->winningBid; ?></td>
+				<td><?php echo $item->pickedUp; ?></td>
+				<td><?php echo $item->deliver; ?></td>
+			</tr>
+<?php } ?>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td colspan="2">TOTAL BIDS: $<?php echo $totalBids; ?> (<?php echo intval($totalBids / $totalValue * 100); ?>% of value)</td>
+				<td colspan="2">TOTAL VALUE: $<?php echo $totalValue; ?></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

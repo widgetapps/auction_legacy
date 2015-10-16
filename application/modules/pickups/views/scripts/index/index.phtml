@@ -1,0 +1,5 @@
+<form action="/pickups/index/lookup" method="post">
+	<p>Enter the customer's phone number:</p>
+	<?php echo $this->formText('phone', '', array('size' => 12, 'maxlength' => 10)); ?>
+	<input type="submit" value="Lookup" />
+</form>

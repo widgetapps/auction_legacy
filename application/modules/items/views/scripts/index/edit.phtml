@@ -1,0 +1,81 @@
+<h1>Editing item <em><?php echo $this->item->name; ?></em></h1>
+
+
+<div id="itemInfo">
+	<form action="/items/index/editprocess" method="post">
+		<?php echo $this->formHidden('itemId', $this->item->itemId); ?>
+		<dl>
+<?php
+if (in_array($this->role, array('admin', 'super'))){
+?>
+			<dt><label for="itemName">Control Number</label></dt>
+			<dd>
+			<?php echo $this->formSelect('controlSource', $this->item->controlSource, '', $this->orgs);?>
+			<?php echo $this->formText('controlNumber', $this->item->controlNumber, array('id' => 'controlNumber', 'size' => 5)); ?>
+			</dd>
+			<dt><label for="binNumber">Bin Number</label></dt>
+			<dd>
+			<?php echo $this->formText('binNumber', $this->item->binNumber, array('id' => 'binNumber', 'size' => 4)); ?>
+			</dd>
+<?php
+}
+?>
+			<dt><label for="itemName">Item Name</label></dt>
+			<dd><?php echo $this->formText('itemName', $this->item->name, array('id' => 'itemName', 'size' => 40)); ?></dd>
+			<dt><label for="itemDescription">Description</label></dt>
+			<dd><?php echo $this->formTextarea('itemDescription', $this->item->description, array('id' => 'itemDescription', 'rows' => '4')); ?></dd>
+<?php
+if (in_array($this->role, array('admin', 'super'))){
+?>
+			<dt><label for="itemNotes">Notes</label></dt>
+			<dd><?php echo $this->formTextarea('itemNotes', $this->item->notes, array('id' => 'itemNotes', 'rows' => '2')); ?></dd>
+<?php
+}
+?>
+			<dt><label for="itemValue">Fair Retail Value</label></dt>
+			<dd>$<?php echo $this->formText('itemValue', $this->item->fairRetailPrice, array('id' => 'itemValue', 'size' => 10)); ?></dd>
+            <dt><label for="">Minimum Bid</label></dt>
+            <dd>
+                <?php echo $this->formRadio('minimumBid', $this->item->minimumBid, null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;');?>
+            </dd>
+			<dt><label for="itemPieces">Number of Pieces</label></dt>
+			<dd><?php echo $this->formText('itemPieces', $this->item->numberOfPieces, array('id' => 'itemPieces', 'size' => 3)); ?></dd>
+			<dt><label for="taxReciept">Tax Receipt</label></dt>
+			<dd><?php echo $this->formRadio('taxReceipt', $this->item->taxReceipt, null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;'); ?></dd>
+			<dt><label for="anonymous">Does this donor wish to remain anonymous for this item?</label></dt>
+			<dd><?php echo $this->formRadio('anonymous', $this->item->anonymous, null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;'); ?></dd>
+			<dt><label for="">Canvasser</label></dt>
+			<dd>
+				<?php echo $this->formSelect('canvasser', $this->item->canvasserId, array('id' => 'select_canvasser'), $this->getRotarianArray());?>
+			</dd>
+            <dt><label for="">Shared item</label></dt>
+            <dd>
+                <?php echo $this->formRadio('shared', $this->shared, null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;');?>
+            </dd>
+			<dt><label for="">Donor</label></dt>
+			<dd>
+				<?php echo $this->formSelect('donor', $this->item->donorId, array('id' => 'select_donor'), $this->getDonorArray());?>
+			</dd>
+			<dt><label for="">Approve Item</label></dt>
+			<dd>
+				<?php echo $this->formRadio('approved', $this->item->approved, null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;');?>
+			</dd>
+			<dt><label for="">Publish to website</label></dt>
+			<dd>
+				<?php echo $this->formRadio('publish', $this->item->publish, null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;');?>
+			</dd>
+<?php
+if (in_array($this->role, array('admin', 'super'))){
+?>
+			<dt><label for="">Feature Item</label></dt>
+			<dd>
+				<?php echo $this->formRadio('feature', $this->item->featureItem, null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;');?>
+			</dd>
+<?php
+}
+?>
+		</dl>
+		<?php echo $this->formSubmit('', 'Save Changes'); ?>
+		<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+	</form>
+</div>

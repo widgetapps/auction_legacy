@@ -1,0 +1,33 @@
+<a href="/index">Back to List</a>
+
+<h2><?php echo $this->item->name; ?></h2>
+<p><?php echo nl2br($this->item->description); ?></p>
+<table border="0">
+	<tr>
+		<td>Donor:</td>
+		<td>
+		    <?php echo ($this->item->donorCompany==''?'':$this->item->donorCompany); ?>
+		    <?php echo ($this->item->donorFirstName==''?'':$this->item->donorFirstName . ' ' . $this->item->donorLastName); ?>
+		</td>
+	</tr>
+	<tr>
+		<td>Up for Auction:</td>
+		<td><?php echo (($this->item->blockTime==''||$this->item->blockTime=='00:00:00')?'NA':date("l @ g:ia", strtotime($this->item->blockDate . ' ' . $this->item->blockTime))); ?></td>
+	</tr>
+	<tr>
+		<td>Item Number:</td>
+		<td><?php echo (($this->item->itemNumber==''||$this->item->itemNumber=='0')?'NA':$this->item->itemNumber); ?></td>
+	</tr>
+	<tr>
+		<td>Block Number:</td>
+		<td><?php echo (($this->item->blockNumber==''||$this->item->blockNumber=='0')?'NA':$this->item->blockNumber); ?></td>
+	</tr>
+	<tr>
+		<td>Retail Value:</td>
+		<td><?php echo ($this->item->fairRetailPrice==''?'NA':'$' . $this->item->fairRetailPrice); ?></td>
+	</tr>
+</table>
+<div>
+<fb:like href="http://apps.facebook.com/rotaryauction/index/view/item/<?php echo $this->item->itemId; ?>"></fb:like>
+</div>
+<a href="/index">Back to List</a>

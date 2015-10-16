@@ -1,0 +1,117 @@
+
+<h1>New Item - Item Information</h1>
+
+<?php if (!in_array($this->role, array('admin', 'super'))){ ?>
+<p>Please enter in all of the following information. Keep in mind that the item information
+that you enter here will be viewable on the website and will also be read during the live auction.
+Also, keep in mind of the follwing:</p>
+
+<ul>
+	<li>The Fair Retail Value should be just that, please don't inflate it, it affects us when we report to Revenue Canada!</li>
+	<li>The Number of Pieces is how many individual pieces are part of this item.</li>
+	<li>If the donor does not require a receipt, then select no. This also affects us.</li>
+</ul>
+
+<p>And finally, once you submit this final step, you will be required to print the item sheet. Please
+print the sheet and submit it with your item. Items will not be accepted at the warehouse without an
+item sheet of control number attached to it.</p>
+<?php } ?>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#itemName").keypress(function(event) {
+      var s = String.fromCharCode( event.keyCode || event.which );
+      
+      if ( /[a-zA-Z]/.test(s) && s.toUpperCase() === s && !event.shiftKey ) { 
+        alert("Caps Lock seems to on, please turn it off. Use proper case and punctuation when entering items.");
+        $("#itemName").val("");
+      }
+    });
+    
+    $("#itemDescription").keypress(function(event) {
+      var s = String.fromCharCode( event.keyCode || event.which );
+      if ( /[a-zA-Z]/.test(s) &&  s.toUpperCase() === s && !event.shiftKey ) { 
+        alert("Caps Lock seems to on, please turn it off. Use proper case and punctuation when entering items.");
+        $("#itemDescription").val("");
+      }
+    });
+});
+</script>
+
+<div id="itemInfo">
+	<form action="/items/index/newitemprocess" method="post">
+		<?php echo $this->formHidden('donorId', $this->donor->personId); ?>
+		<?php echo $this->formHidden('rotarianId', $this->rotarian->personId); ?>
+		<dl>
+<?php
+if (in_array($this->role, array('admin', 'super'))){
+?>
+			<dt><label for="itemName">Control Source</label></dt>
+			<dd>
+			<?php echo $this->formSelect('controlSource', 'S', '', $this->orgs);?>
+			<?php //echo $this->formText('controlNumber', '', array('id' => 'controlNumber', 'size' => 5, 'title' => 'Only enter a number if you choose M as a control source.')); ?>
+			</dd>
+<?php
+}
+?>
+			<dt><label for="itemName">Item Name</label></dt>
+			<dd><?php echo $this->formText('itemName', '', array('id' => 'itemName', 'size' => 40)); ?></dd>
+			<dt><label for="itemDescription">Description</label></dt>
+			<dd><?php echo $this->formTextarea('itemDescription', '', array('id' => 'itemDescription', 'rows' => '4')); ?></dd>
+<?php
+if (in_array($this->role, array('admin', 'super'))){
+?>
+			<dt><label for="itemDuplicates">How many of these items?</label></dt>
+			<dd><?php echo $this->formSelect('itemCopies', '', '', array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9','10'=>'10','11'=>'11','12'=>'12','13'=>'13','14'=>'14','15'=>'15'))?></dd>
+			<dt><label for="itemNotes">Notes</label></dt>
+			<dd><?php echo $this->formTextarea('itemNotes', '', array('id' => 'itemNotes', 'rows' => '2')); ?></dd>
+<?php
+}
+?>
+			<dt><label for="itemValue">Fair Retail Value</label></dt>
+			<dd>$<?php echo $this->formText('itemValue', '', array('id' => 'itemValue', 'size' => 10)); ?></dd>
+			<dt><label for="itemPieces">Number of Pieces</label></dt>
+			<dd><?php echo $this->formText('itemPieces', '1', array('id' => 'itemPieces', 'size' => 3)); ?></dd>
+            <dt><label for="">Minimum Bid</label></dt>
+            <dd>
+                <?php echo $this->formRadio('minimumBid', 'y', null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;');?>
+            </dd>
+			<dt><label for="taxReciept">Tax Receipt</label></dt>
+			<dd><?php echo $this->formRadio('taxReceipt', 'n', null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;'); ?></dd>
+			<dt><label for="anonymous">Does this donor wish to remain anonymous for this item?</label></dt>
+			<dd><?php echo $this->formRadio('anonymous', 'n', null, array('y' => 'Yes', 'n' => 'No'), '&nbsp;|&nbsp;'); ?></dd>
+		</dl>
+		<table>
+			<thead>
+				<tr>
+					<td colspan="4">Assign Categories (up to 4)</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+<?php 
+$itemCount = 0;
+foreach ($this->categories as $categoryId => $label) {
+?>
+				<?php if ($itemCount % 4 == 0) { ?></tr><tr><?php }?>
+					<td>
+						<label for="cat-<?php echo $categoryId; ?>">
+							<?php echo $this->formCheckbox('cats[]', $categoryId, array('id' => ('cat-'.$categoryId))); ?> <?php echo $label?>
+						</label>
+					</td>
+<?php
+	$itemCount++;
+}
+?>
+				</tr>
+				<tfoot>
+					<tr>
+						<td colspan="4">NOTE: Categories are used on the website to help users find items they are interested in.</td>
+					</tr>
+				</tfoot>
+			</tbody>
+		</table>
+		<?php echo $this->formSubmit('', 'Add Item'); ?>
+		<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+	</form>
+</div>
+

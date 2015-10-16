@@ -1,0 +1,8 @@
+<h1>Deleting item <em><?php echo $this->item->name; ?></em></h1>
+
+<p>Are you sure you would like to delete this item?</p>
+<form action="/items/index/deleteProcess" method="post">
+	<?php echo $this->formHidden('itemId', $this->item->itemId); ?>
+	<?php echo $this->formSubmit('', 'Yes'); ?>
+	<?php echo $this->formButton('', 'No', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+</form>

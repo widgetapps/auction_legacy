@@ -1,0 +1,57 @@
+<div id="pickupSearchForm">
+	<form action="/pickups/index/search" method="post">
+		<dl>
+			<dt>Phone number search:</dt>
+			<dd><?php echo $this->formText('phoneSearch', $this->criteria, array('size' => 10)); ?></dd>
+		</dl>
+		<?php echo $this->formSubmit('', 'Search'); ?>
+		<a href="/pickups/index/search/phoneSearch/all">View All</a>
+	</form>
+	<hr />
+</div>
+<div id="pickupList">
+	<h2>Pickup List</h2>
+	<table>
+		<thead>
+			<tr>
+				<td>Block Number</td>
+				<td>Item Number</td>
+				<td>Item Name</td>
+				<td>Bidder Phone#</td>
+				<td>Winner Phone#</td>
+				<td>Winning Bid</td>
+				<td>Picked Up</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tbody>
+<?php foreach($this->items as $item){
+    $totalBids += $item->winningBid;
+    $totalValue += $item->itemValue;
+?>
+			<tr>
+				<td><a name="<?php echo $item->itemId; ?>"><?php echo $item->blockNumber; ?></a></td>
+				<td><?php echo $item->itemNumber; ?></td>
+				<td><?php echo $item->itemName; ?></td>
+				<td><?php echo $item->bidderPhone; ?></td>
+				<td><?php echo $item->winnerPhone; ?></td>
+				<td>$<?php echo $item->winningBid; ?></td>
+				<td><?php echo $item->pickedUp; ?></td>
+				<td>
+<?php if (in_array($this->role, array('admin', 'super')) && $item->pickedUp != 'y') { ?>
+					[<a href="/pickups/index/pickedup/id/<?php echo $item->itemId; ?>">picked up</a>]
+<?php } ?>&nbsp;
+				</td>
+			</tr>
+<?php } ?>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td colspan="2">TOTAL BIDS: $<?php echo $totalBids; ?> (<?php echo intval($totalBids / $totalValue * 100); ?>% of value)</td>
+				<td colspan="2">TOTAL VALUE: $<?php echo $totalValue; ?></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

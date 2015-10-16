@@ -1,0 +1,22 @@
+<rss version="2.0">
+	<channel>
+		<title>BLOCK <?php echo $this->blockNumber; ?> ~ <?php echo $this->startTime; ?> - <?php echo $this->endTime; ?></title>
+		<link>http://MetroTorontoRotaryAuction.com</link>
+		<description>This feed displays the items currently up for bid.</description>
+		<language>en-us</language>
+		<generator>The MTRA System</generator>
+		<webMaster>admin@MetroTorontoRotaryAuction.com</webMaster>
+<?php foreach ($this->items as $item) {
+	$minBid = round($item->fairRetailPrice * $this->getMinBidPercent());
+	$minBid -= ($minBid %5);
+	$openingBid = $minBid - 5;
+	?>
+		<item>
+			<title><?php echo htmlentities($item->name); ?></title>
+			<pubDate><?php echo htmlentities($item->itemNumber); ?></pubDate>
+			<link><?php echo htmlentities(floor($item->fairRetailPrice)); ?></link>
+			<description><?php echo ($item->bid > 0?floor($item->bid):$openingBid); ?></description>
+		</item>
+<?php } ?>
+	</channel>
+</rss>

@@ -1,0 +1,62 @@
+<h1>New Item - Select the Rotarian</h1>
+
+<p>Please be sure that the donor information is accurate and choose the rotarian that brought
+the item in:</p>
+
+<form action="/items/index/newitemstep2process" method="post">
+	<?php echo $this->formHidden('donorId', $this->donor->personId); ?>
+	<dl>
+		<dt><label for="firstName">First Name</label></dt>
+		<dd><?php echo $this->formText('firstName', $this->donor->firstName, array('id' => 'firstName', 'size' => 40)); ?></dd>
+		<dt><label for="lastName">Last Name</label></dt>
+		<dd><?php echo $this->formText('lastName', $this->donor->lastName, array('id' => 'lastName', 'size' => 40)); ?></dd>
+		<dt><label for="companyName">Company Name</label></dt>
+		<dd><?php echo $this->formText('companyName', $this->donor->companyName, array('id' => 'companyName', 'size' => 40)); ?></dd>
+		<dt><label for="address1">Address 1</label></dt>
+		<dd><?php echo $this->formText('address1', $this->donor->address1, array('id' => 'address1', 'size' => 40)); ?></dd>
+		<dt><label for="address2">Address 2</label></dt>
+		<dd><?php echo $this->formText('address2', $this->donor->address2, array('id' => 'address2', 'size' => 40)); ?></dd>
+		<dt><label for="city">City</label></dt>
+		<dd><?php echo $this->formText('city', $this->donor->city, array('id' => 'city', 'size' => 40)); ?></dd>
+		<dt><label for="province">Province</label></dt>
+		<dd><?php echo $this->formSelect('province', $this->donor->province, null, $this->getProvinceArray()); ?></dd>
+		<dt><label for="postalCode">Postal Code</label></dt>
+		<dd>
+		    <?php echo $this->formText('postalCode1', substr($this->donor->postalCode, 0, 3), array('id' => 'postalCode1', 'size' => 3, 'maxlength' => 3)); ?>
+		    <?php echo $this->formText('postalCode2', substr($this->donor->postalCode, 3, 3), array('id' => 'postalCode2', 'size' => 3, 'maxlength' => 3)); ?>
+		</dd>
+		<dt><label for="phone">Phone #</label></dt>
+		<dd>
+		    <?php echo $this->formText('phone1', substr($this->donor->phone, 0, 3), array('id' => 'phone1', 'size' => 3, 'maxlength' => 3)); ?>
+		    <?php echo $this->formText('phone2', substr($this->donor->phone, 3, 3), array('id' => 'phone2', 'size' => 3, 'maxlength' => 3)); ?>
+		    <?php echo $this->formText('phone3', substr($this->donor->phone, 6, 4), array('id' => 'phone3', 'size' => 4, 'maxlength' => 4)); ?>
+		</dd>
+		<dt><label for="email">Email Address</label></dt>
+		<dd><?php echo $this->formText('email', $this->donor->email, array('id' => 'email', 'size' => 40)); ?></dd>
+		<dt><label for="website">Website</label></dt>
+		<dd>http://<?php echo $this->formText('website', $this->donor->website, array('id' => 'website', 'size' => 60)); ?></dd>
+	</dl>
+
+	<hr />
+
+	<dl>
+		<dt><label for="">Rotarian</label></dt>
+		<dd>
+			<select name="rotarianId">
+				<option value="none">Select Rotarian...</option>
+				<?php foreach ($this->orgs as $org) { ?>
+					<optgroup label="<?php echo $org->name; ?>">
+					<?php $rotarians = $this->getRotarianArray($org->organizationId); ?>
+					<?php foreach($rotarians as $personId => $fullName) { ?>
+						<option value="<?php echo $personId; ?>"><?php echo $fullName?></option>
+					<?php } ?>
+					</optgroup>
+				<?php } ?>
+			</select>
+		</dd>
+	</dl>
+	<?php echo $this->formSubmit('', 'Next'); ?>
+	<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+</form>
+
+<p>NOTE: If you are not in the list, <a href="mailto:auction@metrotorontorotaryauction.com?subject=[Rotary Auction] Add me!">e-mail the auction staff</a> and they will add you ASAP!</p>

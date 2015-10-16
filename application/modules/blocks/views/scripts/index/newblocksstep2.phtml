@@ -1,0 +1,19 @@
+<form action="/blocks/index/newblocksprocess" method="post">
+	<input type="hidden" name="blockSections" value="<?php echo $this->sections; ?>" />
+	<dl>
+		<dt>How long, in minutes, would you like each block to be?</dt>
+		<dd><input type="text" name="blockLength" size="5" maxlength="3" /></dd>
+	</dl>
+<?php for ($i=0; $i < $this->sections; $i++){?>
+	<h4>Block Setup for Section <?php echo ($i + 1);?></h4>
+	<dl>
+		<dt>What date is this section for?</dt>
+		<dd><input type="text" name="blockDate<?php echo $i;?>" size="10" maxlength="10" value="yyyy-mm-dd" /></dd>
+		<dt>How many blocks do you want?</dt>
+		<dd><input type="text" name="blockNumber<?php echo $i;?>" size="5" maxlength="4" /></dd>
+		<dt>What time is the auction starting?</dt>
+		<dd><input type="text" value="hh" name="startHour<?php echo $i;?>" size="2" maxlength="2" />:<input type="text" value="mm" name="startMinute<?php echo $i;?>" size="2" maxlength="2" /></dd>
+	</dl>
+<?php } ?>
+	<input type="submit" value="Create Blocks" />
+</form>

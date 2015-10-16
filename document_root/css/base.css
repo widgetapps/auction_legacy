@@ -1,0 +1,129 @@
+@CHARSET "ISO-8859-1";
+
+@import url("/css/type.css");
+@import url("/css/grid.css");
+@import url("/css/widgets.css");
+
+a:link {
+	color: #057ba3;
+}
+
+a:visited {
+	color: #057ba3;
+}
+
+a:hover {
+	color: #ff0000;
+	text-decoration: underline;
+}
+
+td a:link {
+	text-decoration: none;
+}
+
+td a:visited {
+	text-decoration: none;
+}
+
+#header_print {
+	display: none;
+}
+
+table {
+	margin: 10px 0 15px 0;
+}
+
+thead td {
+	padding: 4px;
+	text-align: center;
+	font-weight: bold;
+}
+
+tbody {
+	border-top: 2px solid #000000;
+	border-bottom: 2px solid #000000;
+}
+
+thead tr:first-child td {
+	text-align: left;
+	border: none;
+}
+
+tbody td {
+	padding: 4px;
+}
+
+tbody tr.line1 {
+	background-color: #ffffff;
+}
+
+tbody tr.line2 {
+
+}
+
+#winner_info {
+	width: 400px;
+	float: left;
+}
+
+#card_info {
+}
+
+#bidLeftCol dl {
+	padding: 15px 0 15px 0;
+}
+
+#bidLeftCol dl dt {
+	width: 120px;
+	padding: 2px 2px 2px 0;
+}
+
+#bidLeftCol dl dd {
+	padding: 2px 2px 2px 0;
+}
+
+#content p {
+	padding: 8px 0 8px 0;
+}
+
+.currentBlock {
+	background-color: #6AFF6A;
+}
+
+.closedBlock {
+	background-color: #FF3333;
+}
+
+#invoice {
+	width: 700px;
+}
+
+#invoice_table {
+	padding-top: 20px;
+}
+
+#invoice table {
+	width: 675px;
+	border-width: 1px;
+	border-spacing: ;
+	border-style: outset;
+	border-color: gray;
+	border-collapse: separate;
+	background-color: white;
+}
+
+#invoice table td, #invoice table th {
+	border-width: 1px;
+	padding: 2px;
+	border-style: inset;
+	border-color: gray;
+	background-color: white;
+}
+
+#invoice_customer {
+	float: left;
+}
+
+#invoice_deets {
+	float: right;
+}
