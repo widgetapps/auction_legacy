@@ -389,6 +389,9 @@ class Items_ExportsController extends Auction_Controller_Action
 	        $where[] = $table->getAdapter()->quoteInto('auctionId = ?', $this->getCurrentAuctionId());
 	        $where[] = $table->getAdapter()->quoteInto('controlNumber > ?', 0);
 	        $where[] = $table->getAdapter()->quoteInto('blockNumber > ?', 0);
+			if ($this->_getParam('type') == 'feature') {
+				$where[] = $table->getAdapter()->quoteInto('featureItem > ?', 'y');
+			}
 	        $order = array('blockNumber', 'controlNumber');
 	        $items  = $table->fetchAll($where, $order);
 	        
@@ -412,14 +415,16 @@ class Items_ExportsController extends Auction_Controller_Action
 	            $page->setFont($font_b, 14);
                 if ($this->_getParam('type') == 'ops') {
                 	$page->drawText('Operations Item Listing', 220, 725);
-                } else {
+                } else if ($this->_getParam('type') == 'feature') {
+					$page->drawText('Feature Item Listing', 225, 725);
+				} else {
                 	$page->drawText('Public Item Listing', 235, 725);
                 }
 	            
                 $page->setFont($font_b, 12);
                 $page->drawText('BLCK', 29, 690);
                 //$page->drawText('ITEM #', 82, 690);
-                if ($this->_getParam('type') == 'ops') {
+                if ($this->_getParam('type') == 'ops' || $this->_getParam('type') == 'feature') {
                 	$page->drawText('CNTRL', 80, 690); // 131 old val
                 } else {
                 	$page->drawText('NMBR', 86, 690); // 136 old val
@@ -446,7 +451,7 @@ class Items_ExportsController extends Auction_Controller_Action
 	                    $page->drawText(($itemCount==1?$item->blockNumber:''), $block_x, $line_y);
 	                    $page->setFont($font, 12);
 	                    //$page->drawText($item->itemNumber, $itemNum_x, $line_y);
-		                if ($this->_getParam('type') == 'ops') {
+		                if ($this->_getParam('type') == 'ops' || $this->_getParam('type') == 'feature') {
 	                    	$page->setFont($font, 12);
 		                	$page->drawText($item->controlSource . $item->controlNumber, $date_x+5, $line_y);
 		                } else {
@@ -487,7 +492,9 @@ class Items_ExportsController extends Auction_Controller_Action
 	        
             if ($this->_getParam('type') == 'ops') {
                 $prefix = 'itemlist_';
-            } else {
+            } else if ($this->_getParam('type') == 'feature') {
+				$prefix = 'featurelist_';
+			} else {
                 $prefix = 'publiclist_';
             }
             
