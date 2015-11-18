@@ -23,7 +23,6 @@ $(document).ready(function() {
       
       if ( /[a-zA-Z]/.test(s) && s.toUpperCase() === s && !event.shiftKey ) { 
         alert("Caps Lock seems to on, please turn it off. Use proper case and punctuation when entering items.");
-        $("#itemName").val("");
       }
     });
     
@@ -31,7 +30,6 @@ $(document).ready(function() {
       var s = String.fromCharCode( event.keyCode || event.which );
       if ( /[a-zA-Z]/.test(s) &&  s.toUpperCase() === s && !event.shiftKey ) { 
         alert("Caps Lock seems to on, please turn it off. Use proper case and punctuation when entering items.");
-        $("#itemDescription").val("");
       }
     });
 });

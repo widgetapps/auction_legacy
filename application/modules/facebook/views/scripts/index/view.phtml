@@ -11,7 +11,7 @@
 		    <div>
 			    <?php echo ($this->item->donor_companyName==''?'':$this->item->donor_companyName); ?>
 			    <?php echo ($this->item->donor_firstName==''?'':'<br />' . $this->item->donor_firstName . ' ' . $this->item->donor_lastName); ?>
-			<?php if ($this->item->publishAddress == 'y') { ?>
+			<?php if ($this->item->publishAddress == 'y' && $this->item->donor_companyName != '') { ?>
 			    <?php echo ($this->item->donor_address1==''?'':'<br />' . $this->item->donor_address1); ?>
 			    <?php echo ($this->item->donor_city==''?'':'<br />' . $this->item->donor_city . ', ' . $this->item->donor_province); ?>
 			    <?php echo ($this->item->donor_phone==''?'':'<br />' . $this->formatPhoneNumber($this->item->donor_phone)); ?>
