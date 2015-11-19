@@ -139,18 +139,18 @@ class Pickups_IndexController extends Auction_Controller_Action
 //                     $table_ii->insert($data);
 //                 }
                 
-//                 // Add in Zeddy bear if there's a bell ringer
-//                 if ($bellRinger) {
-//                     $table_ii = new models_InvoiceItem();
-//                     $data = array(
-//                                 'invoiceId'  => $invoiceId,
-//                                 'itemId'     => 0,
-//                                 'itemNumber' => 0,
-//                                 'itemName'   => 'Free Bell Ringer',
-//                                 'winningBid' => 0
-//                             );
-//                     $table_ii->insert($data);
-//                 }
+                 // Add in  bell ringer
+                 if ($bellRinger) {
+                     $table_ii = new models_InvoiceItem();
+                     $data = array(
+                                 'invoiceId'  => $invoiceId,
+                                 'itemId'     => 0,
+                                 'itemNumber' => 0,
+                                 'itemName'   => 'Free Bell Ringer',
+                                 'winningBid' => 0
+                             );
+                     $table_ii->insert($data);
+                 }
 				
 				$this->_redirector->gotoUrl('/pickups/index/invoice/id/' . $invoiceId);
         	} else {
