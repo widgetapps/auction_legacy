@@ -112,7 +112,7 @@ class Pickups_IndexController extends Auction_Controller_Action
 								);
 						$table_ii->insert($data);
     
-                        if ($item->bid >= $item->itemValue) {
+                        if ($item->bid >=100 && $item->bid >= $item->itemValue) {
                             $bellRinger = true;
                         }
 					} else {
