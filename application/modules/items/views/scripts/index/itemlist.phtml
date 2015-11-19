@@ -1,26 +1,3 @@
-<script type="text/javascript">
-$(document).ready(function() {
-	/* do this later
-	$("div.edit_block_number > a").click(function(e) {
-		e.stopPropagation();
-		e.preventDefault();
-		var itemId = $(this).attr("href");
-		var blockNum = $(this).parent().children("span.block_number").text();
-		var content = $(this).parent().html();
-
-		console.log(itemId + ":" + blockNum + ":" + content);
-
-		// Put the select list of blocks in a var via PHP here
-		// Then display the select list, and select the current block ID in the list
-		// OnChange, save the new block number via AJAX call
-		// Display a spinner, when submit done, display the number & edit button
-		var formHtml = '<form><input type="text" id="blockField_' + itemId + '" /></form>';
-		$(this).parent().html(formHtml);
-	});
-	*/
-});
-</script>
-
 <h1>Item Listing</h1>
 
 <?php if (count($this->items) == 0){?>
@@ -29,10 +6,10 @@ $(document).ready(function() {
 <table id="itemList">
 	<thead>
 		<tr>
-			<td colspan="11"><a href="/items/index/newitemstep1">Add New Item</a></td>
+			<td colspan="10"><a href="/items/index/newitemstep1">Add New Item</a></td>
 		</tr>
 		<tr>
-			<td colspan="11" style="text-align: left">Item Count: <?php echo count($this->items); ?></td>
+			<td colspan="10" style="text-align: left">Item Count: <?php echo count($this->items); ?></td>
 		</tr>
 		<tr>
 			<td>Action</td>

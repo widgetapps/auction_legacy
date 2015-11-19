@@ -369,6 +369,30 @@ class Items_IndexController extends Auction_Controller_Action
     		$e->failed();
     	}
     }
+
+	public function featurelistAction()
+	{
+		try {
+			$this->authenticateAction('view');
+
+			$table = new models_vItemList();
+
+			$where = array();
+			$where[] = $table->getAdapter()->quoteInto('auctionId = ?', $this->getCurrentAuctionId());
+			$where[] = $table->getAdapter()->quoteInto('controlNumber > ?', 0);
+			$where[] = $table->getAdapter()->quoteInto('blockNumber > ?', 0);
+			$where[] = $table->getAdapter()->quoteInto('featureItem > ?', 'y');
+			$order = array('blockNumber', 'controlNumber');
+
+			$this->view->items  = $table->fetchAll($where, $order);
+			$this->view->userId = $this->auth->getIdentity()->userId;
+
+		} catch (Metis_Auth_Exception $e) {
+			$e->failed();
+		}
+
+
+	}
     
     public function editAction()
     {

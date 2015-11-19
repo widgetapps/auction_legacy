@@ -1,0 +1,36 @@
+<h1>Item Listing</h1>
+
+<?php if (count($this->items) == 0){?>
+    <p>No Items Found - <a href="/items/index/newitemstep1">Add New Item</a></p>
+<?php } else {
+    foreach ($this->items as $item){ ?>
+<table id="itemList">
+    <thead>
+        <tr>
+            <td><?php echo $item->controlSource . $item->controlNumber; ?></td>
+            <td><?php echo $item->name; ?></td>
+            <td>$<?php echo $item->fairRetailPrice; ?></td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: left">
+                Block # <?php echo $item->blockNumber; ?> (<?php echo $block->blockDate; ?> <?php echo $block->startTime; ?>)
+                Bin # <?php echo ($item->binNumber==0?'NA':$item->binNumber); ?>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="3"><?php echo $item->description; ?></td>
+        </tr>
+        <tr>
+            <td>Donor:</td>
+            <td colspan="2">
+                <?php echo ($item->donorCompany==''?'':$item->donorCompany . '<br />'); ?>
+                <?php echo ($item->donorFirstName==''?'':$item->donorFirstName . ' ' . $item->donorLastName . '<br />'); ?>
+                <?php echo ($item->donorWebsite==''?'':$item->donorWebsite . '<br />'); ?>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<?php }
+} ?>
