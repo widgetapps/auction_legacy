@@ -381,7 +381,7 @@ class Items_IndexController extends Auction_Controller_Action
 			$where[] = $table->getAdapter()->quoteInto('auctionId = ?', $this->getCurrentAuctionId());
 			$where[] = $table->getAdapter()->quoteInto('controlNumber > ?', 0);
 			$where[] = $table->getAdapter()->quoteInto('blockNumber > ?', 0);
-			$where[] = $table->getAdapter()->quoteInto('featureItem > ?', 'y');
+			$where[] = $table->getAdapter()->quoteInto('featureItem = ?', 'y');
 			$order = array('blockNumber', 'controlNumber');
 
 			$this->view->items  = $table->fetchAll($where, $order);
