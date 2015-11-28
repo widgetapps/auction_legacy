@@ -11,7 +11,7 @@
 				<div class="panel radius">
 					<h4>Item <?php echo $this->item->controlSource . $this->item->controlNumber; ?></h4>
 					<h4>Block <?php echo $this->item->blockNumber; ?></h4>
-					<h4><?php echo $this->item->blockDate; ?> - <?php echo $this->item->blockTime; ?></h4>
+                    <h4><?php echo date("M d",strtotime($this->item->blockDate))?> <?php echo date("g:ia", $this->item->blockDate . " " . $this->item->blockTime); ?></h4>
 					<h4>BIN #<?php echo $this->item->binNumber; ?></h4>
 				</div>
 				<div class="panel callout radius">
