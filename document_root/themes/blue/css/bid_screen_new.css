@@ -76,21 +76,21 @@ body {
     color: #00D936;
 }
 
-#board td:nth-child(1) {
+#board tbody td:nth-child(1) {
 	width: 110px;
     text-align: center;
 }
 
-#board td:nth-child(2) {
+#board tbody td:nth-child(2) {
     width: 1000px;
 }
 
-#board td:nth-child(3) {
+#board tbody td:nth-child(3) {
     width: 160px;
     text-align: center;
 }
 
-#board td:nth-child(4) {
+#board tbody td:nth-child(4) {
     width: 160px;
     text-align: center;
 }
