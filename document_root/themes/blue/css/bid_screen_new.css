@@ -1,0 +1,92 @@
+@CHARSET "UTF-8";
+
+body {
+	background: #1F61B7 url('/themes/blue/images/bg_bidBoard_new.jpg') no-repeat center center;
+}
+
+#container {
+	width: 1920px;
+	height:1080px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid #000;
+}
+
+
+/* Total dimensions: 1720x800 */
+#bid_board {
+    width: 1560px;
+    height:800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    background-color: #123599;
+    opacity: 0.9;
+    padding: 20px 80px 20px 80px;
+}
+
+#header h1 {
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 54px;
+	color: #FFF;
+	padding-top: 28px;
+	margin-left: 160px;
+}
+
+#header h2 {
+	font-family: Actor, sans-serif;
+    font-size: 40px;
+    color: #FFF;
+    padding-top: 25px;
+    margin-left: 225px;
+}
+
+#logo {
+	float: left;
+	width: 150px;
+	height: 150px;
+	background: transparent url('/themes/blue/images/logo_bid.png') no-repeat top left;
+}
+
+#board {
+	margin-top: 5px;
+	margin-left: 80px;
+}
+
+#board td {
+	font-family: Amaranth, sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+	padding: 8px;
+	height: 25px;
+	color: #FFF;
+	vertical-align: middle;
+}
+
+#board tbody td {
+    color: #FFD101;
+}
+
+#board tbody td.bell-ringer {
+    font-size: 55px;
+    color: #00D936;
+}
+
+#board td:nth-child(1) {
+	width: 110px;
+    text-align: center;
+}
+
+#board td:nth-child(2) {
+    width: 1000px;
+}
+
+#board td:nth-child(3) {
+    width: 160px;
+    text-align: center;
+}
+
+#board td:nth-child(4) {
+    width: 160px;
+    text-align: center;
+}

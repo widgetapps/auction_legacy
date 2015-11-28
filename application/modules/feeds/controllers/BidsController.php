@@ -78,6 +78,43 @@ class Feeds_BidsController extends Auction_Controller_Action
         $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
         $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
     }
+
+    public function screennewAction()
+    {
+        $this->_helper->layout->setLayout('bid_screen_new');
+
+        $auctionId = $this->getCurrentAuctionId();
+        if ($this->_getParam('id') > 0) {
+            $auctionId = $this->_getParam('id');
+        }
+
+        $blockInfo = $this->getBlockInfo($auctionId);
+        $blockEndInfo = $this->getNextBlockInfo($auctionId);
+
+        $this->view->items       = $this->getItemsForBid($auctionId);
+        $this->view->blockNumber = $blockInfo->number;
+        $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
+        $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
+
+    }
+
+    public function boardajaxnewAction()
+    {
+        $this->_helper->layout->setLayout('json');
+
+        $auctionId = $this->getCurrentAuctionId();
+        if ($this->_getParam('id') > 0) {
+            $auctionId = $this->_getParam('id');
+        }
+
+        $blockInfo = $this->getBlockInfo($auctionId);
+        $blockEndInfo = $this->getNextBlockInfo($auctionId);
+
+        $this->view->items       = $this->getItemsForBid($auctionId);
+        $this->view->blockNumber = $blockInfo->number;
+        $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
+        $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
+    }
     
     public function webboardAction() {
 	    $this->_helper->layout->setLayout('webboard');

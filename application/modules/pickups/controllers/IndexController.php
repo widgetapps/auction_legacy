@@ -249,16 +249,19 @@ class Pickups_IndexController extends Auction_Controller_Action
 			foreach ($iitems as $iitem) {
 	        	$table_winner = new models_vItemWinner();
 				$winner = $table_winner->find($iitem->itemId)->current();
-				
-        		$table_bid = new models_Bid();
-        		$bid = $table_bid->find($winner->bidId)->current();
-        		$bid->paid = 'y';
-        		$bid->save();
-        		
-        		$table_item = new models_Item();
-        		$item = $table_item->find($winner->itemId)->current();
-        		$item->pickedUp = 'y';
-        		$item->save();
+
+				// Flagged paid & picked up if not a bell ringer
+				if ($winner->bidId > 0) {
+					$table_bid = new models_Bid();
+					$bid = $table_bid->find($winner->bidId)->current();
+					$bid->paid = 'y';
+					$bid->save();
+
+					$table_item = new models_Item();
+					$item = $table_item->find($winner->itemId)->current();
+					$item->pickedUp = 'y';
+					$item->save();
+				}
 			}
 			
 			$this->view->person       = $person;
