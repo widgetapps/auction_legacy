@@ -66,7 +66,7 @@ if (in_array($this->role, array('admin', 'super'))){
 }
 ?>
 			<dt><label for="itemValue">Fair Retail Value</label></dt>
-			<dd>$<?php echo $this->formText('itemValue', '', array('id' => 'itemValue', 'size' => 10, 'onchange' => 'checkValue()')); ?></dd>
+			<dd>$<?php echo $this->formText('itemValue', '0', array('id' => 'itemValue', 'size' => 10, 'onchange' => 'checkValue()')); ?></dd>
 			<dt><label for="itemPieces">Number of Pieces</label></dt>
 			<dd><?php echo $this->formText('itemPieces', '1', array('id' => 'itemPieces', 'size' => 3)); ?></dd>
             <dt><label for="">Minimum Bid</label></dt>
