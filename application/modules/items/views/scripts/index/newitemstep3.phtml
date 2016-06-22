@@ -66,7 +66,7 @@ if (in_array($this->role, array('admin', 'super'))){
 }
 ?>
 			<dt><label for="itemValue">Fair Retail Value</label></dt>
-			<dd>$<?php echo $this->formText('itemValue', '', array('id' => 'itemValue', 'size' => 10)); ?></dd>
+			<dd>$<?php echo $this->formText('itemValue', '', array('id' => 'itemValue', 'size' => 10, 'onchange' => 'checkValue()')); ?></dd>
 			<dt><label for="itemPieces">Number of Pieces</label></dt>
 			<dd><?php echo $this->formText('itemPieces', '1', array('id' => 'itemPieces', 'size' => 3)); ?></dd>
             <dt><label for="">Minimum Bid</label></dt>
@@ -108,8 +108,31 @@ foreach ($this->categories as $categoryId => $label) {
 				</tfoot>
 			</tbody>
 		</table>
-		<?php echo $this->formSubmit('', 'Add Item'); ?>
+		<?php echo $this->formSubmit('', 'Add Item', array('onsubmit' => 'return checkValue()')); ?>
 		<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
 	</form>
 </div>
+<script>
+	function checkValue() {
+        var field = document.getElementById('itemValue');
+        var value = parseInt(field.value);
+
+        if(value < 50) {
+            alert('The item MUST have a value of $50 or more. At least $100 is recommended.');
+            field.value = '';
+            field.focus();
+            return false;
+        }
+
+        if (value < 100) {
+            if (prompt('The recommended minimum value for an item is $100. Are you sure you want to use $' + value + '?')) {
+                return true;
+            } else {
+                field.value = '';
+                field.focus();
+                return false;
+            }
+        }
+    }
+</script>
 
