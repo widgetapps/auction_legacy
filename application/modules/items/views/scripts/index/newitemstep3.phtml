@@ -117,7 +117,7 @@ foreach ($this->categories as $categoryId => $label) {
         var field = document.getElementById('itemValue');
         var value = parseInt(field.value);
 
-        if(value == NaN || value < 50) {
+        if(value == '' || value == NaN || value < 50) {
             alert('The item MUST have a value of $50 or more. At least $100 is recommended.');
             field.value = '';
             field.focus();
