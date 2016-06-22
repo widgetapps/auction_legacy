@@ -36,7 +36,7 @@ $(document).ready(function() {
 </script>
 
 <div id="itemInfo">
-	<form action="/items/index/newitemprocess" method="post">
+	<form action="/items/index/newitemprocess" method="post" onsubmit="return checkValue()")>
 		<?php echo $this->formHidden('donorId', $this->donor->personId); ?>
 		<?php echo $this->formHidden('rotarianId', $this->rotarian->personId); ?>
 		<dl>
@@ -108,7 +108,7 @@ foreach ($this->categories as $categoryId => $label) {
 				</tfoot>
 			</tbody>
 		</table>
-		<?php echo $this->formSubmit('', 'Add Item', array('onsubmit' => 'return checkValue()')); ?>
+		<?php echo $this->formSubmit('', 'Add Item'); ?>
 		<?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
 	</form>
 </div>
