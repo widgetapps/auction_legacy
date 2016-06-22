@@ -125,7 +125,7 @@ foreach ($this->categories as $categoryId => $label) {
         }
 
         if (value < 100) {
-            if (prompt('The recommended minimum value for an item is $100. Are you sure you want to use $' + value + '?')) {
+            if (confirm('The recommended minimum value for an item is $100. Are you sure you want to use $' + value + '?') == true) {
                 return true;
             } else {
                 field.value = '';
