@@ -41,8 +41,10 @@
 		<td><?php echo ($this->item->fairRetailPrice==''?'NA':'$' . $this->item->fairRetailPrice); ?></td>
 	</tr>
 </table>
-<div>
-<fb:like href="http://apps.facebook.com/rotaryauction/index/view/item/<?php echo $this->item->itemId; ?>"></fb:like>
-</div>
+
+	<div class="fb-share-button"
+				 data-href="http://apps.facebook.com/rotaryauction/index/view/item/<?php echo $this->item->itemId; ?>"
+				 data-layout="button_count">
+	</div>
 <a href="/facebook">Back to List</a>
 </div>

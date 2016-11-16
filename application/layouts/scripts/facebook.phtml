@@ -34,17 +34,15 @@
 	
 	</script>
 </head>
-<body id="fb_canvas_body">
+<!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
-<script type="text/javascript" src="https://connect.facebook.net/en_US/all.js"></script>
-<script type="text/javascript">
-       FB.init({
-         appId  : '134466619926785',
-         status : true, // check login status
-         cookie : true, // enable cookies to allow the server to access the session
-         xfbml  : true  // parse XFBML
-       });
-</script>
+<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 
 <div id="fba_itemlist">
 	<div id="fbap_canvas_header">
