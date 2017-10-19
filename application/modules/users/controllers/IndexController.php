@@ -169,13 +169,13 @@ class Users_IndexController extends Auction_Controller_Action
 		$mail->setBodyHtml($this->getWelcomeEmail());
 		$mail->setFrom('admin@metrotorontorotaryauction.com', 'admin@metrotorontorotaryauction.com');
 		$mail->addTo($to, $to);
-		$mail->setSubject('[Rotary Auction] Welcome to the MTRA System!');
+		$mail->setSubject('[Rotary Auction] Welcome to the Rotary Online Auction System!');
 		
 		$file_entry = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'pdf' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'MTRA_Item_Entry_Procedures.pdf';
-    	$mail->createAttachment(file_get_contents($file_entry), 'application/pdf', Zend_Mime::DISPOSITION_INLINE , Zend_Mime::ENCODING_BASE64, $this->view->getActiveAuctionDate(1) . ' MTRA Item Entry Procedures.pdf');
-    	
-    	$file_warehouse = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'pdf' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'MTRA_Warehouse_Checkin_Procedures.pdf';
-    	$mail->createAttachment(file_get_contents($file_warehouse), 'application/pdf', Zend_Mime::DISPOSITION_INLINE , Zend_Mime::ENCODING_BASE64, $this->view->getActiveAuctionDate(1) . ' MTRA Warehouse Check-in Procedures.pdf');
+    	$mail->createAttachment(file_get_contents($file_entry), 'application/pdf', Zend_Mime::DISPOSITION_INLINE , Zend_Mime::ENCODING_BASE64, $this->view->getActiveAuctionDate(1) . ' Auction Item Entry Procedures.pdf');
+
+    	//$file_warehouse = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'pdf' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'MTRA_Warehouse_Checkin_Procedures.pdf';
+    	//$mail->createAttachment(file_get_contents($file_warehouse), 'application/pdf', Zend_Mime::DISPOSITION_INLINE , Zend_Mime::ENCODING_BASE64, $this->view->getActiveAuctionDate(1) . ' MTRA Warehouse Check-in Procedures.pdf');
     	 
 		try {
 		    $mail->send();
