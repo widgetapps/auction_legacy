@@ -621,7 +621,7 @@ class Items_IndexController extends Auction_Controller_Action
 
         $ebay = '';
         if ($rows->count() == 0) {
-            $ebay->ebayItemId = 0;
+            $ebay->itemEbayId = 0;
             $ebay->itemId = $item->itemId;
             $ebay->upc = '';
             $ebay->weight = '';
