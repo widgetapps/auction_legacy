@@ -607,17 +607,44 @@ class Items_IndexController extends Auction_Controller_Action
 
     public function ebayAction()
     {
+        require_once('models/Item.php');
+        require_once('models/ItemEbay.php');
+
+        $table_item = new models_Item();
+        $item = $table_item->find($this->_getParam('id'))->current();
+
+        $table_itemEbay = new models_ItemEbay();
+        $select = $table_itemEbay->select();
+        $select->from($table_itemEbay)
+            ->where('itemId = ?', $item->itemId);
+        $rows = $table_itemEbay->fetchAll($select);
+
+        $ebay = '';
+        if ($rows->count() == 0) {
+            $ebay->ebayItemId = 0;
+            $ebay->itemId = $item->itemId;
+            $ebay->upc = '';
+            $ebay->weight = '';
+            $ebay->height = '';
+            $ebay->width = '';
+            $ebay->length = '';
+            $ebay->condition = '';
+        } else {
+            $ebay = $rows->current();
+        }
+
         try {
             $this->authenticateAction('edit');
-
-            require_once('models/Item.php');
-            require_once('models/ItemEbay.php');
-            $table_item = new models_Item();
-            $table_itemEbay = new models_ItemEbay();
-
         } catch (Metis_Auth_Exception $e) {
-            $e->failed();
+            if ($item->userId != $this->auth->getIdentity()->userId) {
+                $e->failed();
+                return;
+            }
         }
+
+        $this->view->userId = $this->auth->getIdentity()->userId;
+        $this->view->item   = $item;
+        $this->view->ebay   = $ebay;
     }
 
     public function ebayprocessAction()

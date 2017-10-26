@@ -1,1 +1,24 @@
-<p>This is the ebay stuff</p>
+<h1>Editing eBay details for item <em><?php echo $this->item->name; ?></em></h1>
+
+
+<div id="itemInfo">
+    <form action="/items/index/ebayprocess" method="post">
+        <?php echo $this->formHidden('ebayItemId', $this->ebay->ebayItemId); ?>
+        <dl>
+            <dt><label for="upc">UPC</label></dt>
+            <dd><?php echo $this->formText('upc', $this->ebay->upc, array('id' => 'upc', 'size' => 40)); ?></dd>
+            <dt><label for="weight">Weight</label></dt>
+            <dd><?php echo $this->formText('weight', $this->ebay->weight, array('id' => 'weight', 'size' => 40)); ?></dd>
+            <dt><label for="width">Width</label></dt>
+            <dd><?php echo $this->formText('width', $this->ebay->width, array('id' => 'width', 'size' => 40)); ?></dd>
+            <dt><label for="height">Height</label></dt>
+            <dd><?php echo $this->formText('height', $this->ebay->height, array('id' => 'height', 'size' => 40)); ?></dd>
+            <dt><label for="length">Length</label></dt>
+            <dd><?php echo $this->formText('length', $this->ebay->length, array('id' => 'length', 'size' => 40)); ?></dd>
+            <dt><label for="condition">Condition</label></dt>
+            <dd><?php echo $this->formSelect('condition', $this->ebay->condition, null, $this->getConditionArray()); ?></dd>
+
+        <?php echo $this->formSubmit('', 'Save Changes'); ?>
+        <?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
+    </form>
+</div>
