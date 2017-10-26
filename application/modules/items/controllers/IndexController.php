@@ -649,7 +649,33 @@ class Items_IndexController extends Auction_Controller_Action
 
     public function ebayprocessAction()
     {
+        try {
+            $this->authenticateAction('edit');
 
+            require_once('models/ItemEbay.php');
+            $table = new models_ItemEbay();
+
+            $data = array(
+                'itemId'    => $this->_getParam('itemId'),
+                'upc'       => $this->_getParam('upc'),
+                'weight'    => $this->_getParam('weight'),
+                'width'     => $this->_getParam('width'),
+                'height'    => $this->_getParam('height'),
+                'length'    => $this->_getParam('length'),
+                'condition' => $this->_getParam('condition')
+            );
+
+            if ($this->_getParam('ebayItemId') == 0 ) {
+                $table->insert($data);
+            } else {
+                $where = $table->getAdapter()->quoteInto('ebayItemId = ?', $this->_getParam('ebayItemId'));
+                $table->update($data, $where);
+            }
+
+            $this->_redirector->gotoUrl('/items/index/itemlist#item_' . $this->_getParam('itemId'));
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+        }
     }
     
     private function addCategory($itemId, $categoryId)
