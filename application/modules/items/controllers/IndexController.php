@@ -604,6 +604,26 @@ class Items_IndexController extends Auction_Controller_Action
     		$e->failed();
     	}
     }
+
+    public function ebayAction()
+    {
+        try {
+            $this->authenticateAction('edit');
+
+            require_once('models/Item.php');
+            require_once('models/ItemEbay.php');
+            $table_item = new models_Item();
+            $table_itemEbay = new models_ItemEbay();
+
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+        }
+    }
+
+    public function ebayprocessAction()
+    {
+
+    }
     
     private function addCategory($itemId, $categoryId)
     {

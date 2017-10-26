@@ -44,6 +44,7 @@ foreach ($this->items as $item){
 <?php if (in_array($this->role, array('approver', 'admin', 'super')) || $this->userId == $item->userId) { ?>
 				<a href="/items/index/edit/id/<?php echo $item->itemId;?>" title="Edit Item"><img src="/images/icons/action_edit.gif" width="14" height="14" border="0" /></a>
 				<a href="/items/index/categories/id/<?php echo $item->itemId;?>" title="Edit Categories"><img src="/images/icons/action_add.gif" width="14" height="14" border="0" /></a>
+                <a href="/items/index/ebay/id/<?php echo $item->itemId;?>" title="Edit eBay Data"><img src="/images/icons/action_ebay.png" width="14" height="14" border="0" /></a>
 <?php } ?>
 				<a href="/items/index/newitemdone/itemId/<?php echo $item->itemId;?>" title="Print Item Sheet"><img src="/images/icons/action_print.gif" width="14" height="14" border="0" /></a>
 			</td>
