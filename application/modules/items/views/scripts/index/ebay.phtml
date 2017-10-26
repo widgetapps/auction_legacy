@@ -3,7 +3,7 @@
 
 <div id="itemInfo">
     <form action="/items/index/ebayprocess" method="post">
-        <?php echo $this->formHidden('ebayItemId', $this->ebay->ebayItemId); ?>
+        <?php echo $this->formHidden('itemEbayId', $this->ebay->itemEbayId); ?>
         <?php echo $this->formHidden('itemId', $this->item->itemId); ?>
         <dl>
             <dt><label for="upc">UPC</label></dt>

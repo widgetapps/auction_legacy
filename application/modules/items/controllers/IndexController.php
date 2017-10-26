@@ -665,10 +665,10 @@ class Items_IndexController extends Auction_Controller_Action
                 'condition' => $this->_getParam('condition')
             );
 
-            if ($this->_getParam('ebayItemId') == 0 ) {
+            if ($this->_getParam('itemEbayId') == 0 ) {
                 $table->insert($data);
             } else {
-                $where = $table->getAdapter()->quoteInto('ebayItemId = ?', $this->_getParam('ebayItemId'));
+                $where = $table->getAdapter()->quoteInto('itemEbayId = ?', $this->_getParam('itemEbayId'));
                 $table->update($data, $where);
             }
 
