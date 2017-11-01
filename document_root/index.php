@@ -10,11 +10,6 @@
 */
 
 
-if (strpos($_SERVER['REQUEST_URI'], '/feeds') === false && (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on')) {
-	header("HTTP/1.1 301 Moved Permanently");
-	header('Location: https://system.metrotorontorotaryauction.com' . $_SERVER['REQUEST_URI']);
-}
-
 define('APPLICATION_PATH', $_SERVER['APPLICATION_PATH']);
 define('APPLICATION_ENV', $_SERVER['APPLICATION_ENV']);
 define('METIS_PATH', $_SERVER['METIS_PATH']);

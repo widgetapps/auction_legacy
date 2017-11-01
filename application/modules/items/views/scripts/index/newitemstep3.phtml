@@ -117,15 +117,15 @@ foreach ($this->categories as $categoryId => $label) {
         var field = document.getElementById('itemValue');
         var value = parseInt(field.value);
 
-        if(field.value == '' || value == NaN || value < 50) {
-            alert('The item MUST have a value of $50 or more. At least $100 is recommended.');
+        if(field.value === '' || value == NaN) {
+            alert('The item is missing a value.');
             field.value = '';
             field.focus();
             return false;
         }
 
         if (value < 100) {
-            if (confirm('The recommended minimum value for an item is $100. Are you sure you want to use $' + value + '?') == true) {
+            if (confirm('The recommended minimum value for an item is $100. Are you sure you want to use $' + value + '?') === true) {
                 return true;
             } else {
                 field.value = '';

@@ -604,6 +604,79 @@ class Items_IndexController extends Auction_Controller_Action
     		$e->failed();
     	}
     }
+
+    public function ebayAction()
+    {
+        require_once('models/Item.php');
+        require_once('models/ItemEbay.php');
+
+        $table_item = new models_Item();
+        $item = $table_item->find($this->_getParam('id'))->current();
+
+        $table_itemEbay = new models_ItemEbay();
+        $select = $table_itemEbay->select();
+        $select->from($table_itemEbay)
+            ->where('itemId = ?', $item->itemId);
+        $rows = $table_itemEbay->fetchAll($select);
+
+        $ebay = '';
+        if ($rows->count() == 0) {
+            $ebay->itemEbayId = 0;
+            $ebay->itemId = $item->itemId;
+            $ebay->upc = '';
+            $ebay->weight = '';
+            $ebay->height = '';
+            $ebay->width = '';
+            $ebay->length = '';
+            $ebay->condition = '';
+        } else {
+            $ebay = $rows->current();
+        }
+
+        try {
+            $this->authenticateAction('edit');
+        } catch (Metis_Auth_Exception $e) {
+            if ($item->userId != $this->auth->getIdentity()->userId) {
+                $e->failed();
+                return;
+            }
+        }
+
+        $this->view->userId = $this->auth->getIdentity()->userId;
+        $this->view->item   = $item;
+        $this->view->ebay   = $ebay;
+    }
+
+    public function ebayprocessAction()
+    {
+        try {
+            $this->authenticateAction('edit');
+
+            require_once('models/ItemEbay.php');
+            $table = new models_ItemEbay();
+
+            $data = array(
+                'itemId'    => $this->_getParam('itemId'),
+                'upc'       => $this->_getParam('upc'),
+                'weight'    => $this->_getParam('weight'),
+                'width'     => $this->_getParam('width'),
+                'height'    => $this->_getParam('height'),
+                'length'    => $this->_getParam('length'),
+                'condition' => $this->_getParam('condition')
+            );
+
+            if ($this->_getParam('itemEbayId') == 0 ) {
+                $table->insert($data);
+            } else {
+                $where = $table->getAdapter()->quoteInto('itemEbayId = ?', $this->_getParam('itemEbayId'));
+                $table->update($data, $where);
+            }
+
+            $this->_redirector->gotoUrl('/items/index/itemlist#item_' . $this->_getParam('itemId'));
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+        }
+    }
     
     private function addCategory($itemId, $categoryId)
     {
