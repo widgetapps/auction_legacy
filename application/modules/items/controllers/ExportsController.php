@@ -43,7 +43,7 @@ class Items_ExportsController extends Auction_Controller_Action
             fputcsv($fp, array(
                 '*Action(SiteID=Canada|Country=CA|Currency=CAD|Version=941)',
                 '*ProductName',
-                '*Category'.
+                '*Category',
                 '*Title',
                 '*Description',
                 '*ConditionID',
