@@ -98,7 +98,7 @@ class Items_ExportsController extends Auction_Controller_Action
                     $item->fairRetailPrice / 2,
                     7,
                     'Calculated',
-                    'CA_ExpressShipping',
+                    'UPSGround',
                     10,
                     'M1T 3N3',
                     1,
