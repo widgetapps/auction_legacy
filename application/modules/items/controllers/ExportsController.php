@@ -82,10 +82,10 @@ class Items_ExportsController extends Auction_Controller_Action
 
                 $row = array(
                     'AddProduct',
-                    substr($item->name, 0, 55),
+                    '"' . substr($item->name, 0, 55). '"',
                     88433,
-                    substr($item->name, 0, 80),
-                    nl2br($item->description),
+                    '"' . substr($item->name, 0, 80) . '"',
+                    '"' . nl2br($item->description) . '"',
                     1000,
                     1,
                     'Auction',
