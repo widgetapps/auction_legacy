@@ -96,7 +96,7 @@ class Items_ExportsController extends Auction_Controller_Action
                     1,
                     'paypal@rotaryonline.auction',
                     'ReturnsNotAccepted',
-                    $block->startDate . ' 20:00:00',
+                    $block->blockDate . ' 20:00:00',
                     $item->length,
                     $item->width,
                     $item->height,
