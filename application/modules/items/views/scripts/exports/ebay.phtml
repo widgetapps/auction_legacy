@@ -1,0 +1,16 @@
+<h1>Select the block you'd like to export:</h1>
+
+<form action="/items/export/ebayProcess" method="post">
+    <dl>
+        <dt>Block Number</dt>
+        <dd><?php echo $this->formSelect('blockId', $this->item->blockId, null, $this->blockArray);?></dd>
+    </dl>
+    <?php echo $this->formSubmit('', 'Save Changes'); ?>
+    <?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/exports"')); ?>
+</form>
+
+<script>
+    $(document).ready(function() {
+        $("#blockId").focus();
+    });
+</script>

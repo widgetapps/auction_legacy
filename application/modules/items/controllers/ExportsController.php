@@ -12,6 +12,19 @@ class Items_ExportsController extends Auction_Controller_Action
         	$e->failed();
         }
     }
+
+    public function ebayAction()
+    {
+        try {
+            $this->authenticateAction('view');
+
+            $this->view->blockArray = $this->getBlockArray();
+
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+            return;
+        }
+    }
     
     public function inventoryAction()
     {
@@ -755,6 +768,21 @@ class Items_ExportsController extends Auction_Controller_Action
     public function noRouteAction()
     {
         $this->_redirect('/');
+    }
+
+    private function getBlockArray()
+    {
+        require_once('models/Block.php');
+        $table = new models_Block();
+        $where = $table->getAdapter()->quoteInto('auctionId = ?', $this->getCurrentAuctionId());
+        $blocks  = $table->fetchAll($where, 'number');
+
+        $blockArray = array();
+        foreach ($blocks as $block){
+            $blockArray[$block->blockId] = $block->number;
+        }
+
+        return $blockArray;
     }
     
     private function getPdfPath()
