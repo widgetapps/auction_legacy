@@ -25,6 +25,98 @@ class Items_ExportsController extends Auction_Controller_Action
             return;
         }
     }
+
+    public function ebayprocessAction()
+    {
+        try {
+            $this->authenticateAction('view');
+
+            require_once('models/Block.php');
+            $tBlock = new models_Block();
+            $block = $tBlock->find($this->_getParam('blockId'))->current();
+
+            $filename = 'ebayExport_' . $this->_getParam('blockId') . '.csv';
+
+            $savePath = $this->getExportPath() . DIRECTORY_SEPARATOR . $filename;
+            $fp = fopen($savePath, 'w');
+
+            fputcsv($fp, array(
+                '*Action(SiteID=Canada|Country=CA|Currency=CAD|Version=941)',
+                '*ProductName',
+                '*Category'.
+                '*Title',
+                '*Description',
+                '*ConditionID',
+                '*Quantity',
+                '*Format',
+                '*StartPrice',
+                '*Duration',
+                'ImmediatePayRequired',
+                '*Location',
+                'PayPalAccepted',
+                'PayPalEmailAddress',
+                '*ReturnsAcceptedOption',
+                'ScheduleTime',
+                'PackageLength',
+                'PackageWidth',
+                'PackageDepth',
+                'WeightMajor',
+                'WeightMinor',
+                'WeightUnit',
+                'Product:UPC'
+            ));
+
+            $table = new models_vItemList();
+
+            $select = $table->select();
+
+            $select->where('blockId = ?', $this->_getParam('blockId'))
+                ->order('controlNumber');
+
+            $items  = $table->fetchAll($select);
+
+            foreach ($items as $item) {
+
+                $weight_lb = floor($item->weight);
+                $weight_oz = ($item->weight * 16) % 16;
+
+                $row = array(
+                    'AddProduct',
+                    substr($item->name, 0, 55),
+                    88433,
+                    substr($item->name, 0, 80),
+                    nl2br($item->description),
+                    1000,
+                    1,
+                    'Auction',
+                    $item->fairRetailPrice / 2,
+                    7,
+                    1,
+                    'Ontario Canada',
+                    1,
+                    'paypal@rotaryonline.auction',
+                    'ReturnsNotAccepted',
+                    $block->startDate . ' 20:00:00',
+                    $item->length,
+                    $item->width,
+                    $item->height,
+                    $weight_lb,
+                    $weight_oz,
+                    'lb',
+                    $item->upc
+                );
+
+                fputcsv($fp, $row);
+            }
+
+            fclose($fp);
+
+            $this->_redirector->gotoUrl('/exports/' . $filename);
+
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+        }
+    }
     
     public function inventoryAction()
     {
