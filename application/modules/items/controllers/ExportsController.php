@@ -47,10 +47,14 @@ class Items_ExportsController extends Auction_Controller_Action
                 '*Title',
                 '*Description',
                 '*ConditionID',
+                '*DispatchTimeMax',
                 '*Quantity',
                 '*Format',
                 '*StartPrice',
                 '*Duration',
+                '*ShippingType',
+                'ShippingService-1:Option',
+                'OriginatingPostalCode',
                 'ImmediatePayRequired',
                 '*Location',
                 'PayPalAccepted',
@@ -63,7 +67,7 @@ class Items_ExportsController extends Auction_Controller_Action
                 'WeightMajor',
                 'WeightMinor',
                 'WeightUnit',
-                'Product:UPC'
+                'PicURL'
             ), ",");
 
             $table = new models_vItemList();
@@ -87,6 +91,10 @@ class Items_ExportsController extends Auction_Controller_Action
                     str_replace(array("\r", "\n"), "", substr($item->name, 0, 80)),
                     nl2br(str_replace(array("\r", "\n"), "", $item->description)),
                     1000,
+                    5,
+                    'Calculated',
+                    'CA_ExpressShipping|CA_UPSExpressCanada ',
+                    'M1T 3N3',
                     1,
                     'Auction',
                     $item->fairRetailPrice / 2,
@@ -103,7 +111,7 @@ class Items_ExportsController extends Auction_Controller_Action
                     $weight_lb,
                     $weight_oz,
                     'lb',
-                    $item->upc
+                    'http://rotaryonline.auction/img/rotary-auction-header.jpg'
                 );
 
                 fputcsv($fp, $row, ",");
