@@ -5,7 +5,7 @@
         <dt>Block Number</dt>
         <dd><?php echo $this->formSelect('blockId', $this->item->blockId, null, $this->blockArray);?></dd>
     </dl>
-    <?php echo $this->formSubmit('', 'Save Changes'); ?>
+    <?php echo $this->formSubmit('', 'Create Export'); ?>
     <?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/exports"')); ?>
 </form>
 
