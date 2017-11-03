@@ -64,7 +64,7 @@ class Items_ExportsController extends Auction_Controller_Action
                 'WeightMinor',
                 'WeightUnit',
                 'Product:UPC'
-            ));
+            ), "\t");
 
             $table = new models_vItemList();
 
@@ -106,7 +106,7 @@ class Items_ExportsController extends Auction_Controller_Action
                     $item->upc
                 );
 
-                fputcsv($fp, $row);
+                fputcsv($fp, $row, "\t");
             }
 
             fclose($fp);
