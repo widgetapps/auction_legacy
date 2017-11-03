@@ -81,7 +81,7 @@ class Items_ExportsController extends Auction_Controller_Action
                 $weight_oz = ($item->weight * 16) % 16;
 
                 $row = array(
-                    'AddProduct',
+                    'AddVerify',
                     str_replace(array("\r", "\n"), "", substr($item->name, 0, 55)),
                     88433,
                     str_replace(array("\r", "\n"), "", substr($item->name, 0, 80)),
