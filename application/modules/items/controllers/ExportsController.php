@@ -108,8 +108,8 @@ class Items_ExportsController extends Auction_Controller_Action
                     $item->length > 0 ? $item->length : 1,
                     $item->width > 0 ? $item->width : 1,
                     $item->height > 0 ? $item->height : 1,
-                    $weight_lb,
-                    $weight_oz,
+                    $weight_lb > 0 ? $weight_lb : 1000,
+                    $weight_oz > 0 ? $weight_oz : 1000,
                     'lb',
                     'http://rotaryonline.auction/img/rotary-auction-header.jpg'
                 );
