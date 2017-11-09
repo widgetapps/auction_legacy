@@ -9,9 +9,9 @@
             <dt><label for="upc">UPC</label></dt>
             <dd><?php echo $this->formText('upc', $this->ebay->upc, array('id' => 'upc', 'size' => 40)); ?></dd>
             <dt><label for="weight">Weight (kg)</label></dt>
-            <dd><?php echo $this->formText('weight', $this->ebay->weight, array('id' => 'weight', 'size' => 40)); ?></dd>
+            <dd><?php echo $this->formText('weight', $this->ebay->weight, array('id' => 'weight', 'size' => 5, 'maxlength' => 6)); ?></dd>
             <dt><label for="boxSize">Box Size</label></dt>
-            <dd><?php echo $this->formText('boxSize', $this->ebay->boxSize, array('id' => 'boxSize', 'size' => 5, 'maxlength' => 2)); ?></dd>
+            <dd><?php echo $this->formText('boxSize', $this->ebay->boxSize, array('id' => 'boxSize', 'size' => 5, 'maxlength' => 3)); ?></dd>
             <dt><label for="width">Width (cm)</label></dt>
             <dd><?php echo $this->formText('width', $this->ebay->width, array('id' => 'width', 'size' => 5, 'maxlength' => 3)); ?></dd>
             <dt><label for="height">Height (cm)</label></dt>
