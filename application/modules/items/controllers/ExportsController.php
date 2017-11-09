@@ -90,7 +90,7 @@ class Items_ExportsController extends Auction_Controller_Action
                     str_replace(array("\r", "\n"), "", substr($item->name, 0, 55)),
                     88433,
                     str_replace(array("\r", "\n"), "", substr($item->name, 0, 80)),
-                    str_replace(array("\r", "\n"), "", nl2br($item->description)) . '<hr />' . str_replace(array("\r", "\n"), "", nl2br($this->rotaryBlurb)),
+                    str_replace(array("\r", "\n"), "", nl2br($item->description)) . '<hr />' . str_replace(array("\r", "\n"), "", nl2br($this->_getParam('rotaryBlurb'))),
                     1000,
                     5,
                     1,
