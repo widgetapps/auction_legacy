@@ -4,6 +4,8 @@
     <dl>
         <dt>Block Number</dt>
         <dd><?php echo $this->formSelect('blockId', $this->item->blockId, null, $this->blockArray);?></dd>
+        <dt><label for="rotaryBlurb">Rotary Blurb</label></dt>
+        <dd><?php echo $this->formTextarea('rotaryBlurb', $this->rotaryBlurb, array('id' => 'rotaryBlurb', 'rows' => '10')); ?></dd>
     </dl>
     <?php echo $this->formSubmit('', 'Create Export'); ?>
     <?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/exports"')); ?>

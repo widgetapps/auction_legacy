@@ -19,6 +19,7 @@ class Items_ExportsController extends Auction_Controller_Action
             $this->authenticateAction('view');
 
             $this->view->blockArray = $this->getBlockArray();
+            $this->rotaryBlurb = 'The Toronto Rotary Auction group on eBay is comprised of volunteers from 6 Rotary Clubs: Toronto Humber, Parkdale-High Park, East York, Skyline, Scarborough North and Scarborough Twilight. All of the items that we offer on eBay are donated to us for our fundraising efforts. Your purchase will help us to continue to work on community programs locally in Toronto, across Canada and Internationally.\n\nWe each support programs in these main areas of focus:\n\n- Peace and conflict prevention/resolution;\n- Disease prevention and treatment;\n- Water and sanitation;\n- Maternal and child health;\n- Basic education and literacy;\n- Economic and community development.';
 
         } catch (Metis_Auth_Exception $e) {
             $e->failed();
@@ -67,7 +68,8 @@ class Items_ExportsController extends Auction_Controller_Action
                 'WeightMajor',
                 'WeightMinor',
                 'WeightUnit',
-                'PicURL'
+                'PicURL',
+                'CustomLabel'
             ), ",");
 
             $table = new models_vItemList();
@@ -80,16 +82,15 @@ class Items_ExportsController extends Auction_Controller_Action
             $items  = $table->fetchAll($select);
 
             foreach ($items as $item) {
-
-                $weight_lb = floor($item->weight);
-                $weight_oz = ($item->weight * 16) % 16;
+                $weight_kg = floor($item->weight);
+                $weight_minor = ($item->weight - $weight_kg) * 100;
 
                 $row = array(
                     'Add',
                     str_replace(array("\r", "\n"), "", substr($item->name, 0, 55)),
                     88433,
                     str_replace(array("\r", "\n"), "", substr($item->name, 0, 80)),
-                    nl2br(str_replace(array("\r", "\n"), "", $item->description)),
+                    str_replace(array("\r", "\n"), "", nl2br($item->description)) . '<hr />' . str_replace(array("\r", "\n"), "", nl2br($this->rotaryBlurb)),
                     1000,
                     5,
                     1,
@@ -108,10 +109,11 @@ class Items_ExportsController extends Auction_Controller_Action
                     $item->length > 0 ? $item->length : 1,
                     $item->width > 0 ? $item->width : 1,
                     $item->height > 0 ? $item->height : 1,
-                    $weight_lb > 0 ? $weight_lb : 1,
-                    $weight_oz > 0 ? $weight_oz : 0,
-                    'lb',
-                    'http://rotaryonline.auction/img/rotary-auction-header.jpg'
+                    $weight_kg > 0 ? $weight_kg : 1,
+                    $weight_minor > 0 ? $weight_minor : 0,
+                    'kg',
+                    'http://rotaryonline.auction/img/rotary-auction-header.jpg',
+                    $item->controlSource . $item->controlNumber
                 );
 
                 fputcsv($fp, $row, ",");

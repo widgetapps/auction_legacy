@@ -703,7 +703,7 @@ class Items_IndexController extends Auction_Controller_Action
                 'width'      => $width,
                 'height'     => $height,
                 'length'     => $length,
-                'condition'  => $this->_getParam('condition'),
+                'condition'  => 'New with tags',
                 'boxSize'    => $this->_getParam('boxSize'),
                 'minimumBid' => $this->_getParam('minimumBid'),
                 'winningBid' => $this->_getParam('winningBid')

@@ -18,8 +18,6 @@
             <dd><?php echo $this->formText('height', $this->ebay->height, array('id' => 'height', 'size' => 5, 'maxlength' => 3)); ?></dd>
             <dt><label for="length">Length (cm)</label></dt>
             <dd><?php echo $this->formText('length', $this->ebay->length, array('id' => 'length', 'size' => 5, 'maxlength' => 3)); ?></dd>
-            <dt><label for="condition">Condition</label></dt>
-            <dd><?php echo $this->formSelect('condition', $this->ebay->condition, null, $this->getConditionArray()); ?></dd>
             <dt><label for="minimumBid">Minimum Bid</label></dt>
             <dd><?php echo $this->formText('minimumBid', $this->ebay->minimumBid, array('id' => 'minimumBid', 'size' => 10, 'maxlength' => 8)); ?></dd>
             <dt><label for="winningBid">Winning Bid</label></dt>
