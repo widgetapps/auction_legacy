@@ -19,7 +19,7 @@ class Items_ExportsController extends Auction_Controller_Action
             $this->authenticateAction('view');
 
             $this->view->blockArray = $this->getBlockArray();
-            $this->rotaryBlurb = 'The Toronto Rotary Auction group on eBay is comprised of volunteers from 6 Rotary Clubs: Toronto Humber, Parkdale-High Park, East York, Skyline, Scarborough North and Scarborough Twilight. All of the items that we offer on eBay are donated to us for our fundraising efforts. Your purchase will help us to continue to work on community programs locally in Toronto, across Canada and Internationally.\n\nWe each support programs in these main areas of focus:\n\n- Peace and conflict prevention/resolution;\n- Disease prevention and treatment;\n- Water and sanitation;\n- Maternal and child health;\n- Basic education and literacy;\n- Economic and community development.';
+            $this->view->rotaryBlurb = 'The Toronto Rotary Auction group on eBay is comprised of volunteers from 6 Rotary Clubs: Toronto Humber, Parkdale-High Park, East York, Skyline, Scarborough North and Scarborough Twilight. All of the items that we offer on eBay are donated to us for our fundraising efforts. Your purchase will help us to continue to work on community programs locally in Toronto, across Canada and Internationally.\n\nWe each support programs in these main areas of focus:\n\n- Peace and conflict prevention/resolution;\n- Disease prevention and treatment;\n- Water and sanitation;\n- Maternal and child health;\n- Basic education and literacy;\n- Economic and community development.';
 
         } catch (Metis_Auth_Exception $e) {
             $e->failed();
