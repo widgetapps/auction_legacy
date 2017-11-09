@@ -629,6 +629,13 @@ class Items_IndexController extends Auction_Controller_Action
             $ebay->width = '';
             $ebay->length = '';
             $ebay->condition = '';
+            $ebay->boxSize = '';
+            if ($item->minimumBid == 'y') {
+                $ebay->minimumBid = $item->fairRetailPrice * .75;
+            } else {
+                $ebay->minimumBid = $item->fairRetailPrice * .5;
+            }
+            $ebay->winningBid = '';
         } else {
             $ebay = $rows->current();
         }
@@ -655,14 +662,51 @@ class Items_IndexController extends Auction_Controller_Action
             require_once('models/ItemEbay.php');
             $table = new models_ItemEbay();
 
+            $width = $this->_getParam('width');
+            $height = $this->_getParam('height');
+            $length = $this->_getParam('length');
+
+            if ($this->_getParam('boxSize') > 0 && $width == 0 && $height == 0 && $length == 0) {
+                switch ($this->_getParam('boxSize')) {
+                    case 1:
+                        $width = 11;
+                        $height = 11;
+                        $length = 11;
+                        break;
+                    case 2:
+                        $width = 31;
+                        $height = 31;
+                        $length = 18;
+                        break;
+                    case 3:
+                        $width = 58;
+                        $height = 12;
+                        $length = 31;
+                        break;
+                    case 4:
+                        $width = 21;
+                        $height = 32;
+                        $length = 32;
+                        break;
+                    case 5:
+                        $width = 42;
+                        $height = 42;
+                        $length = 42;
+                        break;
+                }
+            }
+
             $data = array(
-                'itemId'    => $this->_getParam('itemId'),
-                'upc'       => $this->_getParam('upc'),
-                'weight'    => $this->_getParam('weight'),
-                'width'     => $this->_getParam('width'),
-                'height'    => $this->_getParam('height'),
-                'length'    => $this->_getParam('length'),
-                'condition' => $this->_getParam('condition')
+                'itemId'     => $this->_getParam('itemId'),
+                'upc'        => $this->_getParam('upc'),
+                'weight'     => $this->_getParam('weight'),
+                'width'      => $width,
+                'height'     => $height,
+                'length'     => $length,
+                'condition'  => $this->_getParam('condition'),
+                'boxSize'    => $this->_getParam('boxSize'),
+                'minimumBid' => $this->_getParam('minimumBid'),
+                'winningBid' => $this->_getParam('winningBid')
             );
 
             if ($this->_getParam('itemEbayId') == 0 ) {

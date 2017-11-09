@@ -8,16 +8,22 @@
         <dl>
             <dt><label for="upc">UPC</label></dt>
             <dd><?php echo $this->formText('upc', $this->ebay->upc, array('id' => 'upc', 'size' => 40)); ?></dd>
-            <dt><label for="weight">Weight</label></dt>
+            <dt><label for="weight">Weight (kg)</label></dt>
             <dd><?php echo $this->formText('weight', $this->ebay->weight, array('id' => 'weight', 'size' => 40)); ?></dd>
-            <dt><label for="width">Width/Box Size</label></dt>
-            <dd><?php echo $this->formText('width', $this->ebay->width, array('id' => 'width', 'size' => 40)); ?></dd>
-            <dt><label for="height">Height</label></dt>
-            <dd><?php echo $this->formText('height', $this->ebay->height, array('id' => 'height', 'size' => 40)); ?></dd>
-            <dt><label for="length">Length</label></dt>
-            <dd><?php echo $this->formText('length', $this->ebay->length, array('id' => 'length', 'size' => 40)); ?></dd>
+            <dt><label for="boxSize">Box Size</label></dt>
+            <dd><?php echo $this->formText('boxSize', $this->ebay->boxSize, array('id' => 'boxSize', 'size' => 5, 'maxlength' => 2)); ?></dd>
+            <dt><label for="width">Width (cm)</label></dt>
+            <dd><?php echo $this->formText('width', $this->ebay->width, array('id' => 'width', 'size' => 5, 'maxlength' => 3)); ?></dd>
+            <dt><label for="height">Height (cm)</label></dt>
+            <dd><?php echo $this->formText('height', $this->ebay->height, array('id' => 'height', 'size' => 5, 'maxlength' => 3)); ?></dd>
+            <dt><label for="length">Length (cm)</label></dt>
+            <dd><?php echo $this->formText('length', $this->ebay->length, array('id' => 'length', 'size' => 5, 'maxlength' => 3)); ?></dd>
             <dt><label for="condition">Condition</label></dt>
             <dd><?php echo $this->formSelect('condition', $this->ebay->condition, null, $this->getConditionArray()); ?></dd>
+            <dt><label for="minimumBid">Minimum Bid</label></dt>
+            <dd><?php echo $this->formText('minimumBid', $this->ebay->minimumBid, array('id' => 'minimumBid', 'size' => 10, 'maxlength' => 8)); ?></dd>
+            <dt><label for="winningBid">Winning Bid</label></dt>
+            <dd><?php echo $this->formText('winningBid', $this->ebay->winningBid, array('id' => 'winningBid', 'size' => 10, 'maxlength' => 8)); ?></dd>
 
         <?php echo $this->formSubmit('', 'Save Changes'); ?>
         <?php echo $this->formButton('', 'Cancel', array('onclick' => 'window.location="/items/index/itemlist"')); ?>
