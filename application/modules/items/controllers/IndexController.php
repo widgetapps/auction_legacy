@@ -631,9 +631,9 @@ class Items_IndexController extends Auction_Controller_Action
             $ebay->condition = '';
             $ebay->boxSize = '';
             if ($item->minimumBid == 'y') {
-                $ebay->minimumBid = $item->fairRetailPrice * .75;
+                $ebay->minimumBid = round($item->fairRetailPrice * .75);
             } else {
-                $ebay->minimumBid = $item->fairRetailPrice * .5;
+                $ebay->minimumBid = round($item->fairRetailPrice * .5);
             }
             $ebay->winningBid = '';
         } else {
