@@ -669,9 +669,9 @@ class Items_IndexController extends Auction_Controller_Action
             if ($this->_getParam('boxSize') > 0 && $width == 0 && $height == 0 && $length == 0) {
                 switch ($this->_getParam('boxSize')) {
                     case 1:
-                        $width = 11;
-                        $height = 11;
-                        $length = 11;
+                        $width = 16;
+                        $height = 16;
+                        $length = 16;
                         break;
                     case 2:
                         $width = 31;
