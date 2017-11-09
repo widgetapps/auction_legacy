@@ -7,7 +7,7 @@
         <?php echo $this->formHidden('itemId', $this->item->itemId); ?>
         <dl>
             <dt><label for="upc">UPC</label></dt>
-            <dd><?php echo $this->formText('upc', $this->ebay->upc, array('id' => 'upc', 'size' => 40)); ?></dd>
+            <dd><?php echo $this->formText('upc', $this->ebay->upc, array('id' => 'upc', 'size' => 15, 'maxlength' => 12)); ?></dd>
             <dt><label for="weight">Weight (kg)</label></dt>
             <dd><?php echo $this->formText('weight', $this->ebay->weight, array('id' => 'weight', 'size' => 5, 'maxlength' => 6)); ?></dd>
             <dt><label for="boxSize">Box Size</label></dt>
