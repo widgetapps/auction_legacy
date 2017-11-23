@@ -693,6 +693,11 @@ class Items_IndexController extends Auction_Controller_Action
                         $height = 42;
                         $length = 42;
                         break;
+                    case 6:
+                        $width = 11;
+                        $height = 11;
+                        $length = 11;
+                        break;
                 }
             }
 
