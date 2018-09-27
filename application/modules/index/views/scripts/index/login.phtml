@@ -17,3 +17,16 @@
 </form>
 <?php } ?>
 <p>Forgot your password? You can <a href="/index/index/resetpassword">reset your password</a>.</p>
+
+<div>
+    <p>Forgot how to login to the system? You can get the Welcome Email sent to you. Just enter your username here
+    and the welcome email will be sent to the email address we have for you.</p>
+
+    <form method="post" action="/users/index/welcomepublic">
+        <dl>
+            <dt><label for="form_username">Username</label></dt>
+            <dd><?php echo $this->formText('username', '', array('id' => 'form_username')); ?></dd>
+        </dl>
+        <?php echo $this->formSubmit('', 'Send Me The Welcome Email'); ?>
+    </form>
+</div>

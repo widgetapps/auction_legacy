@@ -162,6 +162,33 @@ class Users_IndexController extends Auction_Controller_Action
     		$e->failed();
     	}
     }
+
+    public function welcomepublicAction()
+    {
+        require_once('models/User.php');
+        $table_user = new models_User();
+        //$user = $table->find($this->_getParam('id'))->current();
+        $select_user = $table_user->select()->where('username = ?', trim($this->_getParam('username')));
+        $rows_user = $table_user->fetchAll($select_user);
+
+        if (count($rows_user) == 1){
+            $row_user = $rows_user->current();
+
+            require_once('models/Person.php');
+            $table_p = new models_Person();
+            $person = $table_p->find($row_user->personId)->current();
+
+            $this->sendWelcomeEmail($person->email);
+        } else {
+            $this->_redirector->gotoUrl('/users/index/welcomeusernotfound');
+            return;
+        }
+    }
+
+    public function welcomeusernotfoundAction()
+    {
+
+    }
     
     private function sendWelcomeEmail($to)
     {
