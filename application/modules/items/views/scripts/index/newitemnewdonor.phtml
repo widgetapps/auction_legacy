@@ -9,7 +9,7 @@ in the auction committee know and they can fix the typo. By no means should you 
 time! This makes the database unhappy, and we don't like unhappy databases!</p>
 <?php } ?>
 
-<form action="/items/index/newitemnewdonorprocess" method="post">
+<form action="/items/index/newitemnewdonorprocess" method="post" accept-charset="ISO-8859-1">
 	<dl>
 		<dt><label for="firstName">First Name</label></dt>
 		<dd><?php echo $this->formText('firstName', '', array('id' => 'firstName', 'size' => 40)); ?></dd>

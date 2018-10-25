@@ -3,7 +3,7 @@
 <p>Please be sure that the donor information is accurate and choose the rotarian that brought
 the item in:</p>
 
-<form action="/items/index/newitemstep2process" method="post">
+<form action="/items/index/newitemstep2process" method="post" accept-charset="ISO-8859-1">
 	<?php echo $this->formHidden('donorId', $this->donor->personId); ?>
 	<dl>
 		<dt><label for="firstName">First Name</label></dt>

@@ -2,7 +2,7 @@
 
 
 <div id="itemInfo">
-    <form action="/items/index/ebayprocess" method="post">
+    <form action="/items/index/ebayprocess" method="post" accept-charset="ISO-8859-1">
         <?php echo $this->formHidden('itemEbayId', $this->ebay->itemEbayId); ?>
         <?php echo $this->formHidden('itemId', $this->item->itemId); ?>
         <dl>
