@@ -60,7 +60,7 @@ if (is_array($this->itemsWon)) {
 			<dd><?php echo $this->formText('emailAddress', ($this->person?$this->person->email:''), array('size' => 50)); ?></dd>
 			<dt><label for="">Email with directions?</label></dt>
 			<dd><?php echo $this->formCheckbox('sendEmail', 'yes'); ?></dd>
-<?php if ($this->item->binNumber == '500' && $canDeliver) { ?>
+<?php if ($this->item->binNumber == '100' && $canDeliver) { ?>
             <dt><label for="form_delivery">Deliver item?</label></dt>
             <dd><input id="form_delivery" type="checkbox" name="delivery" value="y"<?php echo ($this->item->deliver=='y'?' checked="checked"':''); ?> /> ($15 delivery fee)</dd>
 <?php } ?>
@@ -137,7 +137,7 @@ if (is_array($this->itemsWon)) {
                 <td colspan="4" class="<?php echo ($canDeliver?'green':'red'); ?>"><?php echo ($canDeliver?'This order can be delivered':'This order CANNOT be delivered'); ?></td>
             </tr>
             <tr>
-                <td colspan="4"><?php echo ($bellRinger?'This order receives a free Zeddy bear!':''); ?></td>
+                <td colspan="4"><?php echo ($bellRinger?'This order receives a bell ringer!':''); ?></td>
             </tr>
         </tfoot>
     </table>

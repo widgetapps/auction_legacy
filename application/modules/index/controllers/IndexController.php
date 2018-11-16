@@ -31,7 +31,7 @@ class IndexController extends Auction_Controller_Action
         $profiler = $db->getProfiler()->setEnabled(true);
         */
         
-        $this->view->goal = 700;
+        $this->view->goal = 560;
         
         $table = new models_Item();
 		$select = $table->select(Zend_Db_Table::SELECT_WITH_FROM_PART)->setIntegrityCheck(false);
