@@ -1,6 +1,6 @@
 <?php
 
-class IndexController extends Auction_Controller_Action
+class Public_IndexController extends Auction_Controller_Action
 {
     protected $moduleName = 'public';
 
