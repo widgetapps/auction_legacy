@@ -7,11 +7,11 @@
 <div class="modal-body">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-4">
-                <h4>Item #<?php echo $this->item->controlNumber; ?></h4>
-                <h4>Block <?php echo $this->item->blockNumber; ?></h4>
-                <h4>Time: <?php echo date("g:ia", strtotime($this->item->blockDate . " " . $this->item->blockTime)); ?></h4>
-                <h3>Value $<?php echo $this->item->fairRetailPrice; ?></h3>
+            <div class="col-md-4">
+                <h5>Item #<?php echo $this->item->controlNumber; ?></h5>
+                <h5>Block <?php echo $this->item->blockNumber; ?></h5>
+                <h5>Time: <?php echo date("g:ia", strtotime($this->item->blockDate . " " . $this->item->blockTime)); ?></h5>
+                <h4>Value $<?php echo $this->item->fairRetailPrice; ?></h4>
             <div class="col-md-8">
                 <p><?php echo $this->item->itemDescription; ?></p>
 
