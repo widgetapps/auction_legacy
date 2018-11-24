@@ -8,15 +8,15 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <h5>Item #<?php echo $this->item->controlNumber; ?></h5>
-                <h5>Block <?php echo $this->item->blockNumber; ?></h5>
-                <h5>Time: <?php echo date("g:ia", strtotime($this->item->blockDate . " " . $this->item->blockTime)); ?></h5>
-                <h4>Value $<?php echo $this->item->fairRetailPrice; ?></h4>
+                <h6>Item #<?php echo $this->item->controlNumber; ?></h6>
+                <h6>Block <?php echo $this->item->blockNumber; ?></h6>
+                <h6>Time: <?php echo date("g:ia", strtotime($this->item->blockDate . " " . $this->item->blockTime)); ?></h6>
+                <h5>Value $<?php echo $this->item->fairRetailPrice; ?></h5>
             </div>
             <div class="col-md-8">
                 <p><?php echo $this->item->itemDescription; ?></p>
 
-                <h5>Donor</h5>
+                <h6>Donor</h6>
                 <?php echo $this->item->donor_companyName==''?'':$this->item->donor_companyName . '<br />'; ?>
                 <?php echo $this->item->donor_lastName==''?'':$this->item->donor_firstName . ' ' . $this->item->donor_lastName . '<br />'; ?>
             </div>
