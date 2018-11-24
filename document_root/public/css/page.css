@@ -20,12 +20,12 @@ section {
 }
 
 #bid-board td {
-  padding: 5px;
+  padding: 8px;
 }
 
 #bid-board thead td {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .intro-header {
