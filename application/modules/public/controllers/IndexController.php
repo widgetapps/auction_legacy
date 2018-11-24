@@ -30,4 +30,9 @@ class Public_IndexController extends Auction_Controller_Action
         $this->view->items  = $table->fetchAll($where, $order);
         $this->view->userId = $this->auth->getIdentity()->userId;
     }
+
+    public function itemdetailAction()
+    {
+
+    }
 }
