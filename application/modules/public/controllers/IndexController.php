@@ -72,4 +72,29 @@ class Public_IndexController extends Auction_Controller_Action
         $where[] = $table->getAdapter()->quoteInto('blockId = ?', $this->getCurrentBlockId($auctionId));
         return $table->fetchAll($where, 'controlNumber');
     }
+
+    private function getBlockInfo($auctionId)
+    {
+        $table_block = new models_Block();
+        return $table_block->find($this->getCurrentBlockId($auctionId))->current();
+    }
+
+    private function getNextBlockInfo($auctionId)
+    {
+        $table_block = new models_Block();
+        return $table_block->find($this->getCurrentBlockId($auctionId)+1)->current();
+    }
+
+    private function getCurrentBlockId($auctionId = null) {
+        require_once('models/Auction.php');
+        $auction = new models_Auction();
+        if ($auctionId != null) {
+            $where = "auctionId = " . $auctionId;
+        } else {
+            $where = "auctionId = " . $this->getCurrentAuctionId();
+        }
+        $row = $auction->fetchRow($where);
+        return $row->currentBlockId;
+
+    }
 }
