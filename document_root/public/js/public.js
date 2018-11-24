@@ -6,7 +6,7 @@ $(document).ready(function() {
     }
 
     if ($('.itemtitle')) {
-        $('.itemtitle').click(function(event) {
+        $("#itemlist").on("click", ".itemtitle", function(event){
             var id = $(event.target).attr('href').substring(1);
             console.log(event.target);
             var url = '/public/index/itemdetail/id/' + id;
