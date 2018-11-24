@@ -19,6 +19,15 @@ section {
     margin-bottom: 50px;
 }
 
+#bid-board td {
+  padding: 5px;
+}
+
+#bid-board thead td {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 .intro-header {
   padding-top: 50px;
   padding-bottom: 50px;
