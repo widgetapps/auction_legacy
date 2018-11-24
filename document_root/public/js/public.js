@@ -1,4 +1,9 @@
 
+
+function updateBoard() {
+    $('#bid-board').load('/public/index/bidboard');
+}
+
 $(document).ready(function() {
 
     if ($('#itemlist')){
@@ -16,10 +21,6 @@ $(document).ready(function() {
 
     if ($('#bid-board')) {
         setInterval('updateBoard()',1000);
-    }
-
-    function updateBoard() {
-        $('#bid_board').load('/public/index/bidboard');
     }
 
 } );
