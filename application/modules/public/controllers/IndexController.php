@@ -33,6 +33,6 @@ class Public_IndexController extends Auction_Controller_Action
 
     public function itemdetailAction()
     {
-
+        $this->_helper->layout->setlayout('json');
     }
 }
