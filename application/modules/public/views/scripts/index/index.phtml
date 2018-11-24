@@ -12,7 +12,7 @@
     <div id="board">
         <h3>Official Time: <?php echo $this->currentTime; ?></h3>
         <h5>Block Countdown: <?php echo $this->countdown; ?></h5>
-        <table>
+        <table class="table">
             <thead>
             <tr>
                 <td colspan="2">BLOCK <?php echo $this->blockNumber; ?> ~ <?php echo $this->startTime; ?> - <?php echo $this->endTime; ?></td>
@@ -33,9 +33,9 @@
                 ?>
                 <tr>
                     <td><?php echo htmlentities($item->controlNumber); ?></td>
-                    <td class="fill"><?php echo htmlentities($item->name); ?></td>
-                    <td><?php echo htmlentities(floor($item->fairRetailPrice)); ?></td>
-                    <td class="<?php echo $bidClass; ?>"><?php echo ($item->bid > 0?floor($item->bid):$openingBid); ?></td>
+                    <td><?php echo htmlentities($item->name); ?></td>
+                    <td class="text-right">$<?php echo htmlentities(floor($item->fairRetailPrice)); ?></td>
+                    <td class="text-right <?php echo $bidClass; ?>">$<?php echo ($item->bid > 0?floor($item->bid):$openingBid); ?></td>
                 </tr>
             <?php } ?>
             </tbody>
