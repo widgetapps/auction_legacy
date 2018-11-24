@@ -17,7 +17,7 @@ foreach ($this->items as $item){
         <td><?php echo $item->blockNumber; ?></td>
         <td><?php echo $item->blockTime; ?></td>
         <td><?php echo $item->controlNumber; ?></td>
-        <td><a href=""><?php echo $item->name; ?></a></td>
+        <td><a href="#<?php echo $item->itemId ?>" data-toggle="modal" data-target="#itemdetails"><?php echo $item->name; ?></a></td>
         <td>$<?php echo $item->fairRetailPrice; ?></td>
     </tr>
 <?php
@@ -26,3 +26,30 @@ foreach ($this->items as $item){
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" id="itemdetails" tabindex="-1" role="dialog" aria-labelledby="itemdetailstitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="itemdetailstitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.item-row').click(function(event) {
+        var id = $(event.target).parents('a.item-row').attr('href').substring(1);
+        var url = '/mobile/index/itemdetail/id/' + id;
+        $('#item-info').load(url);
+    });
+</script>
