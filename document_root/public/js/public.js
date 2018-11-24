@@ -14,4 +14,12 @@ $(document).ready(function() {
         });
     }
 
+    if ($('#bid-board')) {
+        setInterval('updateBoard()',1000);
+    }
+
+    function updateBoard() {
+        $('#bid_board').load('/public/index/bidboard');
+    }
+
 } );
