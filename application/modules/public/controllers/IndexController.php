@@ -34,5 +34,10 @@ class Public_IndexController extends Auction_Controller_Action
     public function itemdetailAction()
     {
         $this->_helper->layout->setlayout('json');
+
+        require_once('models/vItemDetail.php');
+        $tItems = new models_vItemDetail();
+
+        $this->view->item = $tItems->find($this->_getParam('id'))->current();
     }
 }
