@@ -15,7 +15,7 @@
 </div>
 <div id="bid_board">
     <div id="board">
-        <table class="table">
+        <table>
             <thead>
             <tr>
                 <td colspan="2">BLOCK <?php echo $this->blockNumber; ?> ~ <?php echo $this->startTime; ?> - <?php echo $this->endTime; ?></td>
@@ -36,9 +36,9 @@
                 ?>
                 <tr>
                     <td><?php echo htmlentities($item->controlNumber); ?></td>
-                    <td><?php echo htmlentities($item->name); ?></td>
-                    <td class="text-right">$<?php echo htmlentities(floor($item->fairRetailPrice)); ?></td>
-                    <td class="text-right <?php echo $bidClass; ?>">$<?php echo ($item->bid > 0?floor($item->bid):$openingBid); ?></td>
+                    <td class="fill"><?php echo htmlentities($item->name); ?></td>
+                    <td><?php echo htmlentities(floor($item->fairRetailPrice)); ?></td>
+                    <td class="<?php echo $bidClass; ?>"><?php echo ($item->bid > 0?floor($item->bid):$openingBid); ?></td>
                 </tr>
             <?php } ?>
             </tbody>
