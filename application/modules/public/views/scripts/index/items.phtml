@@ -1,3 +1,33 @@
 <div class="col-lg-12 ml-auto">
-    ITEM LIST
+    <table id="itemlist" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Block</th>
+            <th>Time</th>
+            <th>Number</th>
+            <th>Item Name</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+<?php
+foreach ($this->items as $item){
+    ?>
+    <tr>
+        <td><?php echo $item->blockNumber; ?></td>
+        <td><?php echo $item->blockTime; ?></td>
+        <td><?php echo $item->controlNumber; ?></td>
+        <td><a href=""><?php echo $item->name; ?></a></td>
+        <td>$<?php echo $item->fairRetailPrice; ?></td>
+    </tr>
+<?php
+}
+?>
+        </tbody>
+    </table>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#itemlist').DataTable();
+    } );
+</script>
