@@ -73,7 +73,7 @@ class Bids_AjaxController extends Auction_Controller_Action {
 		$ts_closetime = mktime($shour, $sminute, $ssecond, $smonth, $sday, $syear) + 600;
 			
         $this->view->blockNumber = $blockInfo->number;
-        $this->view->currentTime = date('G:i:s');;
+        $this->view->currentTime = date('G:i:s');
         $this->view->countdown   = $this->countdown($ts_closetime);
 	}
 	

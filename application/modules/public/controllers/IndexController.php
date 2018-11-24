@@ -19,6 +19,15 @@ class Public_IndexController extends Auction_Controller_Action
         $blockInfo = $this->getBlockInfo($auctionId);
         $blockEndInfo = $this->getNextBlockInfo($auctionId);
 
+        date_default_timezone_set('America/Toronto');
+
+        list($shour, $sminute, $ssecond) = explode(':', $blockInfo->startTime);
+        list($syear, $smonth, $sday) = explode('-', $blockInfo->blockDate);
+        $ts_closetime = mktime($shour, $sminute, $ssecond, $smonth, $sday, $syear) + 600;
+
+        $this->view->currentTime = date('G:i:s');
+        $this->view->countdown   = $this->countdown($ts_closetime);
+
         $this->view->items       = $this->getItemsForBid($auctionId);
         $this->view->blockNumber = $blockInfo->number;
         $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
@@ -33,6 +42,15 @@ class Public_IndexController extends Auction_Controller_Action
 
         $blockInfo = $this->getBlockInfo($auctionId);
         $blockEndInfo = $this->getNextBlockInfo($auctionId);
+
+        date_default_timezone_set('America/Toronto');
+
+        list($shour, $sminute, $ssecond) = explode(':', $blockInfo->startTime);
+        list($syear, $smonth, $sday) = explode('-', $blockInfo->blockDate);
+        $ts_closetime = mktime($shour, $sminute, $ssecond, $smonth, $sday, $syear) + 600;
+
+        $this->view->currentTime = date('G:i:s');
+        $this->view->countdown   = $this->countdown($ts_closetime);
 
         $this->view->items       = $this->getItemsForBid($auctionId);
         $this->view->blockNumber = $blockInfo->number;
@@ -96,5 +114,21 @@ class Public_IndexController extends Auction_Controller_Action
         $row = $auction->fetchRow($where);
         return $row->currentBlockId;
 
+    }
+
+    private function countdown($then) {
+        $now = time();
+        $till = $then-$now; // seconds until $then
+
+        $minutes = floor($till / 60);
+        $seconds = $till % 60;
+
+        if ($seconds < 10){
+            $seconds = '0' . $seconds;
+        }
+
+        $cd_string = $minutes . ':' . $seconds;
+
+        return $cd_string;
     }
 }
