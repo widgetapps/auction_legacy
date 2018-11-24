@@ -19,7 +19,7 @@ foreach ($this->items as $item){
         <td><?php echo $item->blockTime; ?></td>
         <td><?php echo $item->controlNumber; ?></td>
         <td><a href="#<?php echo $item->itemId ?>" class="itemtitle" data-toggle="modal" data-target="#itemdetails"><?php echo $item->name; ?></a></td>
-        <td>$<?php echo $item->fairRetailPrice; ?></td>
+        <td class="text-right">$<?php echo $item->fairRetailPrice; ?></td>
     </tr>
 <?php
 }
