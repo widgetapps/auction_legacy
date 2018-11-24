@@ -14,7 +14,30 @@ class Public_IndexController extends Auction_Controller_Action
 
     public function indexAction()
     {
+        $auctionId = $this->getCurrentAuctionId();
 
+        $blockInfo = $this->getBlockInfo($auctionId);
+        $blockEndInfo = $this->getNextBlockInfo($auctionId);
+
+        $this->view->items       = $this->getItemsForBid($auctionId);
+        $this->view->blockNumber = $blockInfo->number;
+        $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
+        $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
+    }
+
+    public function bidboardAction()
+    {
+        $this->_helper->layout->setLayout('json');
+
+        $auctionId = $this->getCurrentAuctionId();
+
+        $blockInfo = $this->getBlockInfo($auctionId);
+        $blockEndInfo = $this->getNextBlockInfo($auctionId);
+
+        $this->view->items       = $this->getItemsForBid($auctionId);
+        $this->view->blockNumber = $blockInfo->number;
+        $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
+        $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
     }
 
     public function itemsAction()
@@ -39,5 +62,14 @@ class Public_IndexController extends Auction_Controller_Action
         $tItems = new models_vItemDetail();
 
         $this->view->item = $tItems->find($this->_getParam('id'))->current();
+    }
+
+    private function getItemsForBid($auctionId)
+    {
+        $table = new models_vOpenBlockItems();
+        $where = array();
+        $where[] = $table->getAdapter()->quoteInto('auctionId = ?', $auctionId);
+        $where[] = $table->getAdapter()->quoteInto('blockId = ?', $this->getCurrentBlockId($auctionId));
+        return $table->fetchAll($where, 'controlNumber');
     }
 }

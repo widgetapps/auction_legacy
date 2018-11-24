@@ -8,6 +8,34 @@
         </iframe>
     </div>
 </div>
-<div class="col-lg-6 ml-auto">
-    CURRENT BLOCK
+<div class="col-lg-6 ml-auto" id="bid-board"><div id="board">
+        <table>
+            <thead>
+            <tr>
+                <td colspan="2">BLOCK <?php echo $this->blockNumber; ?> ~ <?php echo $this->startTime; ?> - <?php echo $this->endTime; ?></td>
+                <td>Value</td>
+                <td>Bid</td>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->items as $item) {
+                $minBid = round($item->fairRetailPrice * $this->getMinBidPercent());
+                $minBid -= ($minBid %5);
+                $openingBid = $minBid - 5;
+
+                $bidClass = '';
+                if ($item->bid >= $item->fairRetailPrice) {
+                    $bidClass = 'bell-ringer';
+                }
+                ?>
+                <tr>
+                    <td><?php echo htmlentities($item->controlNumber); ?></td>
+                    <td class="fill"><?php echo htmlentities($item->name); ?></td>
+                    <td><?php echo htmlentities(floor($item->fairRetailPrice)); ?></td>
+                    <td class="<?php echo $bidClass; ?>"><?php echo ($item->bid > 0?floor($item->bid):$openingBid); ?></td>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
 </div>
