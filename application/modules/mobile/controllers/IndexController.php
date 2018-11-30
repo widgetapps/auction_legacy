@@ -83,17 +83,11 @@ class Mobile_IndexController extends Auction_Controller_Action
     public function itemdetailAction()
     {
     	$this->_helper->layout->setLayout('json');
-        try {
-        	$this->authenticateAction('view');
     	
-	    	require_once('models/vItemDetail.php');
-	    	$tItems = new models_vItemDetail();
-	    	
-	    	$this->view->item = $tItems->find($this->_getParam('id'))->current();
-        } catch (Metis_Auth_Exception $e) {
-        	$this->view->auth = false;
-        	return;
-        }
+        require_once('models/vItemDetail.php');
+        $tItems = new models_vItemDetail();
+
+        $this->view->item = $tItems->find($this->_getParam('id'))->current();
     }
     
     public function activeblockAction()
