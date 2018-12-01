@@ -126,11 +126,14 @@ class Feeds_BidsController extends Auction_Controller_Action
         
 		$blockInfo = $this->getBlockInfo($auctionId);
 		$blockEndInfo = $this->getNextBlockInfo($auctionId);
+
+        $close = explode(':', $blockEndInfo->startTime, -1);
+        $close[1] -= 2;
         
         $this->view->items       = $this->getItemsForBid($auctionId);
         $this->view->blockNumber = $blockInfo->number;
         $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
-        $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
+        $this->view->endTime     = implode(':', $close);
     }
     
     public function webboardajaxAction()
@@ -144,11 +147,14 @@ class Feeds_BidsController extends Auction_Controller_Action
         
         $blockInfo = $this->getBlockInfo($auctionId);
         $blockEndInfo = $this->getNextBlockInfo($auctionId);
+
+        $close = explode(':', $blockEndInfo->startTime, -1);
+        $close[1] -= 2;
         
         $this->view->items       = $this->getItemsForBid($auctionId);
         $this->view->blockNumber = $blockInfo->number;
         $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
-        $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
+        $this->view->endTime     = implode(':', $close);
     }
 
     public function noRouteAction()
