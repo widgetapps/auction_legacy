@@ -97,6 +97,7 @@ class Pickups_IndexController extends Auction_Controller_Action
 				$invoiceId = $table->insert($data);
 				
                 $bellRinger = false;
+                $bellRingerCount = 0;
 				
 				// add each invoice item for every item they want
 				foreach ($rows_winner as $item){
@@ -114,6 +115,7 @@ class Pickups_IndexController extends Auction_Controller_Action
     
                         if ($item->bid >=100 && $item->bid >= $item->itemValue) {
                             $bellRinger = true;
+                            $bellRingerCount++;
                         }
 					} else {
 						// customer doesn't want it, free up the item for call backs
@@ -146,7 +148,7 @@ class Pickups_IndexController extends Auction_Controller_Action
                                  'invoiceId'  => $invoiceId,
                                  'itemId'     => 0,
                                  'itemNumber' => 0,
-                                 'itemName'   => 'Free Bell Ringer',
+                                 'itemName'   => 'Free Bell Ringers: ' + $bellRingerCount,
                                  'winningBid' => 0
                              );
                      $table_ii->insert($data);
