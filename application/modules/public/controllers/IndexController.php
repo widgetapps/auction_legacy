@@ -19,6 +19,10 @@ class Public_IndexController extends Auction_Controller_Action
         $blockInfo = $this->getBlockInfo($auctionId);
         $blockEndInfo = $this->getNextBlockInfo($auctionId);
 
+        $close = explode(':', $blockEndInfo->startTime, -1);
+        $close[1] -= 2;
+        $close[1] = str_pad($close[1], 2, '0', STR_PAD_LEFT);
+
         date_default_timezone_set('America/Toronto');
 
         list($shour, $sminute, $ssecond) = explode(':', $blockInfo->startTime);
@@ -31,7 +35,7 @@ class Public_IndexController extends Auction_Controller_Action
         $this->view->items       = $this->getItemsForBid($auctionId);
         $this->view->blockNumber = $blockInfo->number;
         $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
-        $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
+        $this->view->endTime     = implode(':', $close);
     }
 
     public function bidboardAction()
@@ -43,6 +47,10 @@ class Public_IndexController extends Auction_Controller_Action
         $blockInfo = $this->getBlockInfo($auctionId);
         $blockEndInfo = $this->getNextBlockInfo($auctionId);
 
+        $close = explode(':', $blockEndInfo->startTime, -1);
+        $close[1] -= 2;
+        $close[1] = str_pad($close[1], 2, '0', STR_PAD_LEFT);
+
         date_default_timezone_set('America/Toronto');
 
         list($shour, $sminute, $ssecond) = explode(':', $blockInfo->startTime);
@@ -55,7 +63,7 @@ class Public_IndexController extends Auction_Controller_Action
         $this->view->items       = $this->getItemsForBid($auctionId);
         $this->view->blockNumber = $blockInfo->number;
         $this->view->startTime   = implode(':', explode(':', $blockInfo->startTime, -1));
-        $this->view->endTime     = implode(':', explode(':', $blockEndInfo->startTime, -1));
+        $this->view->endTime     = implode(':', $close);
     }
 
     public function itemsAction()
