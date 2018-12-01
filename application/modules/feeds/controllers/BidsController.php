@@ -151,7 +151,7 @@ class Feeds_BidsController extends Auction_Controller_Action
 
         $close = explode(':', $blockEndInfo->startTime, -1);
         $close[1] -= 2;
-        $close[1] = str_pad(close[1], 2, '0', STR_PAD_LEFT);
+        $close[1] = str_pad($close[1], 2, '0', STR_PAD_LEFT);
         
         $this->view->items       = $this->getItemsForBid($auctionId);
         $this->view->blockNumber = $blockInfo->number;
