@@ -264,7 +264,7 @@ class Items_ExportsController extends Auction_Controller_Action
 	        
 	        $where = array();
 	        $where[] = $table->getAdapter()->quoteInto('auctionId = ?', $this->getCurrentAuctionId());
-	        $where[] = $table->getAdapter()->quoteInto('blockNumber > ?', 0);
+	        $where[] = $table->getAdapter()->quoteInto('blockNumber >= ?', 0);
 	        $order = array('blockNumber', 'controlNumber');
 	        $items  = $table->fetchAll($where, $order);
 	        
