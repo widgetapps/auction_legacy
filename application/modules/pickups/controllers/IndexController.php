@@ -148,7 +148,7 @@ class Pickups_IndexController extends Auction_Controller_Action
                                  'invoiceId'  => $invoiceId,
                                  'itemId'     => 0,
                                  'itemNumber' => 0,
-                                 'itemName'   => 'Free Bell Ringers: ' + $bellRingerCount,
+                                 'itemName'   => 'Free Bell Ringers: ' . $bellRingerCount,
                                  'winningBid' => 0
                              );
                      $table_ii->insert($data);

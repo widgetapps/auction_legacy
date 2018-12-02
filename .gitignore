@@ -2,3 +2,5 @@
 
 /application/config/acl.xml
 /application/config/application.xml
+
+document_root/pdf/*.pdf
