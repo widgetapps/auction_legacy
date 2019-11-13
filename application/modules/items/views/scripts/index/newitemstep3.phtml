@@ -4,7 +4,7 @@
 <?php if (!in_array($this->role, array('admin', 'super'))){ ?>
 <p>Please enter in all of the following information. Keep in mind that the item information
 that you enter here will be viewable on the website and will also be read during the live auction.
-Also, keep in mind of the follwing:</p>
+Also, keep in mind of the following:</p>
 
 <ul>
 	<li>The Fair Retail Value should be just that, please don't inflate it, it affects us when we report to Revenue Canada!</li>
@@ -45,7 +45,7 @@ if (in_array($this->role, array('admin', 'super'))){
 ?>
 			<dt><label for="itemName">Control Source</label></dt>
 			<dd>
-			<?php echo $this->formSelect('controlSource', 'S', '', $this->orgs);?>
+			<?php echo $this->formSelect('controlSource', $this->userControlSource, '', $this->orgs);?>
 			<?php //echo $this->formText('controlNumber', '', array('id' => 'controlNumber', 'size' => 5, 'title' => 'Only enter a number if you choose M as a control source.')); ?>
 			</dd>
 <?php

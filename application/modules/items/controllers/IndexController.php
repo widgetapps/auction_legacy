@@ -189,6 +189,9 @@ class Items_IndexController extends Auction_Controller_Action
 	        foreach($categories as $category){
 	            $availableCategories[$category->itemCategoryId] = $category->name;
 	        }
+
+            $userInfo = $this->getUserInfo();
+	        $this->view->userControlSource = $userInfo->controlSource;
 	        
 	        $this->view->categories = $availableCategories;
 	        
