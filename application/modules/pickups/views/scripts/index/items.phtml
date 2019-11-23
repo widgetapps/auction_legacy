@@ -1,4 +1,8 @@
-
+<?php
+$totalBids = 0;
+$totalValue = 0;
+$bellRingerCount = 0;
+?>
 <div id="itemList">
 	<h2>Item List</h2>
 	<table>
@@ -23,6 +27,12 @@
 	
     $totalBids += $item->winningBid;
     $totalValue += $item->itemValue;
+
+    $percentOfValue = intval($item->winningBid / $item->itemValue * 100);
+
+    if ($percentOfValue >= 100) {
+        $bellRingerCount++;
+    }
 ?>
 			<tr>
 				<td><a name="<?php echo $item->itemId; ?>"><?php echo $item->blockNumber; ?></a></td>
@@ -31,7 +41,7 @@
 				<td><?php echo $item->bidderPhone; ?></td>
 				<td><?php echo $item->winnerPhone; ?></td>
 				<td>$<?php echo $item->winningBid; ?></td>
-                <td><?php echo intval($item->winningBid / $item->itemValue * 100); ?>%</td>
+                <td><?php echo $percentOfValue; ?>%</td>
 				<td><?php echo $item->pickedUp; ?></td>
 				<td><?php echo $item->deliver; ?></td>
 			</tr>
@@ -40,8 +50,7 @@
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-                <td>&nbsp;</td>
+				<td colspan="2">BELL RINGERS: <?php echo $bellRingerCount; ?></td>
 				<td colspan="2">TOTAL BIDS: $<?php echo $totalBids; ?> (<?php echo intval($totalBids / $totalValue * 100); ?>% of value)</td>
 				<td colspan="2">TOTAL VALUE: $<?php echo $totalValue; ?></td>
 			</tr>
