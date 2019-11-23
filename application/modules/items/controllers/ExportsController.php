@@ -42,7 +42,7 @@ class Items_ExportsController extends Auction_Controller_Action
                 $block_x = 40;
                 $block_y = 701;
 
-                $blockTime_x = 280;
+                $blockTime_x = 210;
                 $blockTime_y = 701;
 
                 $control_x = 464;
