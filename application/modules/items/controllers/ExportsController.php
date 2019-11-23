@@ -13,6 +13,117 @@ class Items_ExportsController extends Auction_Controller_Action
         }
     }
 
+    public function specialtyAction()
+    {
+        try {
+            $this->authenticateAction('view');
+
+            require_once('Zend/Pdf.php');
+            $templatePath = $this->getTemplatePath() . DIRECTORY_SEPARATOR . 'tpl_logicalSort.pdf';
+            $pdf = Zend_Pdf::load($templatePath);
+
+            $template = $pdf->pages[0];
+
+            $font = Zend_Pdf_Font::fontWithName(Zend_Pdf_Font::FONT_HELVETICA);
+
+            require_once('models/vItemList.php');
+            $table = new models_vItemList();
+
+            $where = $table->getAdapter()->quoteInto('auctionId = ?', $this->getCurrentAuctionId());
+            $where = $table->getAdapter()->quoteInto('binNumber = ?', '900');
+            $order = array('blockNumber');
+            $items  = $table->fetchAll($where, $order);
+
+            $i = 2;
+            foreach ($items as $item) {
+
+                $pagePart = $i % 2;
+
+                $block_x = 40;
+                $block_y = 701;
+
+                $blockTime_x = 0;
+                $blockTime_y = 0;
+
+                $control_x = 464;
+                $control_y = 701;
+
+                $bin_x = 364;
+                $bin_y = 701;
+
+                $label_x     = 130;
+                $itemName_y  = 652;
+                $itemValue_y = 623;
+                $donorName_y = 409;
+
+                $desc_x = 40;
+                $desc_y = 555;
+
+                switch ($pagePart){
+                    case 0:
+                        break;
+                    case 1:
+                        $block_y     = 332;
+                        $control_y   = 332;
+                        $itemName_y  = 283;
+                        $itemValue_y = 255;
+                        $donorName_y = 40;
+                        $desc_y      = 190;
+                        $bin_y       = 332;
+                        break;
+                }
+
+                if ($pagePart == 0){
+                    $page = new Zend_Pdf_Page($template);
+                }
+
+                $page->setFont($font, 36);
+                $page->drawText($item->blockNumber, $block_x, $block_y);
+
+                $page->setFont($font, 36);
+                $page->drawText($item->controlSource . $item->controlNumber, $control_x, $control_y);
+
+                $page->setFont($font, 36);
+                $page->drawText($item->binNumber, $bin_x, $bin_y);
+
+                $page->setFont($font, 18);
+                $page->drawText($item->name, $label_x, $itemName_y);
+                $page->drawText('$' . $item->fairRetailPrice, $label_x, $itemValue_y);
+                $page->setFont($font, 18);
+                $page->drawText($item->donorCompany . ', ' .$item->donorFirstName . ' ' . $item->donorLastName, $label_x, $donorName_y);
+
+                $page->setFont($font, 14);
+
+                $description = wordwrap($item->description, 80, "\n", false);
+                $line = strtok($description, "\n");
+                $lineCount = 1;
+                while($line !== false){
+                    if ($lineCount > 9) break;
+                    $page->drawText(iconv('ISO-8859-1', 'ASCII//TRANSLIT', $line), $desc_x, $desc_y);
+                    $desc_y -= 15;
+                    $line = strtok("\n");
+                    $lineCount++;
+                }
+
+                if ($pagePart == 1 || $i > $items->count()) {
+                    $pdf->pages[] = $page;
+                }
+                $i++;
+            }
+
+            unset($pdf->pages[0]);
+
+            $savePath = $this->getPdfPath() . DIRECTORY_SEPARATOR . 'specialtyItems_' . $this->view->getActiveAuctionDate(1) . '.pdf';
+
+            $pdf->save($savePath);
+
+            $this->_redirector->gotoUrl('/pdf/specialtyItems_' . $this->view->getActiveAuctionDate(1) . '.pdf');
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+            return;
+        }
+    }
+
     public function ebayAction()
     {
         try {
