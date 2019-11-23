@@ -42,8 +42,8 @@ class Items_ExportsController extends Auction_Controller_Action
                 $block_x = 40;
                 $block_y = 701;
 
-                $blockTime_x = 0;
-                $blockTime_y = 0;
+                $blockTime_x = 70;
+                $blockTime_y = 701;
 
                 $control_x = 464;
                 $control_y = 701;
@@ -64,6 +64,7 @@ class Items_ExportsController extends Auction_Controller_Action
                         break;
                     case 1:
                         $block_y     = 332;
+                        $blockTime_y = 332;
                         $control_y   = 332;
                         $itemName_y  = 283;
                         $itemValue_y = 255;
@@ -79,6 +80,9 @@ class Items_ExportsController extends Auction_Controller_Action
 
                 $page->setFont($font, 36);
                 $page->drawText($item->blockNumber, $block_x, $block_y);
+
+                $page->setFont($font, 36);
+                $page->drawText($item->blockTime, $blockTime_x, $blockTime_y);
 
                 $page->setFont($font, 36);
                 $page->drawText($item->controlSource . $item->controlNumber, $control_x, $control_y);
