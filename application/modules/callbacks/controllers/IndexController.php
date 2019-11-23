@@ -231,14 +231,13 @@ class Callbacks_IndexController extends Auction_Controller_Action
         	}
         	
 	    	$this->view->validPhone = true;
-	    	
-	    	// TODO: Also check that the number is ten integers.
-            /*
-	    	if (strlen($this->_getParam('winnerPhone')) != 10) {
+
+        	/* DON'T NEED THIS CHECK, BID ACCEPTANCE TAKES CAR OF THIS
+	    	if (strlen($this->_getParam('winnerPhone')) < 5) {
 	    		$this->view->validPhone = false;
 	    		return;
 	    	}
-            */
+        	*/
 	        
 	        require_once('models/Person.php');
 	        $table = new models_Person();
