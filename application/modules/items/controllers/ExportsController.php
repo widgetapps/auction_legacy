@@ -29,7 +29,9 @@ class Items_ExportsController extends Auction_Controller_Action
             require_once('models/vItemList.php');
             $table = new models_vItemList();
 
-            $where = $table->getAdapter()->quoteInto('auctionId = ? AND binNumber ? ', $this->getCurrentAuctionId(), '900');
+            $where = array();
+            $where[] = $table->getAdapter()->quoteInto('auctionId = ?', $this->getCurrentAuctionId());
+            $where[] = $table->getAdapter()->quoteInto('binNumber = ?', '900');
             $order = array('blockNumber');
             $items  = $table->fetchAll($where, $order);
 
