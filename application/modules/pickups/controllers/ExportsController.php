@@ -8,13 +8,107 @@ class Pickups_ExportsController extends Auction_Controller_Action
     {
     	
     }
+
+    public function itemsalescvsAction()
+    {
+        try {
+            $this->authenticateAction('view');
+
+            $savePath = $this->getExportPath() . DIRECTORY_SEPARATOR . 'item_bids_' .  $this->view->getActiveAuctionDate(1) . '.csv';
+            $fp = fopen($savePath, 'w');
+
+            fputcsv($fp, array(
+                'Control Source',
+                'Control Number',
+                'Item Name',
+                'Item Value',
+                'Bid',
+                'Percent Value',
+                'Donor Company',
+                'Donor First Name',
+                'Donor Last Name',
+                'Winner',
+                'Winner Phone',
+                'Paid'
+            ));
+
+            require_once('models/vItemWinner.php');
+            $table = new models_vItemWinner();
+
+            $select = $table->select();
+
+            $select
+                ->from(
+                    array('A' => 'vItemWinner'),
+                    array(
+                      'controlSource',
+                      'controlNumber',
+                      'itemName',
+                      'itemValue',
+                      'bid',
+                      'paid',
+                      'winnerPhone' => 'phone'
+                    )
+                )
+                ->join(
+                    array('B' => 'Person'),
+                    'A.donorId = B.personId',
+                    array(
+                        'donorCompany' => 'companyName',
+                        'donorFirstName' => 'firstName',
+                        'donorLastName' => 'lastName'
+                    )
+                )
+                ->where('auctionId = ?', $this->getCurrentAuctionId())
+                ->order('A.controlSource', 'A.itemNumber', 'A.paid DESC');
+
+            $items  = $table->fetchAll($select);
+
+            foreach ($items as $item) {
+
+                $row = array(
+                    $item->controlSource,
+                    $item->controlNumber,
+                    $item->itemName,
+                    $item->itemValue,
+                    $item->bid,
+                    $item->bid / $item->itemValue,
+                    $item->donorCompany,
+                    $item->donorFirstName,
+                    $item->donorLastName,
+                    $item->firstname . ' ' . $item->lastname,
+                    $item->winnerPhone,
+                    $item->paid
+                );
+
+                fputcsv($fp, $row);
+            }
+
+            fclose($fp);
+
+            $this->_redirector->gotoUrl('/exports/item_bids_' .  $this->view->getActiveAuctionDate(1) . '.csv');
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+            return;
+        }
+    }
+
+    public function donortotalsscvsAction()
+    {
+        try {
+            $this->authenticateAction('view');
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+            return;
+        }
+    }
     
     public function winningbidderscvsAction()
     {
         try {
         	$this->authenticateAction('view');
 	        	
-	        $savePath = $this->getExportPath() . DIRECTORY_SEPARATOR . 'winningBidders.csv';
+	        $savePath = $this->getExportPath() . DIRECTORY_SEPARATOR . 'winningBidders_' .  $this->view->getActiveAuctionDate(1) . '.csv';
 	        $fp = fopen($savePath, 'w');
 	        
 	        fputcsv($fp, array('Winner Last Name', 'Winner First Name', 'Winner Phone Number'));
@@ -43,7 +137,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
 			
 			fclose($fp);
 			
-			$this->_redirector->gotoUrl('/exports/winningBidders.csv');
+			$this->_redirector->gotoUrl('/exports/winningBidders_' .  $this->view->getActiveAuctionDate(1) . '.csv');
         } catch (Metis_Auth_Exception $e) {
         	$e->failed();
         	return;
