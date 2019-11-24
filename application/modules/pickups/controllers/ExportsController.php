@@ -108,6 +108,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
             $select = $table->select(true)->setIntegrityCheck(false);
 
             $select->where('Item.auctionId = ?', $this->getCurrentAuctionId());
+            $select->where('Item.taxReceipt = ?', 'y');
             $select->join(
                 array('Person'),
                 'Item.donorId = Person.personId',
