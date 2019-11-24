@@ -121,7 +121,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     'donorProvince' => 'province',
                     'donorPostalCode' => 'postalCode',
                     'donorPhone' => 'phone',
-                    'total' => 'SUM(Item.fairRetailValue)'
+                    'total' => 'SUM(Item.fairRetailPrice)'
                 )
             );
             $select->group('Item.donorId');
