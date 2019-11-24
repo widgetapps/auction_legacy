@@ -139,8 +139,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     $item->donorCity,
                     $item->donorProvince,
                     $item->donorPostalCode,
-                    $item->donorPhone,
-                    $item->paid
+                    $item->donorPhone
                 );
 
                 fputcsv($fp, $row);
