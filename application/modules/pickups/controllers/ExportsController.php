@@ -120,10 +120,12 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     'donorCity' => 'city',
                     'donorProvince' => 'province',
                     'donorPostalCode' => 'postalCode',
-                    'donorPhone' => 'phone'
+                    'donorPhone' => 'phone',
+                    'total' => 'SUM(Item.fairRetailValue)'
                 )
             );
             $select->group('Item.donorId');
+            $select->order('Item.controlSource');
 
             $items  = $table->fetchAll($select);
 
@@ -139,7 +141,8 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     $item->donorCity,
                     $item->donorProvince,
                     $item->donorPostalCode,
-                    $item->donorPhone
+                    $item->donorPhone,
+                    $item->total
                 );
 
                 fputcsv($fp, $row);
