@@ -41,8 +41,8 @@ class Pickups_ExportsController extends Auction_Controller_Action
 
             $select->where('auctionId = ?', $this->getCurrentAuctionId());
             $select->join(
-                array('Person'),
-                'vItemWinner.donorId = Person.personId',
+                array('p1' => 'Person'),
+                'vItemWinner.donorId = p1.personId',
                 array(
                     'donorCompany' => 'companyName',
                     'donorFirstName' => 'firstName',
@@ -50,8 +50,8 @@ class Pickups_ExportsController extends Auction_Controller_Action
                 )
             );
             $select->join(
-                array('Person'),
-                'vItemWinner.canvasserId = Person.personId',
+                array('p2' => 'Person'),
+                'vItemWinner.canvasserId = p2.personId',
                 array(
                     'canvasserFirstName' => 'firstName',
                     'canvasserLastName' => 'lastName'
