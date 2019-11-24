@@ -35,7 +35,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
             require_once('models/vItemWinner.php');
             $table = new models_vItemWinner();
 
-            $select = $table->select();
+            $select = $table->select(true)->setIntegrityCheck(false);
 
             $select
                 ->from(
