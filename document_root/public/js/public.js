@@ -20,7 +20,7 @@ $(document).ready(function() {
     }
 
     if ($('#bid-board')) {
-        setInterval('updateBoard()',1000);
+        setInterval('updateBoard()',5000);
     }
 
 } );
