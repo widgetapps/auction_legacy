@@ -47,7 +47,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     'donorLastName' => 'lastName'
                 )
             );
-            $select->order('A.controlSource', 'A.itemNumber', 'A.paid DESC');
+            $select->order('vItemWinner.controlSource', 'vItemWinner.itemNumber', 'vItemWinner.paid DESC');
 
             $items  = $table->fetchAll($select);
 
