@@ -84,6 +84,72 @@ class Pickups_ExportsController extends Auction_Controller_Action
     {
         try {
             $this->authenticateAction('view');
+
+            $savePath = $this->getExportPath() . DIRECTORY_SEPARATOR . 'donor_totals_' .  $this->view->getActiveAuctionDate(1) . '.csv';
+            $fp = fopen($savePath, 'w');
+
+            fputcsv($fp, array(
+                'Control Source',
+                'Company Name',
+                'First Name',
+                'Last Name',
+                'Address 1',
+                'Address 2',
+                'City',
+                'Province',
+                'Postal Code',
+                'Phone',
+                'Total'
+            ));
+
+            require_once('models/Item.php');
+            $table = new models_Item();
+
+            $select = $table->select(true)->setIntegrityCheck(false);
+
+            $select->where('Item.auctionId = ?', $this->getCurrentAuctionId());
+            $select->join(
+                array('Person'),
+                'Item.donorId = Person.personId',
+                array(
+                    'donorCompany' => 'companyName',
+                    'donorFirstName' => 'firstName',
+                    'donorLastName' => 'lastName',
+                    'donorAddress1' => 'address1',
+                    'donorAddress2' => 'address2',
+                    'donorCity' => 'city',
+                    'donorProvince' => 'province',
+                    'donorPostalCode' => 'postalCode',
+                    'donorPhone' => 'phone',
+                    'SUM(Item.fairRetailPrice)' => 'total'
+                )
+            );
+            $select->group('Item.donorId');
+
+            $items  = $table->fetchAll($select);
+
+            foreach ($items as $item) {
+
+                $row = array(
+                    $item->controlSource,
+                    $item->donorCompany,
+                    $item->donorFirstName,
+                    $item->donorLastName,
+                    $item->donorAddress1,
+                    $item->donorAddress2,
+                    $item->donorCity,
+                    $item->donorProvince,
+                    $item->donorPostalCode,
+                    $item->donorPhone,
+                    $item->paid
+                );
+
+                fputcsv($fp, $row);
+            }
+
+            fclose($fp);
+
+            $this->_redirector->gotoUrl('/exports/donor_totals_' .  $this->view->getActiveAuctionDate(1) . '.csv');
         } catch (Metis_Auth_Exception $e) {
             $e->failed();
             return;
