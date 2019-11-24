@@ -63,7 +63,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     $item->donorCompany,
                     $item->donorFirstName,
                     $item->donorLastName,
-                    $item->firstname . ' ' . $item->lastname,
+                    $item->firstName . ' ' . $item->lastName,
                     $item->phone,
                     $item->paid
                 );
