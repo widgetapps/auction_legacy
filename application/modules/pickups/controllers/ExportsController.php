@@ -37,30 +37,17 @@ class Pickups_ExportsController extends Auction_Controller_Action
 
             $select = $table->select(true)->setIntegrityCheck(false);
 
-            $select
-                ->from(
-                    array('A' => 'vItemWinner'),
-                    array(
-                      'controlSource',
-                      'controlNumber',
-                      'itemName',
-                      'itemValue',
-                      'bid',
-                      'paid',
-                      'winnerPhone' => 'phone'
-                    )
+            $select->where('auctionId = ?', $this->getCurrentAuctionId());
+            $select->join(
+                array('Person'),
+                'vItemWinner.donorId = Person.personId',
+                array(
+                    'donorCompany' => 'companyName',
+                    'donorFirstName' => 'firstName',
+                    'donorLastName' => 'lastName'
                 )
-                ->join(
-                    array('B' => 'Person'),
-                    'A.donorId = B.personId',
-                    array(
-                        'donorCompany' => 'companyName',
-                        'donorFirstName' => 'firstName',
-                        'donorLastName' => 'lastName'
-                    )
-                )
-                ->where('auctionId = ?', $this->getCurrentAuctionId())
-                ->order('A.controlSource', 'A.itemNumber', 'A.paid DESC');
+            );
+            $select->order('A.controlSource', 'A.itemNumber', 'A.paid DESC');
 
             $items  = $table->fetchAll($select);
 
@@ -77,7 +64,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     $item->donorFirstName,
                     $item->donorLastName,
                     $item->firstname . ' ' . $item->lastname,
-                    $item->winnerPhone,
+                    $item->phone,
                     $item->paid
                 );
 
