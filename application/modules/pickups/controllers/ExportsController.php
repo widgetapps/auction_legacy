@@ -24,6 +24,8 @@ class Pickups_ExportsController extends Auction_Controller_Action
                 'Item Value',
                 'Bid',
                 'Percent Value',
+                'Canvasser First Name',
+                'Canvasser Last Name',
                 'Donor Company',
                 'Donor First Name',
                 'Donor Last Name',
@@ -47,6 +49,14 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     'donorLastName' => 'lastName'
                 )
             );
+            $select->join(
+                array('Person'),
+                'vItemWinner.canvasserId = Person.personId',
+                array(
+                    'canvasserFirstName' => 'firstName',
+                    'canvasserLastName' => 'lastName'
+                )
+            );
             $select->order('vItemWinner.controlSource', 'vItemWinner.itemNumber', 'vItemWinner.paid DESC');
 
             $items  = $table->fetchAll($select);
@@ -60,6 +70,8 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     $item->itemValue,
                     $item->bid,
                     $item->bid / $item->itemValue,
+                    $item->canvasserFirstName,
+                    $item->canvasserLastName,
                     $item->donorCompany,
                     $item->donorFirstName,
                     $item->donorLastName,
