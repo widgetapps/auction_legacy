@@ -122,7 +122,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
 
             $select->where('Item.auctionId = ?', $this->getCurrentAuctionId());
             $select->where('Item.taxReceipt = ?', 'y');
-            $select->where('Item.paid = ?', 'y');
+            $select->where('Item.pickedUp = ?', 'y');
             $select->join(
                 array('Person'),
                 'Item.donorId = Person.personId',
