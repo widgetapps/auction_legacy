@@ -111,7 +111,8 @@ class Pickups_ExportsController extends Auction_Controller_Action
                 'Province',
                 'Postal Code',
                 'Phone',
-                'Total'
+                'Total',
+                'Item Count'
             ));
 
             require_once('models/Item.php');
@@ -121,6 +122,7 @@ class Pickups_ExportsController extends Auction_Controller_Action
 
             $select->where('Item.auctionId = ?', $this->getCurrentAuctionId());
             $select->where('Item.taxReceipt = ?', 'y');
+            $select->where('Item.paid = ?', 'y');
             $select->join(
                 array('Person'),
                 'Item.donorId = Person.personId',
@@ -134,7 +136,8 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     'donorProvince' => 'province',
                     'donorPostalCode' => 'postalCode',
                     'donorPhone' => 'phone',
-                    'total' => 'SUM(Item.fairRetailPrice)'
+                    'total' => 'SUM(Item.fairRetailPrice)',
+                    'itemCount' => 'COUNT(*)'
                 )
             );
             $select->group('Item.donorId');
@@ -155,7 +158,8 @@ class Pickups_ExportsController extends Auction_Controller_Action
                     $item->donorProvince,
                     $item->donorPostalCode,
                     $item->donorPhone,
-                    $item->total
+                    $item->total,
+                    $item->itemCount
                 );
 
                 fputcsv($fp, $row);
