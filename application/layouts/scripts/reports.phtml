@@ -24,9 +24,14 @@
             <a type="button" class="btn btn-primary" href="/items/reports/index">Done</a>
         </span>
     </nav>
-
-    <h1>Reports</h1>
-    <?php echo $this->layout()->content; ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h1>Reports</h1>
+            </div>
+        </div>
+        <?php echo $this->layout()->content; ?>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js" integrity="sha256-C66CaAImteEKZPYvgng9j10J/45e9sAuZyfPYCwp4gE=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/locale/ca.min.js" integrity="sha256-QUEnwX3R0UhiL5ryICJX1RbwSNoH3ZRFmfOKQfK5DUs=" crossorigin="anonymous"></script>
