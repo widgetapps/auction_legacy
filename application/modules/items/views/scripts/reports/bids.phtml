@@ -1,17 +1,16 @@
 
 <div class="row">
     <div class="col-sm">
-        Bids
         <canvas id="myChart"></canvas>
         <script>
             let ctx = document.getElementById('myChart').getContext('2d');
             let myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: [[1, '10:00'], [2, '10:10'], [3, '10:20'], [4, '10:30'], [5, '10:40'], [6, '10:50']],
                     datasets: [{
                         label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
+                        data: [23, 43, 12, 5, 2, 3],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -32,6 +31,11 @@
                     }]
                 },
                 options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Bids by Block'
+                    },
                     scales: {
                         yAxes: [{
                             ticks: {
