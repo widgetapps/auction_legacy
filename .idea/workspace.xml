@@ -19,8 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="434f248c-c467-4a23-a41e-4a2d63b4fa48" name="Default Changelist" comment="Reports">
-      <change beforePath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/bids.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/bids.phtml" afterDir="false" />
+    <list default="true" id="434f248c-c467-4a23-a41e-4a2d63b4fa48" name="Default Changelist" comment="Test chart">
+      <change beforePath="$PROJECT_DIR$/application/layouts/scripts/reports.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/application/layouts/scripts/reports.phtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589315037267</updated>
-      <workItem from="1589315039757" duration="5169000" />
+      <workItem from="1589315039757" duration="5554000" />
     </task>
     <task id="LOCAL-00001" summary="Got the basic reports routes working.">
       <created>1589316038267</created>
@@ -123,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589321041911</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Test chart">
+      <created>1589321221260</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589321221260</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,16 +152,17 @@
     <MESSAGE value="Small fix." />
     <MESSAGE value="Setting up reports." />
     <MESSAGE value="Reports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reports" />
+    <MESSAGE value="Test chart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test chart" />
   </component>
   <component name="WindowStateProjectService">
     <state x="602" y="347" key="NewPhpFileDialog" timestamp="1589318592802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="602" y="347" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1589318592802" />
-    <state x="359" y="156" key="Vcs.Push.Dialog.v2" timestamp="1589321043790">
+    <state x="359" y="156" key="Vcs.Push.Dialog.v2" timestamp="1589321222511">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="359" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589321043790" />
+    <state x="359" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589321222511" />
   </component>
 </project>
