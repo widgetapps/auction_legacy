@@ -1,6 +1,6 @@
 <?php
 
-class Reports_IndexController extends Auction_Controller_Action
+class Items_ReportsController extends Auction_Controller_Action
 {
     protected $moduleName = 'items';
 
