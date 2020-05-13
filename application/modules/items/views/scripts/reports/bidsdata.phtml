@@ -1,6 +1,7 @@
 [
 <?php
 for ($i = 0; $i < count($this->blocks); $i++) {
+    if ($i == 0) next;
     ?>
     {
       "block": <?php echo $this->blocks[$i]; ?>,
