@@ -3,11 +3,11 @@
     <div class="col-sm">
         <canvas id="bidChart"></canvas>
         <script>
-            jQuery(function() {
-                jQuery.getJSON('http://system.metrotorontorotaryauction.com/items/reports/bidsdata', function(data) {
+            $(function() {
+                $.getJSON('http://system.metrotorontorotaryauction.com/items/reports/bidsdata', function(data) {
                     let blocks = [], bidCount = [];
 
-                    jQuery.each(data, function(key, val) {
+                    $.each(data, function(key, val) {
                         blocks.push([val.block, val.time]);
                         bidCount.push(val.bidcount);
 
