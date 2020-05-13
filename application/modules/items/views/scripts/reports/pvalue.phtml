@@ -4,7 +4,7 @@
         <script>
             $(function() {
                 console.log('Before');
-                $.getJSON('http://system.metrotorontorotaryauction.com/items/reports/bidsdata', function(data) {
+                $.getJSON('http://system.metrotorontorotaryauction.com/items/reports/pvaluedata', function(data) {
                     let blocks = [], percents = [];
 
                     $.each(data, function(key, val) {

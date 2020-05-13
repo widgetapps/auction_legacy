@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="434f248c-c467-4a23-a41e-4a2d63b4fa48" name="Default Changelist" comment="Value data...">
-      <change afterPath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/pvaluedata.phtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/modules/items/controllers/ReportsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/modules/items/controllers/ReportsController.php" afterDir="false" />
+    <list default="true" id="434f248c-c467-4a23-a41e-4a2d63b4fa48" name="Default Changelist" comment="Percent...">
       <change beforePath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/pvalue.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/pvalue.phtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589315037267</updated>
-      <workItem from="1589315039757" duration="16225000" />
+      <workItem from="1589315039757" duration="16280000" />
     </task>
     <task id="LOCAL-00001" summary="Got the basic reports routes working.">
       <created>1589316038267</created>
@@ -323,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589336511026</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Percent...">
+      <created>1589336972179</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1589336972179</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,16 +353,17 @@
     <MESSAGE value="Charts!" />
     <MESSAGE value="Bids by block?" />
     <MESSAGE value="Value data..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Value data..." />
+    <MESSAGE value="Percent..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Percent..." />
   </component>
   <component name="WindowStateProjectService">
     <state x="602" y="347" key="NewPhpFileDialog" timestamp="1589327171196">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="602" y="347" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1589327171196" />
-    <state x="359" y="156" key="Vcs.Push.Dialog.v2" timestamp="1589336512014">
+    <state x="359" y="156" key="Vcs.Push.Dialog.v2" timestamp="1589336973189">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="359" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589336512014" />
+    <state x="359" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589336973189" />
   </component>
 </project>
