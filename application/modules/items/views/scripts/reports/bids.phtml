@@ -4,6 +4,7 @@
         <canvas id="bidChart"></canvas>
         <script>
             $(function() {
+                console.log('Before');
                 $.getJSON('http://system.metrotorontorotaryauction.com/items/reports/bidsdata', function(data) {
                     console.log('Hello');
                     let blocks = [], bidCount = [];
