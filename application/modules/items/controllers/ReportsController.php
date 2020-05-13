@@ -179,7 +179,7 @@ class Items_ReportsController extends Auction_Controller_Action
 
                 $blockNumbers[] = $block->number;
                 $blockTimes[] = $block->startTime;
-                $valuesPercent[] = round($bidTotal / $valueTotal);
+                $valuesPercent[] = round($bidTotal / $valueTotal * 100);
             }
 
             $this->view->blocks = $blockNumbers;
