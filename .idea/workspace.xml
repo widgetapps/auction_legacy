@@ -79,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589315037267</updated>
-      <workItem from="1589315039757" duration="12307000" />
+      <workItem from="1589315039757" duration="12376000" />
     </task>
     <task id="LOCAL-00001" summary="Got the basic reports routes working.">
       <created>1589316038267</created>
@@ -200,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589332999056</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Bids by block?">
+      <created>1589333045337</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1589333045337</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,9 +239,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="602" y="347" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1589327171196" />
-    <state x="359" y="156" key="Vcs.Push.Dialog.v2" timestamp="1589333001452">
+    <state x="359" y="156" key="Vcs.Push.Dialog.v2" timestamp="1589333046789">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="359" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589333001452" />
+    <state x="359" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589333046789" />
   </component>
 </project>
