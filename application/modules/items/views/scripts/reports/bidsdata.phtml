@@ -5,7 +5,7 @@ for ($i = 0; $i < count($this->blocks); $i++) {
     ?>
     {
       "block": "<?php echo $this->blocks[$i]; ?>",
-      "time": "<?php echo $this->times[$i]; ?>",
+      "time": "<?php echo substr($this->times[$i], 0, 5); ?>",
       "bidcount": "<?php echo $this->bidCount[$i]; ?>"
     }<?php echo ($i+1 == count($this->blocks)?'':','); ?>
 <?php
