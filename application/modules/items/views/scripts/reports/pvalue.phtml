@@ -9,7 +9,7 @@
 
                     $.each(data, function(key, val) {
                         blocks.push([val.block, val.time]);
-                        percents.push(val.percents);
+                        percents.push(val.percent);
                     });
 
                     let ctx = document.getElementById('percentChart').getContext('2d');
