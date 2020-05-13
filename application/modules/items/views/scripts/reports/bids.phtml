@@ -12,33 +12,33 @@
                         bidCount.push(val.bidcount);
 
                     });
-                });
 
-                let ctx = document.getElementById('bidChart').getContext('2d');
-                let myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: blocks,
-                        datasets: [{
-                            label: '# of bids',
-                            data: bidCount,
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        title: {
-                            display: true,
-                            text: 'Bids by Block'
-                        },
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
+                    let ctx = document.getElementById('bidChart').getContext('2d');
+                    let myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: blocks,
+                            datasets: [{
+                                label: '# of bids',
+                                data: bidCount,
+                                borderWidth: 1
                             }]
+                        },
+                        options: {
+                            responsive: true,
+                            title: {
+                                display: true,
+                                text: 'Bids by Block'
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
                         }
-                    }
+                    });
                 });
             });
         </script>
