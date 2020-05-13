@@ -1,0 +1,14 @@
+[
+<?php
+for ($i = 0; $i < count($this->blocks); $i++) {
+    if ($i == 0) continue;
+    ?>
+    {
+      "block": "<?php echo $this->blocks[$i]; ?>",
+      "value": "<?php echo $this->values[$i]; ?>",
+      "bid": "<?php echo $this->bids[$i]; ?>"
+    }<?php echo ($i+1 == count($this->blocks)?'':','); ?>
+<?php
+}
+?>
+]

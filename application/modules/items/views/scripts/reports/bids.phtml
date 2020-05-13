@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-sm">
         <canvas id="bidChart"></canvas>
@@ -6,18 +5,12 @@
             $(function() {
                 console.log('Before');
                 $.getJSON('http://system.metrotorontorotaryauction.com/items/reports/bidsdata', function(data) {
-                    console.log('Hello');
                     let blocks = [], bidCount = [];
-
-                    console.log(data);
 
                     $.each(data, function(key, val) {
                         blocks.push([val.block, val.time]);
                         bidCount.push(val.bidcount);
-
                     });
-
-                    console.log(blocks);
 
                     let ctx = document.getElementById('bidChart').getContext('2d');
                     let bidChart = new Chart(ctx, {

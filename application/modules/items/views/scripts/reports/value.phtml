@@ -1,6 +1,54 @@
-
 <div class="row">
     <div class="col-sm">
-        Value
+        <canvas id="valueChart"></canvas>
+        <script>
+            $(function() {
+                console.log('Before');
+                $.getJSON('http://system.metrotorontorotaryauction.com/items/reports/valuedata', function(data) {
+                    let blocks = [], values = [], bids = [];
+
+                    $.each(data, function(key, val) {
+                        blocks.push(val.block);
+                        values.push(val.value);
+                        bids.push(val.bid);
+                    });
+
+                    let ctx = document.getElementById('valueChart').getContext('2d');
+                    let valueChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: blocks,
+                            datasets: [{
+                                label: 'Block Retail Value',
+                                data: values,
+                                borderColor: 'rgb(54, 162, 235)',
+                                backgroundColor: 'rgba(54,162,235,0.2)',
+                                borderWidth: 1
+                            },{
+                                label: 'Block Bid Value',
+                                data: bids,
+                                borderColor: 'rgb(255, 205, 86)',
+                                backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            title: {
+                                display: true,
+                                text: 'Value by Block'
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
     </div>
 </div>
