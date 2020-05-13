@@ -101,6 +101,7 @@ class Items_ReportsController extends Auction_Controller_Action
             $blocks  = $tBlock->fetchAll($bwhere, $border);
 
             $blockNumbers = [];
+            $blockTimes = [];
             $blockValues= [];
             $blockBids = [];
 
@@ -119,9 +120,11 @@ class Items_ReportsController extends Auction_Controller_Action
                 $blockNumbers[] = $block->number;
                 $blockValues[] = $valueTotal;
                 $blockBids[] = $bidTotal;
+                $blockTimes[] = $block->startTime;
             }
 
             $this->view->blocks = $blockNumbers;
+            $this->view->times = $blockTimes;
             $this->view->values = $blockValues;
             $this->view->bids = $blockBids;
 

@@ -8,7 +8,7 @@
                     let blocks = [], values = [], bids = [];
 
                     $.each(data, function(key, val) {
-                        blocks.push(val.block);
+                        blocks.push([val.block, val.time]);
                         values.push(val.value);
                         bids.push(val.bid);
                     });
