@@ -1,11 +1,13 @@
-{
-  "data": {
+[
 <?php
 for ($i = 0; $i < count($this->blocks); $i++) {
     ?>
-    {"block": <?php echo $this->blocks[$i]; ?>, "bid-count": <?php echo $this->bidCount[$i]; ?>}<?php echo ($i+1 == count($this->blocks)?'':','); ?>
+    {
+      "block": <?php echo $this->blocks[$i]; ?>,
+      "time": <?php echo $this->times[$i]; ?>,
+      "bidcount": <?php echo $this->bidCount[$i]; ?>
+    }<?php echo ($i+1 == count($this->blocks)?'':','); ?>
 <?php
 }
 ?>
-  }
-}
+]

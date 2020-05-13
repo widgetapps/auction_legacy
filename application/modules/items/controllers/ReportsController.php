@@ -45,6 +45,7 @@ class Items_ReportsController extends Auction_Controller_Action
 
             $blockNumbers = [];
             $blockBidCount = [];
+            $blockTimes = [];
 
             foreach ($blocks as $block) {
                 $bidCount = 0;
@@ -59,10 +60,12 @@ class Items_ReportsController extends Auction_Controller_Action
 
                 $blockNumbers[] = $block->number;
                 $blockBidCount[] = $bidCount;
+                $blockTimes[] = $block->startTime;
             }
 
             $this->view->blocks = $blockNumbers;
             $this->view->bidCount = $blockBidCount;
+            $this->view->times = $blockTimes;
 
         } catch (Metis_Auth_Exception $e) {
             $e->failed();
