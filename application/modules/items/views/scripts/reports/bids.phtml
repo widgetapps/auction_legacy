@@ -3,42 +3,44 @@
     <div class="col-sm">
         <canvas id="bidChart"></canvas>
         <script>
-            $.getJSON('http://system.metrotorontorotaryauction.com/items/reports/bidsdata', function(data) {
-                let blocks = [], bidCount = [];
+            $(function() {
+                $.getJSON('http://system.metrotorontorotaryauction.com/items/reports/bidsdata', function(data) {
+                    let blocks = [], bidCount = [];
 
-                $.each(data, function(key, val) {
-                    blocks.push([val.block, val.time]);
-                    bidCount.push(val.bidcount);
+                    $.each(data, function(key, val) {
+                        blocks.push([val.block, val.time]);
+                        bidCount.push(val.bidcount);
 
+                    });
                 });
-            });
 
-            let ctx = document.getElementById('bidChart').getContext('2d');
-            let myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: blocks,
-                    datasets: [{
-                        label: '# of bids',
-                        data: bidCount
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    title: {
-                        display: true,
-                        text: 'Bids by Block'
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
+                let ctx = document.getElementById('bidChart').getContext('2d');
+                let myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: blocks,
+                        datasets: [{
+                            label: '# of bids',
+                            data: bidCount
+                            borderWidth: 1
                         }]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Bids by Block'
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
                     }
-                }
-            });
+                });
+            }
         </script>
     </div>
 </div>
