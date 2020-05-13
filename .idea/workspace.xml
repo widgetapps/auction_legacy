@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="434f248c-c467-4a23-a41e-4a2d63b4fa48" name="Default Changelist" comment="Bids by block?">
-      <change beforePath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/bidsdata.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/bidsdata.phtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/bids.phtml" beforeDir="false" afterPath="$PROJECT_DIR$/application/modules/items/views/scripts/reports/bids.phtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589315037267</updated>
-      <workItem from="1589315039757" duration="13788000" />
+      <workItem from="1589315039757" duration="14240000" />
     </task>
     <task id="LOCAL-00001" summary="Got the basic reports routes working.">
       <created>1589316038267</created>
@@ -270,7 +271,21 @@
       <option name="project" value="LOCAL" />
       <updated>1589334429233</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Bids by block?">
+      <created>1589334525752</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1589334525752</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Bids by block?">
+      <created>1589334728512</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1589334728512</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,9 +317,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="602" y="347" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1589327171196" />
-    <state x="359" y="156" key="Vcs.Push.Dialog.v2" timestamp="1589334430346">
+    <state x="359" y="156" key="Vcs.Push.Dialog.v2" timestamp="1589334729591">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="359" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589334430346" />
+    <state x="359" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589334729591" />
   </component>
 </project>
