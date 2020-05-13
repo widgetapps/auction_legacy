@@ -143,4 +143,51 @@ class Items_ReportsController extends Auction_Controller_Action
             $e->failed();
         }
     }
+
+    public function pvaluedataAction()
+    {
+        header('Content-type: application/json');
+        $this->_helper->layout->setLayout('json');
+
+        try {
+            $this->authenticateAction('view');
+
+            require_once('models/Block.php');
+            $tBlock = new models_Block();
+            require_once('models/vItemWinner.php');
+            $tItem = new models_vItemWinner();
+
+            $bwhere = $tBlock->getAdapter()->quoteInto('auctionId = ?', $this->getCurrentAuctionId());
+            $border = 'number';
+            $blocks  = $tBlock->fetchAll($bwhere, $border);
+
+            $blockNumbers = [];
+            $blockTimes = [];
+            $valuesPercent = [];
+
+            foreach ($blocks as $block) {
+                $valueTotal = 0;
+                $bidTotal = 0;
+
+                $iwhere = $tItem->getAdapter()->quoteInto('blockId = ?', $block->blockId);
+                $items = $tItem->fetchAll($iwhere);
+
+                foreach ($items as $item) {
+                    $valueTotal += $item->itemValue;
+                    $bidTotal += $item->bid;
+                }
+
+                $blockNumbers[] = $block->number;
+                $blockTimes[] = $block->startTime;
+                $valuesPercent[] = rount($bidTotal / $valueTotal);
+            }
+
+            $this->view->blocks = $blockNumbers;
+            $this->view->times = $blockTimes;
+            $this->view->percents = $valuesPercent;
+
+        } catch (Metis_Auth_Exception $e) {
+            $e->failed();
+        }
+    }
 }
