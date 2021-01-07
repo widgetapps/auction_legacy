@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<acl>
+	<roles>
+		<role name="bidder" />
+		<role name="rotarian" />
+		<role name="approver" />
+		<role name="admin" />
+		<role name="super" />
+	</roles>
+	<resources>
+		<resource name="items" />
+		<resource name="bids" />
+		<resource name="people" />
+		<resource name="blocks" />
+		<resource name="callbacks" />
+		<resource name="pickups" />
+		<resource name="pledges" />
+		<resource name="users" />
+        <resource name="mobile" />
+	</resources>
+	<rights>
+		<right role="bidder" resource="bids" type="allow">
+			<view />
+			<add />
+		</right>
+		<right role="bidder" resource="items" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="bidder" resource="people" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="bidder" resource="blocks" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="bidder" resource="callbacks" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="bidder" resource="pickups" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="bidder" resource="pledges" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="bidder" resource="users" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		
+		<right role="rotarian" resource="bids" type="allow">
+			<view />
+			<add />
+			<approve />
+		</right>
+		<right role="rotarian" resource="items" type="allow">
+			<view />
+			<add />
+		</right>
+		<right role="rotarian" resource="people" type="allow">
+			<view />
+			<add />
+		</right>
+		<right role="rotarian" resource="blocks" type="allow">
+			<view />
+		</right>
+		<right role="rotarian" resource="callbacks" type="allow">
+			<view />
+		</right>
+		<right role="rotarian" resource="pickups" type="allow">
+			<view />
+		</right>
+		<right role="rotarian" resource="pledges" type="allow">
+			<view />
+			<add />
+		</right>
+		<right role="rotarian" resource="users" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+        <right role="rotarian" resource="mobile" type="allow">
+            <view />
+        </right>
+		
+		<right role="approver" resource="bids" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+		</right>
+		<right role="approver" resource="items" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+		</right>
+		<right role="approver" resource="people" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+		</right>
+		<right role="approver" resource="blocks" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+		</right>
+		<right role="approver" resource="callbacks" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+		</right>
+		<right role="approver" resource="pickups" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+		</right>
+		<right role="approver" resource="pledges" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+		</right>
+		<right role="approver" resource="users" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+        <right role="approver" resource="mobile" type="allow">
+            <view />
+        </right>
+		
+		<right role="admin" resource="bids" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="admin" resource="items" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="admin" resource="people" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="admin" resource="blocks" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="admin" resource="callbacks" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="admin" resource="pickups" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="admin" resource="pledges" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="admin" resource="users" type="deny">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+        <right role="admin" resource="mobile" type="allow">
+            <view />
+            <add />
+            <edit />
+            <approve />
+            <delete />
+        </right>
+		
+		<right role="super" resource="bids" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="super" resource="items" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="super" resource="people" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="super" resource="blocks" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="super" resource="callbacks" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="super" resource="pickups" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="super" resource="pledges" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+		<right role="super" resource="users" type="allow">
+			<view />
+			<add />
+			<edit />
+			<approve />
+			<delete />
+		</right>
+        <right role="super" resource="mobile" type="allow">
+            <view />
+            <add />
+            <edit />
+            <approve />
+            <delete />
+        </right>
+	</rights>
+</acl>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata xmlns:zf="http://framework.zend.com/xml/zend-config-xml/1.0/">
+	<production>
+		<phpSettings>
+			<display_startup_errors>0</display_startup_errors>
+			<display_errors>0</display_errors>
+		</phpSettings>
+		<includePaths>
+			<library><zf:const zf:name="APPLICATION_PATH"/>/library</library>
+		</includePaths>
+		<pluginPaths>
+			<Auction_Application_Resources>Auction/Application/Resources</Auction_Application_Resources>
+		</pluginPaths>
+		<bootstrap>
+			<path><zf:const zf:name="METIS_PATH"/>/Metis/Bootstrap.php</path>
+			<class>Metis_Bootstrap</class>
+		</bootstrap>
+		<resources>
+			<frontController>
+				<controllerDirectory>
+					<index><zf:const zf:name="APPLICATION_PATH"/>/modules/index/controllers</index>
+				</controllerDirectory>
+				<moduleDirectory><zf:const zf:name="APPLICATION_PATH"/>/modules</moduleDirectory>
+				<defaultModule>index</defaultModule>
+			</frontController>
+			<layout>
+				<layout>layout</layout>
+				<layoutPath><zf:const zf:name="APPLICATION_PATH"/>/layouts/scripts</layoutPath>
+			</layout>
+			<db>
+				<adapter>pdo_mysql</adapter>
+				<params>
+					<host>[db host]</host>
+					<username>[db username]</username>
+					<password>[db password]</password>
+					<dbname>[db name]</dbname>
+				</params>
+				<isDefaultTableAdapter>true</isDefaultTableAdapter>
+			</db>
+			<modules>
+				<bids />
+				<blocks />
+				<callbacks />
+				<feeds />
+				<index />
+				<items />
+				<mobile />
+				<people />
+				<pickups />
+				<pledges />
+				<users />
+				<facebook />
+			</modules>
+			<session>
+				<save_path>../data</save_path>
+				<use_only_cookies>true</use_only_cookies>
+				<remember_me_seconds>864000</remember_me_seconds>
+			</session>
+			<view>
+				<encoding>UTF-8</encoding>
+				<language>en</language>
+			</view>
+			<mail>
+				<transport>
+					<type>smtp</type>
+					<host>[hostname]</host>
+					<port>587</port>
+					<auth>login</auth>
+					<username>[username]</username>
+					<password>[password]</password>
+					<ssl>tls</ssl>
+				</transport>
+				<defaultFrom>
+					<email>[from address]</email>
+					<name>[from name]</name>
+				</defaultFrom>
+				<defaultReplyTo>
+					<email>[replyto address]</email>
+					<name>[replyto name]</name>
+				</defaultReplyTo>
+			</mail>
+			<appconfig>
+				<currentAuctionId>1</currentAuctionId>
+				<pass>[card password]</pass>
+				<salt>[card salt]</salt>
+				<theme>blue</theme>
+				<minBidPercent>25</minBidPercent>
+			</appconfig>
+		</resources>
+	</production>
+	<staging extends="production">
+	</staging>
+	<testing extends="production">
+	</testing>
+	<development extends="production">
+		<phpSettings>
+			<display_startup_errors>1</display_startup_errors>
+			<display_errors>1</display_errors>
+		</phpSettings>
+		<resources>
+			<db>
+				<adapter>pdo_mysql</adapter>
+				<params>
+					<host>[db host]</host>
+					<username>[db username]</username>
+					<password>[db password]</password>
+					<dbname>[db name]</dbname>
+				</params>
+				<isDefaultTableAdapter>true</isDefaultTableAdapter>
+			</db>
+		</resources>
+	</development>
+</configdata>
